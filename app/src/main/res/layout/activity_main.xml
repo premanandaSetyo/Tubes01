@@ -13,11 +13,11 @@
         android:orientation="vertical"
         android:background="@color/theme">
 
-        <!--        <include layout="@layout/toolbar"-->
-        <!--            android:id="@+id/home_toolbar"-->
-        <!--            />-->
+            <include layout="@layout/toolbar"
+                    android:id="@+id/home_toolbar"
+                    />
 
-        <!--Toolbar-->
+<!--        Toolbar-->
 
         <FrameLayout
             android:layout_width="match_parent"
