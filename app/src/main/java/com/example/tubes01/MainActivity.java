@@ -19,5 +19,11 @@ public class MainActivity extends AppCompatActivity {
         ft.add(R.id.fragment_container, home)
                 .commit();
 
+//        AddMovieFragment addMovie = AddMovieFragment.newInstance();
+//        FragmentManager fragmentManager = this.getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.add(R.id.fragment_container, addMovie)
+//                .commit();
+
     }
 }
