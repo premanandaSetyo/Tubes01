@@ -42,6 +42,7 @@
                 android:layout_below="@id/logo"
                 android:layout_marginTop="60dp"
                 android:text="Ma Montre"
+                android:textSize="50dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"/>
 
