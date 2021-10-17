@@ -1,4 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".HomeFragment">-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/theme"-->
+<!--        android:gravity="center">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/logo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:src="@drawable/logo"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_appName"-->
+<!--            android:layout_below="@id/logo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Ma Montre"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:layout_marginTop="300dp"-->
+<!--            android:textColor="@color/white"/>-->
+
+<!--        <Button-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/tv_appName"-->
+<!--            android:layout_marginTop="150dp"-->
+<!--            android:id="@+id/btn_begin"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:text="Begin"-->
+<!--            android:background="@drawable/rounded_button"-->
+<!--            />-->
+
+<!--    </RelativeLayout>-->
+
+<!--</FrameLayout>-->
+
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,35 +53,34 @@
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/theme"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
-            android:foregroundGravity="center"
-            android:src="@drawable/logoResize" />
+            android:src="@drawable/logo"
+            android:layout_marginTop="70dp"/>
+
 
         <TextView
-            android:layout_below="@id/logo"
+            android:id="@+id/tv_appName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ma Montre"
             android:textSize="30dp"
             android:textAlignment="center"
             android:layout_marginTop="60dp"
-            android:textColor="@color/white"
-            android:id="@+id/tv_appName"/>
+            android:textColor="@color/white"/>
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_appName"
             android:layout_marginTop="150dp"
             android:id="@+id/btn_begin"
             android:layout_centerInParent="true"
@@ -42,6 +88,6 @@
             android:background="@drawable/rounded_button"
             />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>
