@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,13 +15,14 @@
         <!--Toolbar-->
         <include
             layout="@layout/toolbar"
-            android:id="@+id/home_toolbar"/>
+            android:id="@+id/add_movie_toolbar"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_margin="30dp"
+            android:layout_below="@+id/add_movie_toolbar">
 
             <!--Title-->
             <TextView
@@ -31,7 +32,9 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"/>
 
             <!--Synopsis-->
             <TextView
@@ -41,10 +44,41 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="100dp"
+                android:inputType="textMultiLine"
+                android:gravity="top"/>
+
+            <!--Poster-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poster"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload"
+                android:background="@drawable/rounded_button"
+                android:layout_gravity="center_horizontal"/>
+
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ADD"
+                android:layout_margin="30dp"
+                android:background="@drawable/rounded_button"/>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>
 

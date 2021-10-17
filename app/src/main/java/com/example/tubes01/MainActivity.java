@@ -13,17 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HomeFragment home = HomeFragment.newInstance();
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, home)
-                .commit();
-
-//        AddMovieFragment addMovie = AddMovieFragment.newInstance();
+//        HomeFragment home = HomeFragment.newInstance();
 //        FragmentManager fragmentManager = this.getSupportFragmentManager();
 //        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        ft.add(R.id.fragment_container, addMovie)
+//        ft.add(R.id.fragment_container, home)
 //                .commit();
+
+        AddMovieFragment addMovie = AddMovieFragment.newInstance();
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.fragment_container, addMovie)
+                .commit();
 
     }
 }
