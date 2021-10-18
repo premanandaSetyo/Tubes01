@@ -5,16 +5,14 @@ import android.widget.ImageView;
 public class Film {
 
     private String title;
-    private int episode;
     private String synopsis;
     private ImageView poster;
     private Double rating;
     private String review;
     private boolean completedStatus;
 
-    public Film (String title, int episode, String synopsis, ImageView poster, Double rating, String review, boolean completedStatus){
+    public Film (String title, String synopsis, ImageView poster, Double rating, String review, boolean completedStatus){
         this.title = title;
-        this.episode = episode;
         this.synopsis = synopsis;
         this.poster = poster;
         this.rating = rating;
@@ -38,10 +36,6 @@ public class Film {
         return poster;
     }
 
-    public int getEpisode() {
-        return episode;
-    }
-
     public String getReview() {
         return review;
     }
@@ -52,10 +46,6 @@ public class Film {
 
     public void setCompletedStatus(boolean completedStatus) {
         this.completedStatus = completedStatus;
-    }
-
-    public void setEpisode(int episode) {
-        this.episode = episode;
     }
 
     public void setPoster(ImageView poster) {

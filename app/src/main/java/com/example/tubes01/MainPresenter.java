@@ -16,13 +16,13 @@ public class MainPresenter {
     }
 
     public void addMovie(String title, String synopsis, ImageView poster){
-        currFilm = new Film(title, 1, synopsis, poster, null, null, false);
+        currFilm = new Film(title, synopsis, poster, null, null, false);
         listFilmP.add(currFilm);
     }
 
     public void addSeries(String title, String synopsis, ImageView poster, int eps){
         for(int e = 1;e<=eps;e++){
-            currFilm = new Film(title, e, synopsis, poster, null, null, false);
+            currFilm = new Film(title, synopsis, poster, null, null, false);
             listFilmP.add(currFilm);
         }
     }
