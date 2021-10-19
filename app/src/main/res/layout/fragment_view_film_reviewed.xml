@@ -3,21 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".ViewFilmReviewedFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--Toolbar-->
-        <include
-            layout="@layout/toolbar"
-            android:id="@+id/view_film_reviewed_toolbar"/>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/view_film_reviewed_toolbar">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"

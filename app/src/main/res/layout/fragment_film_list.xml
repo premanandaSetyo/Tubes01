@@ -3,17 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".FilmListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <!--Toolbar-->
-        <include
-            layout="@layout/toolbar"
-            android:id="@+id/add_series_toolbar"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

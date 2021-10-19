@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".AddMovieFragment">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,17 +12,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--Toolbar-->
-        <include
-            layout="@layout/toolbar"
-            android:id="@+id/add_movie_toolbar"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="30dp"
-            android:layout_below="@+id/add_movie_toolbar">
+            android:layout_margin="30dp">
 
             <!--Title-->
             <TextView
@@ -31,6 +25,7 @@
                 android:text="Title"/>
 
             <EditText
+                android:id="@+id/add_movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"

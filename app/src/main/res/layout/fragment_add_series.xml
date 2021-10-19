@@ -3,17 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".AddSeriesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <!--Toolbar-->
-        <include
-            layout="@layout/toolbar"
-            android:id="@+id/add_series_toolbar"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -23,8 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="30dp"
-                android:layout_below="@+id/add_series_toolbar">
+                android:layout_margin="30dp">
 
                 <!--Title-->
                 <TextView
