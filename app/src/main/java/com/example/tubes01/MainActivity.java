@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
     private AddSeriesFragment addSeries;
     private ViewFilmFragment viewFilm;
     private ReviewPageFragment reviewPage;
-    private ViewFilmReviewedFragment viewFilmReview;
+    private ViewFilmReviewedFragment viewFilmReviewed;
 //    private SeriesListFragment seriesList;
 
     @Override
@@ -49,17 +49,25 @@ public class MainActivity extends AppCompatActivity{
         abdt.syncState();
 
 
-
-//        FragmentManager fragmentManager = this.getSupportFragmentManager();
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-
-        //page 1
         this.home = HomeFragment.newInstance();
+        this.filmList = FilmListFragment.newInstance(this);
+        this.addMovie = AddMovieFragment.newInstance();
+        this.addSeries = AddSeriesFragment.newInstance();
+        this.viewFilm = ViewFilmFragment.newInstance();
+        this.reviewPage = ReviewPageFragment.newInstance();
+        this.viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
         this.fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, this.home)
-                .addToBackStack(null)
-                .commit();
+
+        if(savedInstanceState == null){
+            this.changePage(1);
+        }
+
+        //page 1
+//        this.home = HomeFragment.newInstance();
+//        ft.add(R.id.fragment_container, this.home)
+//                .addToBackStack(null)
+//                .commit();
 
         //page 2
 //        this.filmList = FilmListFragment.newInstance();
@@ -114,36 +122,32 @@ public class MainActivity extends AppCompatActivity{
             ft.replace(R.id.fragment_container, this.filmList)
                     .addToBackStack(null);
         }
+        else if(page==3){
+            ft.replace(R.id.fragment_container, this.addMovie)
+                    .addToBackStack(null);
+        }
+        else if(page==4){
+            ft.replace(R.id.fragment_container, this.addSeries)
+                    .addToBackStack(null);
+        }
+        else if(page==5){
+//                ft.replace(R.id.fragment_container, this.seriesList)
+//                        .addToBackStack(null);
+        }
+        else if(page==6) {
+            ft.replace(R.id.fragment_container, this.viewFilm)
+                    .addToBackStack(null);
+        }
+        else if(page==7) {
+            ft.replace(R.id.fragment_container, this.reviewPage)
+                    .addToBackStack(null);
+        }
+        else if(page==8) {
+            ft.replace(R.id.fragment_container, this.viewFilmReviewed)
+                    .addToBackStack(null);
+        }
         ft.commit();
     }
-
-
-//        switch(page) {
-//            case 1:
-//                ft.replace(R.id.fragment_container, this.home)
-//                        .addToBackStack(null);
-//            case 2:
-//                ft.replace(R.id.fragment_container, this.filmList)
-//                        .addToBackStack(null);
-//            case 3:
-//                ft.replace(R.id.fragment_container, this.addMovie)
-//                        .addToBackStack(null);
-//            case 4:
-//                ft.replace(R.id.fragment_container, this.addSeries)
-//                        .addToBackStack(null);
-//            case 5:
-////                ft.replace(R.id.fragment_container, this.seriesList)
-////                        .addToBackStack(null);
-//            case 6:
-//                ft.replace(R.id.fragment_container, this.viewFilm)
-//                        .addToBackStack(null);
-//            case 7:
-//                ft.replace(R.id.fragment_container, this.reviewPage)
-//                        .addToBackStack(null);
-//            case 8:
-//                ft.replace(R.id.fragment_container, this.viewFilmReview)
-//                        .addToBackStack(null);
-//        }
 
 
     public void closeApplication(){
