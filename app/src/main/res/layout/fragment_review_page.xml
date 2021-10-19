@@ -17,49 +17,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="30dp"
                 android:orientation="vertical"
-                android:layout_margin="30dp">
+                >
 
                 <!--Title-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Judul"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
 
                 <!--Poster-->
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="250dp"/>
+                    android:layout_height="250dp" />
 
                 <!--Status-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Status : completed"/>
+                    android:text="Status : completed" />
 
                 <!--Rating-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ratings"/>
+                    android:text="Ratings" />
+
                 <RatingBar
                     android:id="@+id/rating_star"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:stepSize=".5"/>
+                    android:stepSize=".5" />
 
                 <!--Review-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Review "/>
+                    android:text="Review " />
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:gravity="top"/>
+                    android:gravity="top"
+                    android:inputType="textMultiLine" />
 
             </LinearLayout>
 

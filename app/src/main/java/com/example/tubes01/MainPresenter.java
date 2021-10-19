@@ -4,9 +4,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class MainPresenter {
-    protected ArrayList<Film> listFilmP;
+    protected List<Film> listFilmP;
     protected IMainActivity ui;
     private Film currFilm;
 
@@ -21,10 +23,15 @@ public class MainPresenter {
     }
 
     public void addSeries(String title, String synopsis, ImageView poster, int eps){
+        currFilm = new Film(title, synopsis, poster, null, null, false);
+        listFilmP.add(currFilm);
+        List<Series> ls = new ArrayList<Series>();
         for(int e = 1;e<=eps;e++){
-            currFilm = new Film(title, synopsis, poster, null, null, false);
-            listFilmP.add(currFilm);
+            Series currSeries = new Series(e,synopsis,poster,null,null,false);
+            ls.add(currSeries);
         }
+//        Collection<Series> col = new ArrayList<>(ls);
+//        listFilmP.addAll(ls);
     }
 
     public void addReview(String review, Double rating, int position){
