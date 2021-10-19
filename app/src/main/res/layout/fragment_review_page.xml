@@ -14,6 +14,11 @@
         <include
             layout="@layout/toolbar"
             android:id="@+id/view_film_reviewed_toolbar"/>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_weight=".9">-->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,19 +42,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="250dp"/>
 
-                <!--Synopsis-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Synopsis" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="30dp"
-                    android:textColor="@color/white"
-                    android:text="isi sinopsisssss"/>
-
                 <!--Status-->
                 <TextView
                     android:layout_width="match_parent"
@@ -66,44 +58,38 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:stepSize=".5"
-                    android:isIndicator="true"/>
+                    android:stepSize=".5"/>
 
                 <!--Review-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Review "/>
-                <TextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="isi review"/>
+                    android:inputType="textMultiLine"
+                    android:gravity="top"/>
 
             </LinearLayout>
 
         </ScrollView>
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:background="@color/theme">
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
                 android:text="Edit Review"
                 android:background="@drawable/rounded_button"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:text="Delete"
-                android:background="@drawable/rounded_button"/>
+
         </LinearLayout>
 
     </RelativeLayout>

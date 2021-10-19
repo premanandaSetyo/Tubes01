@@ -49,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
 //                .commit();
 
         //page 8
-        ViewFilmReviewedFragment viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
+//        ViewFilmReviewedFragment viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
+//        FragmentManager fragmentManager = this.getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.add(R.id.fragment_container, viewFilmReviewed)
+//                .commit();
+
+        //page 7
+        ReviewPageFragment reviewPage = ReviewPageFragment.newInstance();
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, viewFilmReviewed)
+        ft.add(R.id.fragment_container, reviewPage)
                 .commit();
-
     }
 }
