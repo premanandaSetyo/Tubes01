@@ -99,10 +99,10 @@ public class MainActivity extends AppCompatActivity{
 //        ft.add(R.id.fragment_container, this.viewFilmReviewed)
 //                .commit();
 
+        //Change page
         this.getSupportFragmentManager().setFragmentResultListener("changePage", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                Log.d("masuk", "activity");
                 int page = result.getInt("page");
                 changePage(page);
             }

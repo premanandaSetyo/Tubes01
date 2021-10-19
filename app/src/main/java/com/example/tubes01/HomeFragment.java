@@ -30,12 +30,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_home, container, false);
         this.binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         this.binding.btnBegin.setOnClickListener(this);
-
-
 
         return view;
     }
@@ -43,15 +40,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if(view == this.binding.btnBegin){
-            Log.d("page","masuk");
             Bundle args = new Bundle();
             args.putInt("page", 2);
             this.getParentFragmentManager().setFragmentResult("changePage", args);
-//            Log.d("test", "clicked");
-//            ((MainActivity)getActivity()).changePage(2);
-
-
-
         }
     }
 }
