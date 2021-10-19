@@ -8,13 +8,13 @@ import java.util.Collection;
 import java.util.List;
 
 public class MainPresenter {
-    protected List<Film> listFilmP;
+    protected List<Object> listFilmP;
     protected IMainActivity ui;
     private Film currFilm;
 
     public MainPresenter(MainActivity view){
         this.ui = (IMainActivity) view;
-        this.listFilmP = new ArrayList<Film>();
+        this.listFilmP = new ArrayList<Object>();
     }
 
     public void addMovie(String title, String synopsis, ImageView poster){
@@ -30,14 +30,15 @@ public class MainPresenter {
             Series currSeries = new Series(e,synopsis,poster,null,null,false);
             ls.add(currSeries);
         }
-//        Collection<Series> col = new ArrayList<>(ls);
-//        listFilmP.addAll(ls);
+        listFilmP.add(ls);
     }
 
     public void addReview(String review, Double rating, int position){
-        this.listFilmP.get(position).setReview(review);
-        this.listFilmP.get(position).setRating(rating);
-        this.listFilmP.get(position).setCompletedStatus(true);
+        currFilm = (Film) this.listFilmP.get(position);
+        currFilm.setReview(review);
+        currFilm.setRating(rating);
+        currFilm.setCompletedStatus(true);
+        this.listFilmP.add(position,currFilm);
     }
 
     public void delete(int position){
