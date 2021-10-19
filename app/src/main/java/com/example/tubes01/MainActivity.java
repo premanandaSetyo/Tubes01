@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
 //                .commit();
 
         //page 3
-        AddMovieFragment addMovie = AddMovieFragment.newInstance();
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, addMovie)
-                .commit();
+//        AddMovieFragment addMovie = AddMovieFragment.newInstance();
+//        FragmentManager fragmentManager = this.getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.add(R.id.fragment_container, addMovie)
+//                .commit();
 
         //page 4
 //        AddSeriesFragment addSeries = AddSeriesFragment.newInstance();
@@ -83,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
 //                .commit();
 
         //page 7
-//        ReviewPageFragment reviewPage = ReviewPageFragment.newInstance();
-//        FragmentManager fragmentManager = this.getSupportFragmentManager();
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        ft.add(R.id.fragment_container, reviewPage)
-//                .commit();
+        ReviewPageFragment reviewPage = ReviewPageFragment.newInstance();
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.fragment_container, reviewPage)
+                .commit();
     }
 }
