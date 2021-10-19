@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:gravity="top"/>
-                
+
             </LinearLayout>
 
         </ScrollView>
