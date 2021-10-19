@@ -41,11 +41,18 @@ public class MainActivity extends AppCompatActivity {
 //        ft.add(R.id.fragment_container, filmList)
 //                .commit();
 
-        //page 6
-        ViewFilmFragment viewFilm = ViewFilmFragment.newInstance();
+//        //page 6
+//        ViewFilmFragment viewFilm = ViewFilmFragment.newInstance();
+//        FragmentManager fragmentManager = this.getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.add(R.id.fragment_container, viewFilm)
+//                .commit();
+
+        //page 8
+        ViewFilmReviewedFragment viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, viewFilm)
+        ft.add(R.id.fragment_container, viewFilmReviewed)
                 .commit();
 
     }
