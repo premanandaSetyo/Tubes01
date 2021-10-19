@@ -21,7 +21,6 @@
             android:layout_below="@+id/view_film_reviewed_toolbar">
 
             <LinearLayout
-                android:layout_below="@id/view_film_reviewed_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -68,14 +67,6 @@
                     android:inputType="textMultiLine"
                     android:gravity="top"/>
 
-                <Button
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Edit Review"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rounded_button"/>
-
             </LinearLayout>
 
         </ScrollView>
@@ -87,7 +78,12 @@
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:background="@color/theme">
-
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Edit Review"
+                android:background="@drawable/rounded_button"/>
 
         </LinearLayout>
 
