@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         this.toolbar.setTitle("Ma Montre"); //Judul aplikasi di toolbar
         this.setSupportActionBar(this.toolbar);
 
-
         //tombol garis tiga
         DrawerLayout drawer  = this.binding.drawerLayout;
         ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer);
@@ -40,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         //page 1
-//        HomeFragment home = HomeFragment.newInstance();
-//        FragmentManager fragmentManager = this.getSupportFragmentManager();
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        ft.add(R.id.fragment_container, home)
-//                .commit();
+        HomeFragment home = HomeFragment.newInstance();
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.fragment_container, home)
+                .commit();
 
         //page 3
 //        AddMovieFragment addMovie = AddMovieFragment.newInstance();
@@ -83,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 //                .commit();
 
         //page 7
-        ReviewPageFragment reviewPage = ReviewPageFragment.newInstance();
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(R.id.fragment_container, reviewPage)
-                .commit();
+//        ReviewPageFragment reviewPage = ReviewPageFragment.newInstance();
+//        FragmentManager fragmentManager = this.getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.add(R.id.fragment_container, reviewPage)
+//                .commit();
     }
 }
