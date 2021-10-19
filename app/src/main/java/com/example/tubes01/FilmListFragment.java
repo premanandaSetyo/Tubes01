@@ -13,7 +13,7 @@ public class FilmListFragment extends Fragment {
 //
 //    }
 
-    public static FilmListFragment newInstance() {
+    public static FilmListFragment newInstance(MainActivity activity) {
         FilmListFragment fragment = new FilmListFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
