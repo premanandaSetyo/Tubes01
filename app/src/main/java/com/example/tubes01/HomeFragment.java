@@ -43,12 +43,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if(view == this.binding.btnBegin){
-//            Log.d("test", "clicked");
-//            ((MainActivity)getActivity()).changePage(2);
-
+            Log.d("page","masuk");
             Bundle args = new Bundle();
             args.putInt("page", 2);
             this.getParentFragmentManager().setFragmentResult("changePage", args);
+//            Log.d("test", "clicked");
+//            ((MainActivity)getActivity()).changePage(2);
+
+
+
         }
     }
 }

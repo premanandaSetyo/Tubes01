@@ -1,22 +1,21 @@
 package com.example.tubes01;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.tubes01.databinding.ActivityMainBinding;
-import com.example.tubes01.databinding.FragmentHomeBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
     private ActivityMainBinding binding;
     private Toolbar toolbar;
     FragmentManager fragmentManager;
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        filmList = FilmListFragment.newInstance(this);
 //        setContentView(R.layout.activity_main);
 
         //toolbar
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.getSupportFragmentManager().setFragmentResultListener("changePage", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                Log.d("masuk", "activity");
                 int page = result.getInt("page");
                 changePage(page);
             }
@@ -103,23 +104,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-    @Override
-    public void onClick(View view) {
-
-    }
-
-
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page==1){
             ft.replace(R.id.fragment_container, this.home)
-                        .addToBackStack(null);
+                    .addToBackStack(null);
         }
         else if(page==2){
             ft.replace(R.id.fragment_container, this.filmList)
-                        .addToBackStack(null);
+                    .addToBackStack(null);
         }
+        ft.commit();
+    }
+
 
 //        switch(page) {
 //            case 1:
@@ -147,8 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                ft.replace(R.id.fragment_container, this.viewFilmReview)
 //                        .addToBackStack(null);
 //        }
-        ft.commit();
-    }
+
 
     public void closeApplication(){
         this.moveTaskToBack(true);
