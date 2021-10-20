@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ReviewPageFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/theme">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -25,8 +27,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Judul"
-                    android:textAlignment="center" />
+                    android:text="@string/as_title"
+                    android:textAlignment="center"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"/>
 
                 <!--Poster-->
                 <ImageView
@@ -37,13 +41,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Status : completed" />
+                    android:text="@string/rp_stat"
+                    android:textColor="@color/white"/>
 
                 <!--Rating-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ratings" />
+                    android:text="@string/rp_rating"
+                    android:textColor="@color/white"/>
 
                 <RatingBar
                     android:id="@+id/rating_star"
@@ -56,33 +62,32 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Review " />
+                    android:text="@string/rp_review"
+                    android:textColor="@color/white"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
-                    android:inputType="textMultiLine" />
-
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/white"
+                    app:backgroundTint = "@color/white"/>
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/rp_btn_editReview"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/rounded_button"/>
             </LinearLayout>
+
+
 
         </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:background="@color/theme">
-            <Button
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Edit Review"
-                android:background="@drawable/rounded_button"/>
 
-        </LinearLayout>
 
     </RelativeLayout>
 

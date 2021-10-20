@@ -24,4 +24,30 @@
     <string name="am_poster">Poster</string>
     <string name="am_btn_upload">Upload</string>
     <string name="am_btn_add">Add</string>
+
+    <!--    Film List-->
+    <string name="am_btn_addMovies">Add Movies</string>
+    <string name="am_btn_addSeries">Add Series</string>
+
+    <!--    Review Page-->
+    <string name="rp_title">Judul</string>
+    <string name="rp_stat">Status : waiting list</string>
+    <string name="rp_rating">Ratings</string>
+    <string name="rp_review">Review</string>
+    <string name="rp_btn_editReview">Edit Review</string>
+
+    <!--    Review Page-->
+    <string name="vf_title">Judul</string>
+    <string name="rp_syno">Synopsis</string>
+    <string name="rp_btn_review">Review</string>
+    <string name="rp_btn_delete">Delete</string>
+
+    <!--    ViewFilm Fragment-->
+    <string name="vfr_title">Judul</string>
+    <string name="vfr_syno">Synopsis</string>
+    <string name="vfr_stat">Status : waiting list</string>
+    <string name="vfr_rating">Ratings</string>
+    <string name="vfr_review">Review</string>
+    <string name="vfr_btn_editReview">Edit Review</string>
+    <string name="vfr_btn_delete">Delete</string>
 </resources>

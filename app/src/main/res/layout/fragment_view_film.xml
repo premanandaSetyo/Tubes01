@@ -8,7 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/theme">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -24,8 +25,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Judul"
-                    android:textAlignment="center"/>
+                    android:text="@string/vf_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"/>
 
                 <!--Poster-->
                 <ImageView
@@ -36,15 +39,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Synopsis" />
+                    android:text="@string/rp_syno"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
                     android:textColor="@color/white"
-                    android:text="isi sinopsisssss Android Studio adalah Integrated Development Environment (IDE) resmi untuk pengembangan aplikasi Android, yang didasarkan pada IntelliJ IDEA . Selain sebagai editor kode dan fitur developer IntelliJ yang andal, Android Studio menawarkan banyak fitur yang meningkatkan produktivitas Anda dalam membuat aplikasi Android, seperti:
-                    blablabalbalasjfalksjf laksjsjfklajasjlfjlsfjlsjflajglajfjaljalfjajklsafjlajflkaslaksjsjfklajasjlfjlsfjlsjflajglajfjaljalfjajklsafjlajflkaslaksjsjfklajasjlfjlsfjlsjflajglajfjaljalfjajklsafjlajflkaslaksjsjfklajasjlfjlsfjlsjflajglajfjaljalfjajklsafjlajflkas" />
+                     />
 
             </LinearLayout>
 
@@ -62,14 +64,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:text="Review"
+                android:text="@string/rp_btn_review"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:text="Delete"
+                android:text="@string/rp_btn_delete"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
         </LinearLayout>
 
