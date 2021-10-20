@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,13 @@ public class FilmListAdapter extends BaseAdapter {
         public void onClick(View view) {
             if(view == this.binding.fiFilmItem){
                 Log.d("check", "row " + i + " clicked");
-
+                this.presenter.getData(this.i);
+                if(this.currentFilm.isCompletedStatus()==false){
+                    this.presenter.changePage(6);
+                }
+                else {
+                    this.presenter.changePage(8);
+                }
             }
         }
     }

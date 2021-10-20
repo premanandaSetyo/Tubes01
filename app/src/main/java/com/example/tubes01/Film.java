@@ -7,12 +7,12 @@ public class Film {
     private String title;
     private String synopsis;
     private ImageView poster;
-    private Double rating;
+    private float rating;
     private String review;
     private boolean completedStatus;
     private String category;
 
-    public Film(String title, String synopsis, ImageView poster, Double rating, String review, boolean completedStatus, String category){
+    public Film(String title, String synopsis, ImageView poster, float rating, String review, boolean completedStatus, String category){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
@@ -46,11 +46,11 @@ public class Film {
         return this.poster;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
-    public Double getRating() {
+    public float getRating() {
         return this.rating;
     }
 

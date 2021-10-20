@@ -1,7 +1,10 @@
 package com.example.tubes01;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.tubes01.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +22,7 @@ public class MainPresenter {
     }
 
     public void addMovie(String title, String synopsis, ImageView poster){
-        currFilm = new Film(title, synopsis, poster, null, null, false, "movie");
+        currFilm = new Film(title, synopsis, poster, 0.0F, null, false, "movie");
         listFilmP.add(currFilm);
     }
 
@@ -34,7 +37,7 @@ public class MainPresenter {
 //        listFilmP.add(ls);
 //    }
 
-    public void addReview(String review, Double rating, int position){
+    public void addReview(String review, float rating, int position){
         currFilm = (Film) this.listFilmP.get(position);
         currFilm.setReview(review);
         currFilm.setRating(rating);
@@ -54,9 +57,14 @@ public class MainPresenter {
         this.ui.updateList(this.listFilmP);
     }
 
-//    public void getData(int position){
-//        Film film = this.listFilmP.get(position);
-//    }
+    public void getData(int position){
+        currFilm = this.listFilmP.get(position);
+        this.ui.sendData(currFilm);
+    }
+
+    public void changePage(int page){
+        this.ui.changePage(page);
+    }
 
 
 //    loadData

@@ -45,7 +45,7 @@
     <!--    ViewFilm Review -->
     <string name="vfr_title">Judul</string>
     <string name="vfr_syno">Synopsis</string>
-    <string name="vfr_stat">Status : waiting list</string>
+    <string name="vfr_stat">Status : completed</string>
     <string name="vfr_rating">Ratings</string>
     <string name="vfr_review">Review</string>
     <string name="vfr_btn_editReview">Edit Review</string>

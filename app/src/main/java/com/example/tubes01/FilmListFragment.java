@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
@@ -39,8 +40,8 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddSeries.setOnClickListener(this);
 
         Film[] dummyData = {
-                new Film("Squid Game", "Squid main game", null, null, null, false, "movie"),
-                new Film("Octopus game", "Octopus main game", null, 5.0, "bagusss", true, "movie" )
+                new Film("Squid Game", "Squid main game", null, 0.0F, null, false, "movie"),
+                new Film("Octopus game", "Octopus main game", null, 5.0F, "bagusss", true, "movie" )
         };
         this.binding.listFilm.setAdapter(this.adapter);
         this.presenter.loadData(dummyData);
@@ -65,5 +66,29 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void updateList(List<Film> films) {
         this.adapter.update(films);
+    }
+
+    @Override
+    public void changePage(int page) {
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
+    }
+
+    @Override
+    public void sendData(Film currFilm) {
+        String title = currFilm.getTitle();
+        ImageView image = currFilm.getPoster();
+        String synopsis = currFilm.getSynopsis();
+        boolean status = currFilm.isCompletedStatus();
+        float rating = currFilm.getRating();
+        String review = currFilm.getSynopsis();
+        Bundle args = new Bundle();
+        args.putString("FilmTitle", title);
+        args.putString("FilmSynopsis", synopsis);
+        args.putBoolean("FilmStatus", status);
+        args.putFloat("FilmRating", rating);
+        args.putString("FilmReview", review);
+        this.getParentFragmentManager().setFragmentResult("setData", args);
     }
 }

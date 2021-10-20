@@ -23,6 +23,7 @@
 
                 <!--Title-->
                 <TextView
+                    android:id="@+id/vf_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/vf_title"
@@ -32,11 +33,13 @@
 
                 <!--Poster-->
                 <ImageView
+                    android:id="@+id/vf_poster"
                     android:layout_width="wrap_content"
                     android:layout_height="250dp"/>
 
                 <!--Synopsis-->
                 <TextView
+                    android:id="@+id/vf_synopsis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vf_syno"
