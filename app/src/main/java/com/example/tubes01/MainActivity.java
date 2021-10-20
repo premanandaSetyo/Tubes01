@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction ft = fragmentManager.beginTransaction();
 
         if(savedInstanceState == null){
-            this.changePage(7);
+            this.changePage(1);
         }
 
         //page 1

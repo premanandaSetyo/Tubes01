@@ -31,18 +31,18 @@
 
     <!--    Review Page-->
     <string name="rp_title">Judul</string>
-    <string name="rp_stat">Status : waiting list</string>
+    <string name="rp_stat">Status : completed</string>
     <string name="rp_rating">Ratings</string>
     <string name="rp_review">Review</string>
-    <string name="rp_btn_editReview">Edit Review</string>
+    <string name="rp_btn_editReview">Save</string>
 
-    <!--    Review Page-->
+    <!--    View Film -->
     <string name="vf_title">Judul</string>
-    <string name="rp_syno">Synopsis</string>
-    <string name="rp_btn_review">Review</string>
-    <string name="rp_btn_delete">Delete</string>
+    <string name="vf_syno">Synopsis</string>
+    <string name="vf_btn_review">Review</string>
+    <string name="vf_btn_delete">Delete</string>
 
-    <!--    ViewFilm Fragment-->
+    <!--    ViewFilm Review -->
     <string name="vfr_title">Judul</string>
     <string name="vfr_syno">Synopsis</string>
     <string name="vfr_stat">Status : waiting list</string>
