@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        filmList = FilmListFragment.newInstance(this);
 //        setContentView(R.layout.activity_main);
 
         //toolbar
@@ -59,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         this.home = HomeFragment.newInstance();
-        this.filmList = FilmListFragment.newInstance(this);
+//        this.filmList = FilmListFragment.newInstance(this);
+        this.filmList = new FilmListFragment(this);
         this.addMovie = AddMovieFragment.newInstance();
         this.addSeries = AddSeriesFragment.newInstance();
         this.viewFilm = ViewFilmFragment.newInstance();

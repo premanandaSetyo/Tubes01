@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/theme">
+    android:background="@color/theme"
+    android:id="@+id/fi_film_item">
 
     <ImageView
         android:id="@+id/fi_poster"
@@ -32,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/fi_moviesSeries"
+            android:id="@+id/fi_category"
             android:hint="Movie / Series"
             android:textColor="@color/white">
         </TextView>

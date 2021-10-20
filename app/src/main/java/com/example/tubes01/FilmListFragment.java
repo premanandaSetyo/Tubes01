@@ -10,19 +10,26 @@ import androidx.fragment.app.Fragment;
 import com.example.tubes01.databinding.FragmentFilmListBinding;
 import com.example.tubes01.databinding.FragmentHomeBinding;
 
-public class FilmListFragment extends Fragment implements View.OnClickListener{
+import java.util.List;
+
+public class FilmListFragment extends Fragment implements View.OnClickListener, IMainActivity{
     private FragmentFilmListBinding binding;
+    private FilmListAdapter adapter;
+    private MainPresenter presenter;
+    private MainActivity activity;
 
-//    public HomeFragment(){
-//
-//    }
-
-    public static FilmListFragment newInstance(MainActivity activity) {
-        FilmListFragment fragment = new FilmListFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public FilmListFragment(MainActivity activity){
+        this.activity = activity;
+        this.presenter = new MainPresenter(this);
+        this.adapter = new FilmListAdapter(this.activity, this.presenter);
     }
+
+//    public static FilmListFragment newInstance(MainActivity activity) {
+//        FilmListFragment fragment = new FilmListFragment();
+//        Bundle args = new Bundle();
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +37,14 @@ public class FilmListFragment extends Fragment implements View.OnClickListener{
         View view = this.binding.getRoot();
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
+
+        Film[] dummyData = {
+                new Film("Squid Game", "Squid main game", null, null, null, false, "movie"),
+                new Film("Octopus game", "Octopus main game", null, 5.0, "bagusss", true, "movie" )
+        };
+        this.binding.listFilm.setAdapter(this.adapter);
+        this.presenter.loadData(dummyData);
+
         return view;
     }
 
@@ -45,5 +60,10 @@ public class FilmListFragment extends Fragment implements View.OnClickListener{
             args.putInt("page", 4);
             this.getParentFragmentManager().setFragmentResult("changePage", args);
         }
+    }
+
+    @Override
+    public void updateList(List<Film> films) {
+        this.adapter.update(films);
     }
 }
