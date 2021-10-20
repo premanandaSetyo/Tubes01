@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddSeriesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/theme">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -24,43 +26,53 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Title" />
+                    android:text="@string/as_title"
+                    android:textColor="@color/white"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/white"/>
 
                 <!--Number of Episode-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number of Episodes" />
+                    android:text="@string/as_eps"
+                    android:textColor="@color/white"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/white"/>
 
                 <!--Synopsis-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Synopsis" />
+                    android:text="@string/as_syn"
+                    android:textColor="@color/white"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:gravity="top"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/white"/>
 
                 <!--Poster-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Poster" />
+                    android:text="@string/as_poster"
+                    android:textColor="@color/white"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -71,15 +83,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/rounded_button"
-                    android:text="Upload" />
+                    android:text="@string/as_btn_upload"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ADD"
+                    android:text="@string/as_btn_add"
                     android:layout_marginBottom="40dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/rounded_button" />
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </ScrollView>
 

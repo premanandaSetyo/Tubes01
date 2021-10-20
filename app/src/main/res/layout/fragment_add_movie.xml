@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddMovieFragment">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/theme">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,41 +24,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"/>
+                android:text="@string/am_title"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/add_movie_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/white"/>
 
             <!--Synopsis-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Synopsis"/>
+                android:text="@string/am_syn"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:inputType="textMultiLine"
-                android:gravity="top"/>
+                android:gravity="top"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/white"/>
 
             <!--Poster-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Poster"/>
+                android:text="@string/am_poster"
+                android:textColor="@color/white"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload"
+                android:text="@string/am_btn_upload"
                 android:background="@drawable/rounded_button"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
@@ -68,9 +78,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ADD"
+                android:text="@string/am_btn_add"
                 android:layout_margin="30dp"
-                android:background="@drawable/rounded_button"/>
+                android:background="@drawable/rounded_button"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </RelativeLayout>

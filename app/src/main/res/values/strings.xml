@@ -6,4 +6,22 @@
     <!-- tombol garis tiga -->
     <string name="openDrawer">Open Drawer</string>
     <string name="closeDrawer">Close Drawer</string>
+
+<!--    Home-->
+    <string name="btn_begin">Begin</string>
+
+<!--    Add series-->
+    <string name="as_title">Title</string>
+    <string name="as_eps">Numbers of Episodes</string>
+    <string name="as_syn">Synopsis</string>
+    <string name="as_poster">Poster</string>
+    <string name="as_btn_upload">Upload</string>
+    <string name="as_btn_add">Add</string>
+
+    <!--    Add movie-->
+    <string name="am_title">Title</string>
+    <string name="am_syn">Synopsis</string>
+    <string name="am_poster">Poster</string>
+    <string name="am_btn_upload">Upload</string>
+    <string name="am_btn_add">Add</string>
 </resources>

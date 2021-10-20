@@ -59,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_appName"
                 android:background="@drawable/rounded_button"
-                android:text="Begin" />
+                android:text="@string/btn_begin"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </LinearLayout>
