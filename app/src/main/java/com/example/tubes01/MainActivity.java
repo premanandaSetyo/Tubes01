@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navView;
     private DrawerLayout drawer;
 //    private SeriesListFragment seriesList;
+//    private MainPresenter presenter;
+//    private FilmListAdapter adapter;
+//    private IMainActivity ui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +59,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navView = binding.navView;
         this.navView.setNavigationItemSelectedListener(this);
 
+//        this.presenter = new MainPresenter(this.ui);
+//        this.adapter = new FilmListAdapter(this, this.presenter);
+        
 
         this.home = HomeFragment.newInstance();
 //        this.filmList = FilmListFragment.newInstance(this);
         this.filmList = new FilmListFragment(this);
-        this.addMovie = AddMovieFragment.newInstance();
+//        this.filmList = new FilmListFragment(this, this.presenter, this.adapter);
+//        this.addMovie = AddMovieFragment.newInstance();
+        this.addMovie = new AddMovieFragment(this);
         this.addSeries = AddSeriesFragment.newInstance();
         this.viewFilm = ViewFilmFragment.newInstance();
         this.reviewPage = ReviewPageFragment.newInstance();

@@ -21,9 +21,15 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
-        this.presenter = new MainPresenter(this);
-        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+        this.presenter = presenter;
+        this.adapter = adapter;
     }
+
+//    public FilmListFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
+//        this.activity = activity;
+//        this.presenter = new MainPresenter(this);
+//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+//    }
 
 //    public static FilmListFragment newInstance(MainActivity activity) {
 //        FilmListFragment fragment = new FilmListFragment();
@@ -39,12 +45,12 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
-        Film[] dummyData = {
-                new Film("Squid Game", "Squid main game", null, 0.0F, null, false, "movie"),
-                new Film("Octopus game", "Octopus main game", null, 5.0F, "bagusss", true, "movie" )
-        };
+//        Film[] dummyData = {
+//                new Film("Squid Game", "Squid main game", null, 0.0F, null, false, "movie"),
+//                new Film("Octopus game", "Octopus main game", null, 5.0F, "bagusss", true, "movie" )
+//        };
         this.binding.listFilm.setAdapter(this.adapter);
-        this.presenter.loadData(dummyData);
+//        this.presenter.loadData(dummyData);
 
         return view;
     }

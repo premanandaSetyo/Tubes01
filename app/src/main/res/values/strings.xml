@@ -7,10 +7,10 @@
     <string name="openDrawer">Open Drawer</string>
     <string name="closeDrawer">Close Drawer</string>
 
-<!--    Home-->
+    <!--Home-->
     <string name="btn_begin">Begin</string>
 
-<!--    Add series-->
+    <!--Add series-->
     <string name="as_title">Title</string>
     <string name="as_eps">Numbers of Episodes</string>
     <string name="as_syn">Synopsis</string>
@@ -18,31 +18,31 @@
     <string name="as_btn_upload">Upload</string>
     <string name="as_btn_add">Add</string>
 
-    <!--    Add movie-->
+    <!--Add movie-->
     <string name="am_title">Title</string>
     <string name="am_syn">Synopsis</string>
     <string name="am_poster">Poster</string>
     <string name="am_btn_upload">Upload</string>
     <string name="am_btn_add">Add</string>
 
-    <!--    Film List-->
-    <string name="am_btn_addMovies">Add Movies</string>
-    <string name="am_btn_addSeries">Add Series</string>
+    <!--Film List-->
+    <string name="af_btn_addMovies">Add Movies</string>
+    <string name="af_btn_addSeries">Add Series</string>
 
-    <!--    Review Page-->
+    <!--Review Page-->
     <string name="rp_title">Judul</string>
     <string name="rp_stat">Status : completed</string>
     <string name="rp_rating">Ratings</string>
     <string name="rp_review">Review</string>
     <string name="rp_btn_editReview">Save</string>
 
-    <!--    View Film -->
+    <!--View Film-->
     <string name="vf_title">Judul</string>
     <string name="vf_syno">Synopsis</string>
     <string name="vf_btn_review">Review</string>
     <string name="vf_btn_delete">Delete</string>
 
-    <!--    ViewFilm Review -->
+    <!--ViewFilm Review-->
     <string name="vfr_title">Judul</string>
     <string name="vfr_syno">Synopsis</string>
     <string name="vfr_stat">Status : completed</string>

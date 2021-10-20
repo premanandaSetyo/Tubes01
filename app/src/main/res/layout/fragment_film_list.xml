@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
-                    android:text="@string/am_btn_addMovies"
+                    android:text="@string/af_btn_addMovies"
                     android:background="@drawable/rounded_button"
                     android:textColor="@color/white"/>
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="5dp"
-                    android:text="@string/am_btn_addSeries"
+                    android:text="@string/af_btn_addSeries"
                     android:background="@drawable/rounded_button"
                     android:textColor="@color/white"/>
             </LinearLayout>

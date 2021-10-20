@@ -54,7 +54,11 @@ public class FilmListAdapter extends BaseAdapter {
     }
 
     public void update(List<Film> getFilms){
+        Log.d("check", "adapter masuk");
         this.filmList = getFilms;
+        for(Film f : filmList){
+            Log.d("judul", f.getTitle());
+        }
         notifyDataSetChanged();
     }
 

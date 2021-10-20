@@ -1,6 +1,7 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -22,8 +23,13 @@ public class MainPresenter {
     }
 
     public void addMovie(String title, String synopsis, ImageView poster){
+        Log.d("test", "addMovie Presenter masuk");
         currFilm = new Film(title, synopsis, poster, 0.0F, null, false, "movie");
-        listFilmP.add(currFilm);
+        this.listFilmP.add(currFilm);
+//        for(Film f : listFilmP){
+//            Log.d("judul", f.getTitle());
+//        }
+        this.ui.updateList(this.listFilmP);
     }
 
 //    public void addSeries(String title, String synopsis, ImageView poster, int eps){
