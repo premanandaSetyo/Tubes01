@@ -89,11 +89,14 @@ public class FilmListAdapter extends BaseAdapter {
             if(view == this.binding.fiFilmItem){
                 Log.d("check", "row " + i + " clicked");
                 this.presenter.getData(this.i);
-                if(this.currentFilm.isCompletedStatus()==false){
+                if(this.currentFilm.getCategory()=="movie" && this.currentFilm.isCompletedStatus()==false){
                     this.presenter.changePage(6);
                 }
-                else {
+                else if(this.currentFilm.getCategory()=="movie" && this.currentFilm.isCompletedStatus()==true){
                     this.presenter.changePage(8);
+                }
+                else if(this.currentFilm.getCategory()=="series"){
+                    this.presenter.changePage(9);
                 }
             }
         }

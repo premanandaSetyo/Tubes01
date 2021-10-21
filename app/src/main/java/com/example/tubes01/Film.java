@@ -3,20 +3,21 @@ package com.example.tubes01;
 import android.widget.ImageView;
 
 public class Film {
-
     private String title;
     private String synopsis;
     private ImageView poster;
+    private int episode;
     private float rating;
     private String review;
     private boolean completedStatus;
     private String category;
     private int index;
 
-    public Film(String title, String synopsis, ImageView poster, float rating, String review, boolean completedStatus, String category, int index){
+    public Film(String title, String synopsis, ImageView poster, int episode, float rating, String review, boolean completedStatus, String category, int index){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
+        this.episode = episode;
         this.rating = rating;
         this.review = review;
         this.completedStatus = completedStatus;
@@ -45,6 +46,14 @@ public class Film {
 
     public ImageView getPoster() {
         return this.poster;
+    }
+
+    public void setEpisode(int episode) {
+        this.episode = episode;
+    }
+
+    public int getEpisode() {
+        return episode;
     }
 
     public void setRating(float rating) {

@@ -22,16 +22,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActivityMainBinding binding;
     private Toolbar toolbar;
     FragmentManager fragmentManager;
-    private HomeFragment home;
-    private AddMovieFragment addMovie;
-    private FilmListFragment filmList;
-    private AddSeriesFragment addSeries;
-    private ViewFilmFragment viewFilm;
-    private ReviewPageFragment reviewPage;
-    private ViewFilmReviewedFragment viewFilmReviewed;
+    private HomeFragment home; //page 1
+    private FilmListFragment filmList; //page 2
+    private AddMovieFragment addMovie; //page 3
+    private AddSeriesFragment addSeries; //page 4
+    private SeriesListFragment seriesList; //page 5
+    private ViewFilmFragment viewFilm; //page 6
+    private ReviewPageFragment reviewPage; //page 7
+    private ViewFilmReviewedFragment viewFilmReviewed; //page 8
+    private ViewSeriesFragment viewSeries; //page 9
     private NavigationView navView;
     private DrawerLayout drawer;
-//    private SeriesListFragment seriesList;
+
 //    private MainPresenter presenter;
 //    private FilmListAdapter adapter;
 //    private IMainActivity ui;
@@ -70,9 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        this.addMovie = AddMovieFragment.newInstance();
         this.addMovie = new AddMovieFragment(this);
         this.addSeries = AddSeriesFragment.newInstance();
+        this.seriesList = SeriesListFragment.newInstance();
         this.viewFilm = ViewFilmFragment.newInstance();
         this.reviewPage = ReviewPageFragment.newInstance();
         this.viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
+        this.viewSeries = ViewSeriesFragment.newInstance();
+
         this.fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
 
@@ -148,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null);
         }
         else if(page==5){
-//                ft.replace(R.id.fragment_container, this.seriesList)
-//                        .addToBackStack(null);
+                ft.replace(R.id.fragment_container, this.seriesList)
+                        .addToBackStack(null);
         }
         else if(page==6) {
             ft.replace(R.id.fragment_container, this.viewFilm)
@@ -161,6 +166,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(page==8) {
             ft.replace(R.id.fragment_container, this.viewFilmReviewed)
+                    .addToBackStack(null);
+        }
+        else if(page==9) {
+            ft.replace(R.id.fragment_container, this.viewSeries)
                     .addToBackStack(null);
         }
         ft.commit();

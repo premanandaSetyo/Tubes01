@@ -21,14 +21,14 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
-        this.presenter = presenter;
-        this.adapter = adapter;
+        this.presenter = new MainPresenter(this);
+        this.adapter = new FilmListAdapter(this.activity, this.presenter);
     }
 
 //    public FilmListFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
 //        this.activity = activity;
-//        this.presenter = new MainPresenter(this);
-//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+//        this.presenter = presenter;
+//        this.adapter = adapter;
 //    }
 
 //    public static FilmListFragment newInstance(MainActivity activity) {
@@ -45,12 +45,14 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
-//        Film[] dummyData = {
-//                new Film("Squid Game", "Squid main game", null, 0.0F, null, false, "movie"),
-//                new Film("Octopus game", "Octopus main game", null, 5.0F, "bagusss", true, "movie" )
-//        };
         this.binding.listFilm.setAdapter(this.adapter);
-//        this.presenter.loadData(dummyData);
+
+        Film[] dummyData = {
+                new Film("Squid Game", "Squid main game", null, 1,0.0F, null, false, "movie", 0),
+                new Film("Octopus game", "Octopus main game", null, 1, 5.0F, "bagusss", true, "movie", 0),
+                new Film("Vincenzo", "Vincenzo shooting film", null, 10, 4.5F, "keren!", false, "series", 1)
+        };
+        this.presenter.loadData(dummyData);
 
         return view;
     }
@@ -86,15 +88,17 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         String title = currFilm.getTitle();
         ImageView image = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
+        int episode = currFilm.getEpisode();
         boolean status = currFilm.isCompletedStatus();
         float rating = currFilm.getRating();
         String review = currFilm.getSynopsis();
         Bundle args = new Bundle();
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
+        args.putInt("FilmEpisode", episode);
         args.putBoolean("FilmStatus", status);
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
-        this.getParentFragmentManager().setFragmentResult("setData", args);
+        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
     }
 }

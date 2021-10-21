@@ -24,7 +24,7 @@ public class MainPresenter {
 
     public void addMovie(String title, String synopsis, ImageView poster){
         Log.d("test", "addMovie Presenter masuk");
-        currFilm = new Film(title, synopsis, poster, 0.0F, null, false, "movie", 0);
+        currFilm = new Film(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
         this.listFilmP.add(currFilm);
 //        for(Film f : listFilmP){
 //            Log.d("judul", f.getTitle());

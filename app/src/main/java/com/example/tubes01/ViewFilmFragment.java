@@ -33,7 +33,7 @@ public class ViewFilmFragment extends Fragment {
         View view = this.binding.getRoot();
 
         
-        this.getParentFragmentManager().setFragmentResultListener("setData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
