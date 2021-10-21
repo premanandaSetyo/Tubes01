@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentResultListener;
 import com.example.tubes01.databinding.FragmentHomeBinding;
 import com.example.tubes01.databinding.FragmentViewFilmBinding;
 
-public class ViewFilmFragment extends Fragment {
+public class ViewFilmFragment extends Fragment implements View.OnClickListener{
     private FragmentViewFilmBinding binding;
 
 //    public HomeFragment(){
@@ -32,7 +32,6 @@ public class ViewFilmFragment extends Fragment {
         this.binding = FragmentViewFilmBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
 
-        
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -42,6 +41,8 @@ public class ViewFilmFragment extends Fragment {
             }
         });
 
+        this.binding.vfBtnReview.setOnClickListener(this);
+
         return view;
     }
 
@@ -49,5 +50,12 @@ public class ViewFilmFragment extends Fragment {
     public void print(String title, String synopsis){
         this.binding.vfTitle.setText(title);
         this.binding.vfSynopsis.setText(synopsis);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Bundle args = new Bundle();
+        args.putInt("page", 7);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 }

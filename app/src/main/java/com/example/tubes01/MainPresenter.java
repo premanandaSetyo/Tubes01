@@ -48,7 +48,7 @@ public class MainPresenter {
         currFilm.setReview(review);
         currFilm.setRating(rating);
         currFilm.setCompletedStatus(true);
-        this.listFilmP.add(position,currFilm);
+        this.listFilmP.add(position, currFilm);
     }
 
     public void delete(int position){
@@ -65,7 +65,7 @@ public class MainPresenter {
 
     public void getData(int position){
         currFilm = this.listFilmP.get(position);
-        this.ui.sendData(currFilm);
+        this.ui.sendData(currFilm, position);
     }
 
     public void changePage(int page){

@@ -5,5 +5,5 @@ import java.util.List;
 public interface IMainActivity {
     void updateList(List<Film> films);
     void changePage(int page);
-    void sendData(Film currFilm);
+    void sendData(Film currFilm, int position);
 }

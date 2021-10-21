@@ -34,7 +34,7 @@
     <string name="rp_stat">Status : completed</string>
     <string name="rp_rating">Ratings</string>
     <string name="rp_review">Review</string>
-    <string name="rp_btn_editReview">Save</string>
+    <string name="rp_btn_saveReview">Save</string>
 
     <!--View Film-->
     <string name="vf_title">Judul</string>

@@ -1,6 +1,7 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     private MainPresenter presenter;
     private MainActivity activity;
 
+
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
         this.presenter = new MainPresenter(this);
@@ -28,12 +30,18 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 //    public FilmListFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
 //        this.activity = activity;
 //        this.presenter = presenter;
-//        this.adapter = adapter;
+////        this.adapter = adapter;
 //    }
 
-//    public static FilmListFragment newInstance(MainActivity activity) {
+//    public static FilmListFragment newInstance(MainActivity activity, MainPresenter presenter) {
+////        MainPresenter presenter = new MainPresenter((IMainActivity) activity);
+////        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
+////        FilmListFragment fragment = new FilmListFragment(activity, presenter, adapter);
+//
 //        FilmListFragment fragment = new FilmListFragment();
+//        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
 //        Bundle args = new Bundle();
+//        args.putParcelable("Adapter", adapter);
 //        fragment.setArguments(args);
 //        return fragment;
 //    }
@@ -45,6 +53,8 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
+//        this.presenter = new MainPresenter(this);
+//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
 
         Film[] dummyData = {
@@ -84,7 +94,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(Film currFilm) {
+    public void sendData(Film currFilm, int position) {
         String title = currFilm.getTitle();
         ImageView image = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
@@ -93,6 +103,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         float rating = currFilm.getRating();
         String review = currFilm.getSynopsis();
         Bundle args = new Bundle();
+        args.putInt("Position", position);
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
         args.putInt("FilmEpisode", episode);

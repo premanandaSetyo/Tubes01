@@ -14,7 +14,7 @@ import com.example.tubes01.databinding.FragmentHomeBinding;
 import java.util.List;
 
 public class AddMovieFragment extends Fragment implements View.OnClickListener, IMainActivity{
-    private final MainActivity activity;
+    private MainActivity activity;
     private FilmListAdapter adapter;
     private FragmentAddMovieBinding binding;
     private MainPresenter presenter;
@@ -25,9 +25,18 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
         this.adapter = new FilmListAdapter(this.activity, this.presenter);
     }
 
-//    public static AddMovieFragment newInstance() {
-//        AddMovieFragment fragment = new AddMovieFragment();
+//    public AddMovieFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
+//        this.activity = activity;
+//        this.presenter = presenter;
+////        this.adapter = adapter;
+//    }
+//
+//    public static AddMovieFragment newInstance(MainActivity activity, MainPresenter presenter) {
+////        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
+////        AddMovieFragment fragment = new AddMovieFragment(activity, presenter, adapter);
 //        Bundle args = new Bundle();
+//        FilmListAdapter adapter = (FilmListAdapter) args.getParcelable("Adapter");
+//        AddMovieFragment fragment = new AddMovieFragment(activity, presenter, adapter);
 //        fragment.setArguments(args);
 //        return fragment;
 //    }
@@ -37,6 +46,8 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
         this.binding = FragmentAddMovieBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.binding.amBtnAdd.setOnClickListener(this);
+        this.presenter = new MainPresenter(this);
+        this.adapter = new FilmListAdapter(this.activity, this.presenter);
 
         return view;
     }
@@ -64,7 +75,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(Film currFilm) {
+    public void sendData(Film currFilm, int position) {
 
     }
 }

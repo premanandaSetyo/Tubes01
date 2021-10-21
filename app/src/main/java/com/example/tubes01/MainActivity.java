@@ -18,7 +18,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tubes01.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, IMainActivity {
     private ActivityMainBinding binding;
     private Toolbar toolbar;
     FragmentManager fragmentManager;
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ViewSeriesFragment viewSeries; //page 9
     private NavigationView navView;
     private DrawerLayout drawer;
-//    private MainPresenter presenter;
+
+    private MainPresenter presenter;
 //    private FilmListAdapter adapter;
 //    private IMainActivity ui;
 
@@ -60,20 +63,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navView = binding.navView;
         this.navView.setNavigationItemSelectedListener(this);
 
-//        this.presenter = new MainPresenter(this.ui);
+//        this.presenter = new MainPresenter(this);
 //        this.adapter = new FilmListAdapter(this, this.presenter);
         
 
-        this.home = HomeFragment.newInstance();
-//        this.filmList = FilmListFragment.newInstance(this);
+//        this.filmList = FilmListFragment.newInstance(this, this.presenter);
         this.filmList = new FilmListFragment(this);
 //        this.filmList = new FilmListFragment(this, this.presenter, this.adapter);
-//        this.addMovie = AddMovieFragment.newInstance();
+//        this.addMovie = AddMovieFragment.newInstance(this, this.presenter);
         this.addMovie = new AddMovieFragment(this);
+        this.reviewPage = new ReviewPageFragment(this);
+
+
+        this.home = HomeFragment.newInstance();
+//        this.filmList = FilmListFragment.newInstance();
+//        this.addMovie = AddMovieFragment.newInstance();
         this.addSeries = AddSeriesFragment.newInstance();
         this.seriesList = SeriesListFragment.newInstance();
         this.viewFilm = ViewFilmFragment.newInstance();
-        this.reviewPage = ReviewPageFragment.newInstance();
+//        this.reviewPage = ReviewPageFragment.newInstance();
         this.viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
         this.viewSeries = ViewSeriesFragment.newInstance();
 
@@ -133,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
         if(page==1){
@@ -160,8 +169,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null);
         }
         else if(page==7) {
-            ft.replace(R.id.fragment_container, this.reviewPage)
-                    .addToBackStack(null);
+            ft.replace(R.id.fragment_container, this.reviewPage);
+//                    .addToBackStack(null);
         }
         else if(page==8) {
             ft.replace(R.id.fragment_container, this.viewFilmReviewed)
@@ -174,12 +183,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.commit();
     }
 
-
     public void closeApplication(){
         this.moveTaskToBack(true);
         this.finish();
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -204,4 +211,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+    @Override
+    public void sendData(Film currFilm, int position) {
+
+    }
+
+    @Override
+    public void updateList(List<Film> films) {
+
+    }
+
 }
