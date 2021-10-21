@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ViewSeriesFragment viewSeries; //page 9
     private NavigationView navView;
     private DrawerLayout drawer;
-
 //    private MainPresenter presenter;
 //    private FilmListAdapter adapter;
 //    private IMainActivity ui;
