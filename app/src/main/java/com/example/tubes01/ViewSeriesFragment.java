@@ -7,18 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.tubes01.databinding.FragmentAddSeriesBinding;
-import com.example.tubes01.databinding.FragmentFilmListBinding;
+import com.example.tubes01.databinding.FragmentViewSeriesBinding;
 
-public class AddSeriesFragment extends Fragment {
-    private FragmentAddSeriesBinding binding;
+public class ViewSeriesFragment extends Fragment {
+    private FragmentViewSeriesBinding binding;
 
 //    public HomeFragment(){
 //
 //    }
 
-    public static AddSeriesFragment newInstance() {
-        AddSeriesFragment fragment = new AddSeriesFragment();
+    public static ViewSeriesFragment newInstance() {
+        ViewSeriesFragment fragment = new ViewSeriesFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -26,9 +25,9 @@ public class AddSeriesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.binding = FragmentAddSeriesBinding.inflate(inflater, container, false);
+        this.binding = FragmentViewSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        
+
         return view;
     }
 }

@@ -50,4 +50,10 @@
     <string name="vfr_review">Review</string>
     <string name="vfr_btn_editReview">Edit Review</string>
     <string name="vfr_btn_delete">Delete</string>
+
+    <!--View Series-->
+    <string name="vs_title">Judul</string>
+    <string name="vs_syno">Synopsis</string>
+    <string name="vs_btn_eps">Episodes</string>
+    <string name="vs_btn_delete">Delete</string>
 </resources>

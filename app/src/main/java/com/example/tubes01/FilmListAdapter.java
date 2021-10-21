@@ -39,6 +39,7 @@ public class FilmListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        Log.d("check getView", "masuk");
         FilmListAdapter.ViewHolder viewHolder;
         if(view == null) {
             FragmentFilmItemBinding binding = FragmentFilmItemBinding.inflate(this.activity.getLayoutInflater(), viewGroup, false);

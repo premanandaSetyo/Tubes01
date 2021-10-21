@@ -7,7 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.tubes01.databinding.FragmentFilmListBinding;
+import com.example.tubes01.databinding.FragmentReviewPageBinding;
+
 public class ReviewPageFragment extends Fragment {
+    private FragmentReviewPageBinding binding;
 
 //    public HomeFragment(){
 //
@@ -22,7 +26,9 @@ public class ReviewPageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_review_page, container, false);
+        this.binding = FragmentReviewPageBinding.inflate(inflater, container, false);
+        View view = this.binding.getRoot();
+        
         return view;
     }
 }

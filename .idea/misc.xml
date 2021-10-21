@@ -18,11 +18,13 @@
         <entry key="app/src/main/res/layout/fragment_add_movie.xml" value="0.30207652257231654" />
         <entry key="app/src/main/res/layout/fragment_add_series.xml" value="0.28638680537559963" />
         <entry key="app/src/main/res/layout/fragment_film_item.xml" value="0.12537993920972645" />
-        <entry key="app/src/main/res/layout/fragment_film_list.xml" value="0.3488372093023256" />
+        <entry key="app/src/main/res/layout/fragment_film_list.xml" value="0.2261291913475177" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_review_page.xml" value="0.2546079153796989" />
+        <entry key="app/src/main/res/layout/fragment_series_list.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_view_film.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/fragment_view_film_reviewed.xml" value="0.12537993920972645" />
+        <entry key="app/src/main/res/layout/fragment_view_series.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.24322916666666666" />
       </map>
     </option>

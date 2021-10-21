@@ -11,8 +11,9 @@ public class Film {
     private String review;
     private boolean completedStatus;
     private String category;
+    private int index;
 
-    public Film(String title, String synopsis, ImageView poster, float rating, String review, boolean completedStatus, String category){
+    public Film(String title, String synopsis, ImageView poster, float rating, String review, boolean completedStatus, String category, int index){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
@@ -78,4 +79,11 @@ public class Film {
         return this.category;
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
+    }
 }
