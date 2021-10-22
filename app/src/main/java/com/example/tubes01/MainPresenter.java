@@ -49,10 +49,11 @@ public class MainPresenter {
 
     public void addReview(String review, float rating, int position){
         currFilm = (Film) this.listFilmP.get(position);
+        Log.d("presenter",review);
         currFilm.setReview(review);
         currFilm.setRating(rating);
         currFilm.setCompletedStatus(true);
-        this.listFilmP.add(position, currFilm);
+        this.listFilmP.set(position, currFilm);
     }
 
     public void delete(int position){

@@ -1,6 +1,7 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class ViewFilmReviewedFragment extends Fragment {
         this.binding = FragmentViewFilmReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
 
-        this.getParentFragmentManager().setFragmentResultListener("setData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
@@ -38,6 +39,8 @@ public class ViewFilmReviewedFragment extends Fragment {
                 boolean status = result.getBoolean("FilmStatus");
                 float rating = result.getFloat("FilmRating");
                 String review = result.getString("FilmReview");
+
+                Log.d("vfr", title);
 
                 print(title, synopsis, status, rating, review);
             }
