@@ -13,16 +13,15 @@ import com.example.tubes01.databinding.FragmentViewFilmBinding;
 import com.example.tubes01.databinding.FragmentViewFilmReviewedBinding;
 
 public class ViewFilmReviewedFragment extends Fragment {
+    private MainActivity activity;
     private FragmentViewFilmReviewedBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public ViewFilmReviewedFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-    public static ViewFilmReviewedFragment newInstance() {
-        ViewFilmReviewedFragment fragment = new ViewFilmReviewedFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static ViewFilmReviewedFragment newInstance(MainActivity activity) {
+        ViewFilmReviewedFragment fragment = new ViewFilmReviewedFragment(activity);
         return fragment;
     }
 

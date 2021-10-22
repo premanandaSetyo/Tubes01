@@ -20,15 +20,12 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     private MainPresenter presenter;
     private MainActivity activity;
 
-
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
     }
 
     public static FilmListFragment newInstance(MainActivity activity) {
         FilmListFragment fragment = new FilmListFragment(activity);
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 

@@ -11,16 +11,15 @@ import com.example.tubes01.databinding.FragmentAddSeriesBinding;
 import com.example.tubes01.databinding.FragmentFilmListBinding;
 
 public class AddSeriesFragment extends Fragment {
+    private MainActivity activity;
     private FragmentAddSeriesBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public AddSeriesFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-    public static AddSeriesFragment newInstance() {
-        AddSeriesFragment fragment = new AddSeriesFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static AddSeriesFragment newInstance(MainActivity activity) {
+        AddSeriesFragment fragment = new AddSeriesFragment(activity);
         return fragment;
     }
 

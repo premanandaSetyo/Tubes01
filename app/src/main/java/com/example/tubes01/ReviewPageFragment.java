@@ -23,21 +23,19 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     public ReviewPageFragment(MainActivity activity){
         this.activity = activity;
-        this.presenter = new MainPresenter(this);
-        this.adapter = new FilmListAdapter(this.activity, this.presenter);
     }
 
-//    public static ReviewPageFragment newInstance() {
-//        ReviewPageFragment fragment = new ReviewPageFragment();
-//        Bundle args = new Bundle();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public static ReviewPageFragment newInstance(MainActivity activity) {
+        ReviewPageFragment fragment = new ReviewPageFragment(activity);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentReviewPageBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
+        this.presenter = MainPresenter.getMainPresenter(this);
+        this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override

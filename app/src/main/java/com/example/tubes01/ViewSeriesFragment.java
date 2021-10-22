@@ -13,16 +13,15 @@ import androidx.fragment.app.FragmentResultListener;
 import com.example.tubes01.databinding.FragmentViewSeriesBinding;
 
 public class ViewSeriesFragment extends Fragment {
+    private MainActivity activity;
     private FragmentViewSeriesBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public ViewSeriesFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-    public static ViewSeriesFragment newInstance() {
-        ViewSeriesFragment fragment = new ViewSeriesFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static ViewSeriesFragment newInstance(MainActivity activity) {
+        ViewSeriesFragment fragment = new ViewSeriesFragment(activity);
         return fragment;
     }
 

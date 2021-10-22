@@ -25,8 +25,6 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     public static AddMovieFragment newInstance(MainActivity activity) {
         AddMovieFragment fragment = new AddMovieFragment(activity);
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 

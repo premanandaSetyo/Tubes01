@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment;
 import com.example.tubes01.databinding.FragmentSeriesListBinding;
 
 public class SeriesListFragment extends Fragment {
+    private MainActivity activity;
     private FragmentSeriesListBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public SeriesListFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-    public static SeriesListFragment newInstance() {
-        SeriesListFragment fragment = new SeriesListFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static SeriesListFragment newInstance(MainActivity activity) {
+        SeriesListFragment fragment = new SeriesListFragment(activity);
         return fragment;
     }
 

@@ -14,19 +14,18 @@ import android.view.ViewGroup;
 import com.example.tubes01.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
+    private MainActivity activity;
     private FragmentHomeBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public HomeFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static HomeFragment newInstance(MainActivity activity) {
+        HomeFragment fragment = new HomeFragment(activity);
         return fragment;
     }
+    
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

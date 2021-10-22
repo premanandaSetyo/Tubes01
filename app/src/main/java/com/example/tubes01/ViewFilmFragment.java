@@ -14,16 +14,15 @@ import com.example.tubes01.databinding.FragmentHomeBinding;
 import com.example.tubes01.databinding.FragmentViewFilmBinding;
 
 public class ViewFilmFragment extends Fragment implements View.OnClickListener{
+    private MainActivity activity;
     private FragmentViewFilmBinding binding;
 
-//    public HomeFragment(){
-//
-//    }
+    public ViewFilmFragment(MainActivity activity){
+        this.activity = activity;
+    }
 
-    public static ViewFilmFragment newInstance() {
-        ViewFilmFragment fragment = new ViewFilmFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+    public static ViewFilmFragment newInstance(MainActivity activity) {
+        ViewFilmFragment fragment = new ViewFilmFragment(activity);
         return fragment;
     }
 
