@@ -16,12 +16,23 @@ public class FilmListAdapter extends BaseAdapter {
     private List<Film> filmList;
     private MainActivity activity;
     private MainPresenter presenter;
+    protected static FilmListAdapter singleton;
 
     public FilmListAdapter (MainActivity activity, MainPresenter presenter) {
         this.activity = activity;
         this.filmList = new ArrayList<Film>();
         this.presenter = presenter;
     }
+
+    public static FilmListAdapter getFilmListAdapter(MainActivity activity, MainPresenter presenter){
+        if(FilmListAdapter.singleton==null){
+            FilmListAdapter.singleton = new FilmListAdapter(activity, presenter);
+//            FilmListAdapter.singleton.presenter = presenter;
+//            FilmListAdapter.singleton.activity = activity;
+        }
+        return FilmListAdapter.singleton;
+    }
+
 
     @Override
     public int getCount() {

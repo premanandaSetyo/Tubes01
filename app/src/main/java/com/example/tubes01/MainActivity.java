@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navView;
     private DrawerLayout drawer;
 
-    private MainPresenter presenter;
+//    private MainPresenter presenter;
 //    private FilmListAdapter adapter;
 //    private IMainActivity ui;
 
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        this.adapter = new FilmListAdapter(this, this.presenter);
         
 
-//        this.filmList = FilmListFragment.newInstance(this, this.presenter);
-        this.filmList = new FilmListFragment(this);
+        this.filmList = FilmListFragment.newInstance(this);
+//        this.filmList = new FilmListFragment(this);
 //        this.filmList = new FilmListFragment(this, this.presenter, this.adapter);
 //        this.addMovie = AddMovieFragment.newInstance(this, this.presenter);
         this.addMovie = new AddMovieFragment(this);

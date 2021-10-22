@@ -23,8 +23,13 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
-        this.presenter = new MainPresenter(this);
-        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+    }
+
+    public static FilmListFragment newInstance(MainActivity activity) {
+        FilmListFragment fragment = new FilmListFragment(activity);
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
     }
 
 //    public FilmListFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
@@ -37,6 +42,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 ////        MainPresenter presenter = new MainPresenter((IMainActivity) activity);
 ////        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
 ////        FilmListFragment fragment = new FilmListFragment(activity, presenter, adapter);
+//
 //
 //        FilmListFragment fragment = new FilmListFragment();
 //        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
@@ -54,7 +60,8 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddSeries.setOnClickListener(this);
 
 //        this.presenter = new MainPresenter(this);
-//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+        this.presenter = MainPresenter.getMainPresenter(this);
+        this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
 
         Film[] dummyData = {

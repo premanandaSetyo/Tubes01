@@ -16,10 +16,18 @@ public class MainPresenter {
     protected List<Film> listFilmP;
     protected IMainActivity ui;
     private Film currFilm;
+    protected static MainPresenter singleton;
 
     public MainPresenter(IMainActivity view){
         this.ui = view;
         this.listFilmP = new ArrayList<Film>();
+    }
+
+    public static MainPresenter getMainPresenter(IMainActivity view){
+        if(MainPresenter.singleton == null){
+            MainPresenter.singleton = new MainPresenter(view);
+        }
+        return MainPresenter.singleton;
     }
 
     public void addMovie(String title, String synopsis, ImageView poster){

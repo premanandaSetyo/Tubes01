@@ -21,9 +21,21 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     public AddMovieFragment(MainActivity activity){
         this.activity = activity;
-        this.presenter = new MainPresenter(this);
-        this.adapter = new FilmListAdapter(this.activity, this.presenter);
     }
+
+    public static AddMovieFragment newInstance(MainActivity activity) {
+        AddMovieFragment fragment = new AddMovieFragment(activity);
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+//    public AddMovieFragment(MainActivity activity){
+//        this.activity = activity;
+//        this.presenter = new MainPresenter(this);
+//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+//    }
 
 //    public AddMovieFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
 //        this.activity = activity;
@@ -46,8 +58,12 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
         this.binding = FragmentAddMovieBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.binding.amBtnAdd.setOnClickListener(this);
-        this.presenter = new MainPresenter(this);
-        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+//        this.presenter = new MainPresenter(this);
+//        this.adapter = new FilmListAdapter(this.activity, this.presenter);
+
+//        this.presenter = new MainPresenter(this);
+        this.presenter = MainPresenter.getMainPresenter(this);
+        this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
         return view;
     }
