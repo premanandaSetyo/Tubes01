@@ -32,26 +32,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         return fragment;
     }
 
-//    public FilmListFragment(MainActivity activity, MainPresenter presenter, FilmListAdapter adapter){
-//        this.activity = activity;
-//        this.presenter = presenter;
-////        this.adapter = adapter;
-//    }
-
-//    public static FilmListFragment newInstance(MainActivity activity, MainPresenter presenter) {
-////        MainPresenter presenter = new MainPresenter((IMainActivity) activity);
-////        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
-////        FilmListFragment fragment = new FilmListFragment(activity, presenter, adapter);
-//
-//
-//        FilmListFragment fragment = new FilmListFragment();
-//        FilmListAdapter adapter = new FilmListAdapter(activity, presenter);
-//        Bundle args = new Bundle();
-//        args.putParcelable("Adapter", adapter);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentFilmListBinding.inflate(inflater, container, false);
@@ -59,7 +39,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
-//        this.presenter = new MainPresenter(this);
         this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
@@ -77,14 +56,10 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         if(view == this.binding.btnAddMovie){
-            Bundle args = new Bundle();
-            args.putInt("page", 3);
-            this.getParentFragmentManager().setFragmentResult("changePage", args);
+            this.presenter.changePage(3);
         }
         else if(view == this.binding.btnAddSeries){
-            Bundle args = new Bundle();
-            args.putInt("page", 4);
-            this.getParentFragmentManager().setFragmentResult("changePage", args);
+            this.presenter.changePage(4);
         }
     }
 

@@ -27,8 +27,6 @@ public class FilmListAdapter extends BaseAdapter {
     public static FilmListAdapter getFilmListAdapter(MainActivity activity, MainPresenter presenter){
         if(FilmListAdapter.singleton==null){
             FilmListAdapter.singleton = new FilmListAdapter(activity, presenter);
-//            FilmListAdapter.singleton.presenter = presenter;
-//            FilmListAdapter.singleton.activity = activity;
         }
         return FilmListAdapter.singleton;
     }
@@ -51,7 +49,6 @@ public class FilmListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Log.d("check getView", "masuk");
         FilmListAdapter.ViewHolder viewHolder;
         if(view == null) {
             FragmentFilmItemBinding binding = FragmentFilmItemBinding.inflate(this.activity.getLayoutInflater(), viewGroup, false);
@@ -67,11 +64,7 @@ public class FilmListAdapter extends BaseAdapter {
     }
 
     public void update(List<Film> getFilms){
-        Log.d("check", "adapter masuk");
         this.filmList = getFilms;
-        for(Film f : filmList){
-            Log.d("judul", f.getTitle());
-        }
         notifyDataSetChanged();
     }
 
@@ -99,15 +92,14 @@ public class FilmListAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             if(view == this.binding.fiFilmItem){
-                Log.d("check", "row " + i + " clicked");
                 this.presenter.getData(this.i);
-                if(this.currentFilm.getCategory()=="movie" && this.currentFilm.isCompletedStatus()==false){
+                if(this.currentFilm.getCategory().equals("movie") && this.currentFilm.isCompletedStatus()==false){
                     this.presenter.changePage(6);
                 }
-                else if(this.currentFilm.getCategory()=="movie" && this.currentFilm.isCompletedStatus()==true){
+                else if(this.currentFilm.getCategory().equals("movie") && this.currentFilm.isCompletedStatus()==true){
                     this.presenter.changePage(8);
                 }
-                else if(this.currentFilm.getCategory()=="series"){
+                else if(this.currentFilm.getCategory().equals("series")){
                     this.presenter.changePage(9);
                 }
             }
