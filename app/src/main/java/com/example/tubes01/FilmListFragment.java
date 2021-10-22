@@ -2,6 +2,7 @@ package com.example.tubes01;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,13 +75,14 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void sendData(Film currFilm, int position) {
+        Log.d("FilmList", "listtttt");
         String title = currFilm.getTitle();
         ImageView image = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
         int episode = currFilm.getEpisode();
         boolean status = currFilm.isCompletedStatus();
         float rating = currFilm.getRating();
-        String review = currFilm.getSynopsis();
+        String review = currFilm.getReview();
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);

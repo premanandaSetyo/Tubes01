@@ -13,9 +13,13 @@ import androidx.fragment.app.FragmentResultListener;
 import com.example.tubes01.databinding.FragmentViewFilmBinding;
 import com.example.tubes01.databinding.FragmentViewFilmReviewedBinding;
 
-public class ViewFilmReviewedFragment extends Fragment {
+import java.util.List;
+
+public class ViewFilmReviewedFragment extends Fragment implements View.OnClickListener, IMainActivity{
     private MainActivity activity;
     private FragmentViewFilmReviewedBinding binding;
+    private MainPresenter presenter;
+    private int position;
 
     public ViewFilmReviewedFragment(MainActivity activity){
         this.activity = activity;
@@ -30,6 +34,7 @@ public class ViewFilmReviewedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
+        this.presenter = MainPresenter.getMainPresenter(this);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
@@ -39,12 +44,21 @@ public class ViewFilmReviewedFragment extends Fragment {
                 boolean status = result.getBoolean("FilmStatus");
                 float rating = result.getFloat("FilmRating");
                 String review = result.getString("FilmReview");
+                int position = result.getInt("Position");
 
                 Log.d("vfr", title);
+                Log.d("vfr", synopsis);
+                Log.d("vfr", String.valueOf(status));
+                Log.d("vfr", String.valueOf(rating));
+                Log.d("vfr", review);
 
                 print(title, synopsis, status, rating, review);
+                getPos(position);
             }
         });
+
+        this.binding.vfrBtnEditReview.setOnClickListener(this);
+        this.binding.vfrBtnDelete.setOnClickListener(this);
 
         return view;
     }
@@ -54,6 +68,37 @@ public class ViewFilmReviewedFragment extends Fragment {
         this.binding.vfrSynopsis.setText(synopsis);
         this.binding.vfrRating.setRating(rating);
         this.binding.vfrReview.setText(review);
+
+    }
+
+    public void getPos(int position){
+        this.position = position;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == this.binding.vfrBtnEditReview){
+            this.presenter.changePage(7);
+        }
+        else{
+            this.presenter.delete(this.position);
+            this.presenter.changePage(2);
+        }
+    }
+
+
+    @Override
+    public void updateList(List<Film> films) {
+
+    }
+
+    @Override
+    public void changePage(int page) {
+
+    }
+
+    @Override
+    public void sendData(Film currFilm, int position) {
 
     }
 }

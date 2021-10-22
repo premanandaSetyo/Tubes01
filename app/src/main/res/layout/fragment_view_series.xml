@@ -79,6 +79,7 @@
             android:orientation="horizontal"
             android:background="@color/theme">
             <Button
+                android:id="@+id/vs_btn_eps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -87,6 +88,7 @@
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
             <Button
+                android:id="@+id/vs_btn_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

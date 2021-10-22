@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,13 @@ import androidx.fragment.app.FragmentResultListener;
 import com.example.tubes01.databinding.FragmentHomeBinding;
 import com.example.tubes01.databinding.FragmentViewFilmBinding;
 
-public class ViewFilmFragment extends Fragment implements View.OnClickListener{
+import java.util.List;
+
+public class ViewFilmFragment extends Fragment implements View.OnClickListener, IMainActivity {
     private MainActivity activity;
     private FragmentViewFilmBinding binding;
+    private MainPresenter presenter;
+    private int position;
 
     public ViewFilmFragment(MainActivity activity){
         this.activity = activity;
@@ -30,6 +35,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
+        this.presenter = MainPresenter.getMainPresenter(this);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
@@ -37,10 +43,12 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener{
                 String title = result.getString("FilmTitle");
                 String synopsis = result.getString("FilmSynopsis");
                 print(title, synopsis);
+                getPos(position);
             }
         });
 
         this.binding.vfBtnReview.setOnClickListener(this);
+        this.binding.vfBtnDelete.setOnClickListener(this);
 
         return view;
     }
@@ -51,10 +59,51 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener{
         this.binding.vfSynopsis.setText(synopsis);
     }
 
+    public void getPos(int position){
+        this.position = position;
+    }
+
     @Override
     public void onClick(View view) {
-        Bundle args = new Bundle();
-        args.putInt("page", 7);
-        this.getParentFragmentManager().setFragmentResult("changePage", args);
+        if(view == this.binding.vfBtnReview){
+            this.presenter.getData(this.position);
+            this.presenter.changePage(7);
+        }
+        else{
+            this.presenter.delete(this.position);
+            this.presenter.changePage(2);
+        }
+
+    }
+
+    @Override
+    public void updateList(List<Film> films) {
+
+    }
+
+    @Override
+    public void changePage(int page) {
+
+    }
+
+    @Override
+    public void sendData(Film currFilm, int position) {
+//        Log.d("ViewFilm", "viewwwwwwww");
+//        String title = currFilm.getTitle();
+//        ImageView image = currFilm.getPoster();
+//        String synopsis = currFilm.getSynopsis();
+//        int episode = currFilm.getEpisode();
+//        boolean status = currFilm.isCompletedStatus();
+//        float rating = currFilm.getRating();
+//        String review = currFilm.getReview();
+//        Bundle args = new Bundle();
+//        args.putInt("Position", position);
+//        args.putString("FilmTitle", title);
+//        args.putString("FilmSynopsis", synopsis);
+//        args.putInt("FilmEpisode", episode);
+//        args.putBoolean("FilmStatus", status);
+//        args.putFloat("FilmRating", rating);
+//        args.putString("FilmReview", review);
+//        this.getParentFragmentManager().setFragmentResult("data", args);
     }
 }
