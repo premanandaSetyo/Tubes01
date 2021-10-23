@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.LongDef;
+
 import com.example.tubes01.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -14,13 +16,16 @@ import java.util.List;
 
 public class MainPresenter {
     protected List<Film> listFilmP;
+    protected List<Series> listSeriesP;
     protected IMainActivity ui;
+    protected int index = 1;
     private Film currFilm;
     protected static MainPresenter singleton;
 
     public MainPresenter(IMainActivity view){
         this.ui = view;
         this.listFilmP = new ArrayList<Film>();
+        this.listSeriesP = new ArrayList<Series>();
     }
 
     public static MainPresenter getMainPresenter(IMainActivity view){
@@ -36,16 +41,17 @@ public class MainPresenter {
         this.ui.updateList(this.listFilmP);
     }
 
-//    public void addSeries(String title, String synopsis, ImageView poster, int eps){
-//        currFilm = new Film(title, synopsis, poster, null, null, false, "series");
-//        listFilmP.add(currFilm);
-//        List<Series> ls = new ArrayList<Series>();
-//        for(int e = 1;e<=eps;e++){
-//            Series currSeries = new Series(e,synopsis,poster,null,null,false);
-//            ls.add(currSeries);
-//        }
-//        listFilmP.add(ls);
-//    }
+    public void addSeries(String title, String synopsis, ImageView poster, int eps){
+        currFilm = new Film(title, synopsis, poster, eps, 0.0F, null, false, "series", this.index);
+        this.listFilmP.add(currFilm);
+        for(int e=1; e<=eps; e++){
+            Series currSeries = new Series(("Episode " + e), synopsis, poster,0.0F,null,false);
+            this.listSeriesP.add(currSeries);
+        }
+        Log.d("addSeries", "UDAH MASUK WOI");
+        this.ui.updateList(this.listFilmP);
+        this.ui.updateSeries(this.listSeriesP);
+    }
 
     public void addReview(String review, float rating, int position){
         currFilm = (Film) this.listFilmP.get(position);
@@ -85,5 +91,10 @@ public class MainPresenter {
 //    loadData
 //    saveData
 //    reviewUlang
+
+//    METHOD BUAT UPLOAD IMAGE
+//    - encode
+//    - decode --> view
+//    - save
 
 }

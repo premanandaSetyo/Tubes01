@@ -37,6 +37,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
+//        this.presenter = new MainPresenter(this);
         this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
@@ -92,5 +93,10 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
         this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
+    }
+
+    @Override
+    public void updateSeries(List<Series> series) {
+        Log.d("Punyanya FilmList", "GA BENER");
     }
 }

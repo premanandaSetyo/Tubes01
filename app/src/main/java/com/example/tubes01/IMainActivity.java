@@ -6,4 +6,5 @@ public interface IMainActivity {
     void updateList(List<Film> films);
     void changePage(int page);
     void sendData(Film currFilm, int position);
+    void updateSeries(List<Series> series);
 }

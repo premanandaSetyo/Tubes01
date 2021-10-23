@@ -34,6 +34,7 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
         this.binding = FragmentViewSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.presenter = MainPresenter.getMainPresenter(this);
+//        this.presenter = new MainPresenter(this);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
@@ -86,6 +87,11 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void sendData(Film currFilm, int position) {
+
+    }
+
+    @Override
+    public void updateSeries(List<Series> series) {
 
     }
 }

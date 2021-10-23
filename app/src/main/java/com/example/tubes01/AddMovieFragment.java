@@ -32,10 +32,11 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentAddMovieBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.binding.amBtnAdd.setOnClickListener(this);
-
         this.presenter = MainPresenter.getMainPresenter(this);
+//        this.presenter = new MainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
+
+        this.binding.amBtnAdd.setOnClickListener(this);
 
         return view;
     }
@@ -62,6 +63,11 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void sendData(Film currFilm, int position) {
+
+    }
+
+    @Override
+    public void updateSeries(List<Series> series) {
 
     }
 }

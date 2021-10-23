@@ -37,6 +37,7 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
         this.binding = FragmentReviewPageBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.presenter = MainPresenter.getMainPresenter(this);
+//        this.presenter = new MainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
         
@@ -86,22 +87,27 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void sendData(Film currFilm, int position) {
-//        Log.d("ReviewPage", "masuk");
-//        String title = currFilm.getTitle();
-//        ImageView image = currFilm.getPoster();
-//        String synopsis = currFilm.getSynopsis();
-//        int episode = currFilm.getEpisode();
-//        boolean status = currFilm.isCompletedStatus();
-//        float rating = currFilm.getRating();
-//        String review = currFilm.getSynopsis();
-//        Bundle args = new Bundle();
-//        args.putInt("Position", position);
-//        args.putString("FilmTitle", title);
-//        args.putString("FilmSynopsis", synopsis);
-//        args.putInt("FilmEpisode", episode);
-//        args.putBoolean("FilmStatus", status);
-//        args.putFloat("FilmRating", rating);
-//        args.putString("FilmReview", review);
-//        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
+        Log.d("ReviewPage", "masuk");
+        String title = currFilm.getTitle();
+        ImageView image = currFilm.getPoster();
+        String synopsis = currFilm.getSynopsis();
+        int episode = currFilm.getEpisode();
+        boolean status = currFilm.isCompletedStatus();
+        float rating = currFilm.getRating();
+        String review = currFilm.getSynopsis();
+        Bundle args = new Bundle();
+        args.putInt("Position", position);
+        args.putString("FilmTitle", title);
+        args.putString("FilmSynopsis", synopsis);
+        args.putInt("FilmEpisode", episode);
+        args.putBoolean("FilmStatus", status);
+        args.putFloat("FilmRating", rating);
+        args.putString("FilmReview", review);
+        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
+    }
+
+    @Override
+    public void updateSeries(List<Series> series) {
+
     }
 }

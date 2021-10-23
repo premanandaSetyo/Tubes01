@@ -3,14 +3,14 @@ package com.example.tubes01;
 import android.widget.ImageView;
 
 public class Series {
-    private int eps;
+    private String eps;
     private String sysnopsis;
     private ImageView poster;
-    private Double rating;
+    private Float rating;
     private String review;
     private boolean completedStatus;
 
-    public Series(int eps, String sysnopsis, ImageView poster, Double rating, String review, boolean completedStatus){
+    public Series(String eps, String sysnopsis, ImageView poster, Float rating, String review, boolean completedStatus){
         this.eps = eps;
         this.sysnopsis = sysnopsis;
         this.poster = poster;
@@ -19,11 +19,11 @@ public class Series {
         this.completedStatus = completedStatus;
     }
 
-    public void setEps(int eps) {
+    public void setEps(String eps) {
         this.eps = eps;
     }
 
-    public int getEps() {
+    public String getEps() {
         return eps;
     }
 
@@ -43,11 +43,11 @@ public class Series {
         return poster;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 
-    public Double getRating() {
+    public Float getRating() {
         return rating;
     }
 
@@ -66,4 +66,5 @@ public class Series {
     public boolean isCompletedStatus() {
         return completedStatus;
     }
+
 }

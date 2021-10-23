@@ -35,6 +35,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
         this.binding = FragmentViewFilmReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.presenter = MainPresenter.getMainPresenter(this);
+//        this.presenter = new MainPresenter(this);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
@@ -99,6 +100,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void sendData(Film currFilm, int position) {
+
+    }
+
+    @Override
+    public void updateSeries(List<Series> series) {
 
     }
 }
