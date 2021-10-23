@@ -22,4 +22,10 @@
 <!--        <item name="actionOverflowButtonStyle">@style/ActionButtonOverflowStyle</item>-->
 <!--        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
     </style>
+
+    <!--RatingBar-->
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/light_grey</item>
+        <item name="colorControlActivated">@color/metallic_yellow</item>
+    </style>
 </resources>

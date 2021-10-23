@@ -107,4 +107,9 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     public void updateSeries(List<Series> series) {
 
     }
+
+    @Override
+    public void resetForm() {
+
+    }
 }

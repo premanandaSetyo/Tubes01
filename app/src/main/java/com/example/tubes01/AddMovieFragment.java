@@ -70,4 +70,10 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     public void updateSeries(List<Series> series) {
 
     }
+
+    @Override
+    public void resetForm() {
+        this.binding.addMovieTitle.setText("");
+        this.binding.addMovieSynopsis.setText("");
+    }
 }

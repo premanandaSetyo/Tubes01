@@ -16,17 +16,18 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1">
         <TextView
+            android:id="@+id/si_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/si_title"
             android:hint="Title"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/white">
+            android:textColor="@color/white"
+            android:textSize="@dimen/label_20">
         </TextView>
         <TextView
+            android:id="@+id/si_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/si_category"
             android:hint="Episode"
             android:textColor="@color/white">
         </TextView>

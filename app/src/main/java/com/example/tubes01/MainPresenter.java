@@ -39,18 +39,20 @@ public class MainPresenter {
         currFilm = new Film(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
         this.listFilmP.add(currFilm);
         this.ui.updateList(this.listFilmP);
+        this.ui.resetForm();
     }
 
     public void addSeries(String title, String synopsis, ImageView poster, int eps){
         currFilm = new Film(title, synopsis, poster, eps, 0.0F, null, false, "series", this.index);
         this.listFilmP.add(currFilm);
         for(int e=1; e<=eps; e++){
-            Series currSeries = new Series(("Episode " + e), synopsis, poster,0.0F,null,false);
+            Series currSeries = new Series(("Episode " + e), synopsis,0.0F,null,false);
             this.listSeriesP.add(currSeries);
         }
         Log.d("addSeries", "UDAH MASUK WOI");
         this.ui.updateList(this.listFilmP);
         this.ui.updateSeries(this.listSeriesP);
+        this.ui.resetForm();
     }
 
     public void addReview(String review, float rating, int position){
@@ -62,6 +64,7 @@ public class MainPresenter {
         Log.d("review", currFilm.getReview());
         Log.d("rating", String.valueOf(currFilm.getRating()));
         this.ui.sendData(currFilm, position);
+        this.ui.resetForm();
     }
 
     public void delete(int position){

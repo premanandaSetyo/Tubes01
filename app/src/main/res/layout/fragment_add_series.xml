@@ -27,7 +27,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/as_title"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <EditText
                     android:id="@+id/as_title"
@@ -43,14 +44,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/as_eps"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <EditText
                     android:id="@+id/as_eps"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textColor="@color/white"
                     app:backgroundTint="@color/white"/>
 
@@ -59,12 +61,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/as_syn"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <EditText
                     android:id="@+id/as_syn"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="130dp"
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:textColor="@color/white"
@@ -75,7 +78,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/as_poster"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <ImageView
                     android:layout_width="wrap_content"

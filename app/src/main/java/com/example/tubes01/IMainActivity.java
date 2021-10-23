@@ -7,4 +7,5 @@ public interface IMainActivity {
     void changePage(int page);
     void sendData(Film currFilm, int position);
     void updateSeries(List<Series> series);
+    void resetForm();
 }

@@ -99,4 +99,9 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     public void updateSeries(List<Series> series) {
         Log.d("Punyanya FilmList", "GA BENER");
     }
+
+    @Override
+    public void resetForm() {
+
+    }
 }

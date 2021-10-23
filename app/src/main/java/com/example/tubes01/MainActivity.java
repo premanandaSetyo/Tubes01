@@ -152,12 +152,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .addToBackStack(null);
         }
         else if(page==6) {
-            ft.replace(R.id.fragment_container, this.viewFilm);
-//                    .addToBackStack(null);
+            ft.replace(R.id.fragment_container, this.viewFilm)
+                    .addToBackStack(null);
         }
         else if(page==7) {
-            ft.replace(R.id.fragment_container, this.reviewPage);
-//                    .addToBackStack(null);
+            ft.replace(R.id.fragment_container, this.reviewPage)
+                    .addToBackStack(null);
         }
         else if(page==8) {
             ft.replace(R.id.fragment_container, this.viewFilmReviewed)
@@ -194,7 +194,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if(this.drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
-        }else{
+        }
+        else{
             super.onBackPressed();
         }
     }

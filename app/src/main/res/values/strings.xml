@@ -8,6 +8,7 @@
     <string name="closeDrawer">Close Drawer</string>
 
     <!--Home-->
+    <string name="apps_name">Ma Montre</string>
     <string name="btn_begin">Begin</string>
 
     <!--Add series-->

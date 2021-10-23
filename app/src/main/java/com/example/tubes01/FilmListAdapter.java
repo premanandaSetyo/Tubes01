@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -82,10 +83,14 @@ public class FilmListAdapter extends BaseAdapter {
         }
 
         public void updateView(Film film, int i){
-            this.binding.fiTitle.setText(film.getTitle());
-            this.binding.fiCategory.setText(film.getCategory());
             this.i = i;
             this.currentFilm = film;
+            this.binding.fiTitle.setText(film.getTitle());
+            this.binding.fiCategory.setText(film.getCategory());
+//            if(this.currentFilm.getRating()!=0.0F) {
+                this.binding.fiStarRate.setImageResource(R.drawable.star);
+                this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
+//            }
             this.binding.fiFilmItem.setOnClickListener(this);
         }
 

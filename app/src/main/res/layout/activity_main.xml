@@ -10,8 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-<!--        android:background="@color/theme">-->
+        android:orientation="vertical"
+        android:background="@color/theme">
 
         //Toolbar
         <include
@@ -24,19 +24,6 @@
             android:id="@+id/fragment_container"/>
     </LinearLayout>
 
-
-    <!-- Left Drawer -->
-    <!--    <RelativeLayout-->
-    <!--        android:id="@+id/left_drawer"-->
-    <!--        android:layout_width="240dp"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_gravity="start">-->
-    <!--        <fragment-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:name="com.example.t0319063.LeftFragment"-->
-    <!--            />-->
-    <!--    </RelativeLayout>-->
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

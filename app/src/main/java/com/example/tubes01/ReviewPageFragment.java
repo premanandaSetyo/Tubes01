@@ -110,4 +110,9 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     public void updateSeries(List<Series> series) {
 
     }
+
+    @Override
+    public void resetForm() {
+
+    }
 }

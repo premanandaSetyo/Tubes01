@@ -26,7 +26,7 @@
                     android:id="@+id/vfr_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
+                    android:textSize="@dimen/title_40"
                     android:text="@string/vfr_title"
                     android:textColor="@color/white"
                     android:textAlignment="center"/>
@@ -42,41 +42,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vfr_syno"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <TextView
                     android:id="@+id/vfr_synopsis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"/>
 
                 <!--Status-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/vfr_stat"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <!--Rating-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/vfr_rating"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
                 <RatingBar
                     android:id="@+id/vfr_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:stepSize=".5"
-                    android:isIndicator="true"/>
+                    android:isIndicator="true"
+                    android:theme="@style/RatingBar"/>
 
                 <!--Review-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/vfr_review"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
                 <TextView
                     android:id="@+id/vfr_review"
                     android:layout_width="match_parent"

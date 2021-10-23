@@ -29,7 +29,7 @@
                     android:text="@string/vs_title"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="30dp"/>
+                    android:textSize="@dimen/title_40"/>
 
                 <!--Poster-->
                 <ImageView
@@ -46,12 +46,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/vs_eps"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/label_20"/>
                     <TextView
                         android:id="@+id/vs_episode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/label_20"/>
                 </LinearLayout>
 
                 <!--Synopsis-->
@@ -59,7 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vs_syno"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
 
                 <TextView
                     android:id="@+id/vs_synopsis"

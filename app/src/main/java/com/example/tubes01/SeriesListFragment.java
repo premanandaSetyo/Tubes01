@@ -64,4 +64,9 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
         Log.d("Punyanya SeriesList", "BENER YEYY");
         this.adapter.update(series);
     }
+
+    @Override
+    public void resetForm() {
+
+    }
 }

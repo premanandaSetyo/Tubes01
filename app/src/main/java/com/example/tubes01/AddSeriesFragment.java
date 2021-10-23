@@ -68,4 +68,11 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
     public void updateSeries(List<Series> series) {
         this.adapter.update(series);
     }
+
+    @Override
+    public void resetForm() {
+        this.binding.asBtnAdd.setText("");
+        this.binding.asEps.setText("");
+        this.binding.asSyn.setText("");
+    }
 }
