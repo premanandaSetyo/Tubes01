@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +22,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     private FilmListAdapter adapter;
     private MainPresenter presenter;
     private MainActivity activity;
+//    private int page;
 
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
@@ -37,18 +40,19 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
-//        this.presenter = new MainPresenter(this);
-        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
+//        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
 
-        Film[] dummyData = {
-                new Film("Squid Game", "Squid main game", null, 1,0.0F, null, false, "movie", 0),
-                new Film("Octopus game", "Octopus main game", null, 1, 5.0F, "bagusss", true, "movie", 0),
-                new Film("Vincenzo", "Vincenzo shooting film", null, 10, 4.5F, "keren!", false, "series", 1)
-        };
-        this.presenter.loadData(dummyData);
-
+//        Film[] dummyData = {
+//                new Film("Squid Game", "Squid main game", null, 1,0.0F, null, false, "movie", 0),
+//                new Film("Octopus game", "Octopus main game", null, 1, 5.0F, "bagusss", true, "movie", 0),
+//                new Film("Vincenzo", "Vincenzo shooting film", null, 10, 4.5F, "keren!", false, "series", 1)
+//        };
+//        this.presenter.loadData(dummyData);
+//        this.presenter.addMovie("Squid Game","Squid main game", null);
+        this.presenter.loadFilmData();
         return view;
     }
 
@@ -69,30 +73,57 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void changePage(int page) {
+//        this.page=page;
+        Log.d("FlfChangePage", String.valueOf(page));
+
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
-        Log.d("FilmList", "listtttt");
-        String title = currFilm.getTitle();
-        ImageView image = currFilm.getPoster();
-        String synopsis = currFilm.getSynopsis();
-        int episode = currFilm.getEpisode();
-        boolean status = currFilm.isCompletedStatus();
-        float rating = currFilm.getRating();
-        String review = currFilm.getReview();
-        Bundle args = new Bundle();
-        args.putInt("Position", position);
-        args.putString("FilmTitle", title);
-        args.putString("FilmSynopsis", synopsis);
-        args.putInt("FilmEpisode", episode);
-        args.putBoolean("FilmStatus", status);
-        args.putFloat("FilmRating", rating);
-        args.putString("FilmReview", review);
-        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
+    public void sendData(Film currFilm, int position, int page) {
+        Log.d("FilmList", String.valueOf(page));
+
+//        Log.d("revFilm", title);
+//        Log.d("FilmListFragment", String.valueOf(page));
+        if(page==6){
+            String title = currFilm.getTitle();
+            Bitmap image = currFilm.getPoster();
+            String synopsis = currFilm.getSynopsis();
+            int episode = currFilm.getEpisode();
+            boolean status = currFilm.isCompletedStatus();
+            float rating = currFilm.getRating();
+            String review = currFilm.getReview();
+            Bundle args = new Bundle();
+            args.putInt("Position", position);
+            args.putString("FilmTitle", title);
+            args.putString("FilmSynopsis", synopsis);
+            args.putInt("FilmEpisode", episode);
+            args.putBoolean("FilmStatus", status);
+            args.putFloat("FilmRating", rating);
+            args.putString("FilmReview", review);
+            this.getParentFragmentManager().setFragmentResult("viewFilDat", args);
+        }else if(page==8){
+
+            String title = currFilm.getTitle();
+            Bitmap image = currFilm.getPoster();
+            String synopsis = currFilm.getSynopsis();
+            int episode = currFilm.getEpisode();
+            boolean status = currFilm.isCompletedStatus();
+            float rating = currFilm.getRating();
+            String review = currFilm.getReview();
+            Bundle args = new Bundle();
+            args.putInt("Position", position);
+            args.putString("FilmTitle", title);
+            args.putString("FilmSynopsis", synopsis);
+            args.putInt("FilmEpisode", episode);
+            args.putBoolean("FilmStatus", status);
+            args.putFloat("FilmRating", rating);
+            args.putString("FilmReview", review);
+            this.getParentFragmentManager().setFragmentResult("vfrData", args);
+        }
+
     }
 
     @Override
@@ -103,5 +134,10 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void resetForm() {
 
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 }

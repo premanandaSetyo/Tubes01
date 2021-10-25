@@ -1,6 +1,7 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +32,8 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentAddSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.presenter = MainPresenter.getMainPresenter(this);
-//        this.presenter = new MainPresenter(this);
+//        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
 
         this.binding.asBtnAdd.setOnClickListener(this);
@@ -56,11 +57,11 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void changePage(int page) {
-
+        Log.d("ASF",String.valueOf(page));
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
+    public void sendData(Film currFilm, int position, int page) {
 
     }
 
@@ -74,5 +75,10 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
         this.binding.asBtnAdd.setText("");
         this.binding.asEps.setText("");
         this.binding.asSyn.setText("");
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
+
     }
 }

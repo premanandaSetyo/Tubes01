@@ -83,6 +83,7 @@ public class FilmListAdapter extends BaseAdapter {
         }
 
         public void updateView(Film film, int i){
+//            Log.d("vh","msk OC VH");
             this.i = i;
             this.currentFilm = film;
             this.binding.fiTitle.setText(film.getTitle());
@@ -97,15 +98,19 @@ public class FilmListAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             if(view == this.binding.fiFilmItem){
-                this.presenter.getData(this.i);
-                if(this.currentFilm.getCategory().equals("movie") && this.currentFilm.isCompletedStatus()==false){
+//                this.presenter.getData(this.i);
+                if(this.currentFilm.getCategory().equals("movies") && this.currentFilm.isCompletedStatus()==false){
+                    Log.d("vh","msk OC VH");
                     this.presenter.changePage(6);
+                    this.presenter.getData(this.i,6);
                 }
-                else if(this.currentFilm.getCategory().equals("movie") && this.currentFilm.isCompletedStatus()==true){
+                else if(this.currentFilm.getCategory().equals("movies") && this.currentFilm.isCompletedStatus()==true){
                     this.presenter.changePage(8);
+                    this.presenter.getData(this.i,8);
                 }
                 else if(this.currentFilm.getCategory().equals("series")){
                     this.presenter.changePage(9);
+                    this.presenter.getData(this.i,9);
                 }
             }
         }

@@ -31,8 +31,8 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentSeriesListBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = new MainPresenter(this);
-        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
+//        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
         this.binding.listSeries.setAdapter(this.adapter);
 
@@ -51,11 +51,11 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
-
+        Log.d("SLF",String.valueOf(page));
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
+    public void sendData(Film currFilm, int position, int page) {
 
     }
 
@@ -67,6 +67,11 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void resetForm() {
+
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
 
     }
 }

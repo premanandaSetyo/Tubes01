@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +22,8 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     private MainActivity activity;
     private MainPresenter presenter;
     private FilmListAdapter adapter;
-    private int position;
+//    private int position;
+    private String title;
 
     public ReviewPageFragment(MainActivity activity){
         this.activity = activity;
@@ -36,18 +38,18 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentReviewPageBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.presenter = MainPresenter.getMainPresenter(this);
-//        this.presenter = new MainPresenter(this);
+//        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
         
-        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("data", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
-                int position = result.getInt("Position");
+//                int position = result.getInt("Position");
                 print(title);
-                getPos(position);
+                getTitle(title);
             }
         });
 
@@ -61,15 +63,15 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
         this.binding.rpTitle.setText(title);
     }
 
-    public void getPos(int position){
-        this.position = position;
+    public void getTitle(String title){
+        this.title = title;
     }
 
     @Override
     public void onClick(View view) {
         float rating = this.binding.rpRating.getRating();
         String review = this.binding.rpReview.getText().toString();
-        this.presenter.addReview(review, rating, this.position);
+        this.presenter.addReview(review, rating, this.title);
         this.presenter.changePage(8);
     }
 
@@ -80,30 +82,31 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
+        Log.d("RPF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
-        Log.d("ReviewPage", "masuk");
-        String title = currFilm.getTitle();
-        ImageView image = currFilm.getPoster();
-        String synopsis = currFilm.getSynopsis();
-        int episode = currFilm.getEpisode();
-        boolean status = currFilm.isCompletedStatus();
-        float rating = currFilm.getRating();
-        String review = currFilm.getSynopsis();
-        Bundle args = new Bundle();
-        args.putInt("Position", position);
-        args.putString("FilmTitle", title);
-        args.putString("FilmSynopsis", synopsis);
-        args.putInt("FilmEpisode", episode);
-        args.putBoolean("FilmStatus", status);
-        args.putFloat("FilmRating", rating);
-        args.putString("FilmReview", review);
-        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
+    public void sendData(Film currFilm, int position, int page) {
+//        Log.d("ReviewPage", "masuk");
+//        String title = currFilm.getTitle();
+//        Bitmap image = currFilm.getPoster();
+//        String synopsis = currFilm.getSynopsis();
+//        int episode = currFilm.getEpisode();
+//        boolean status = currFilm.isCompletedStatus();
+//        float rating = currFilm.getRating();
+//        String review = currFilm.getSynopsis();
+//        Bundle args = new Bundle();
+//        args.putInt("Position", position);
+//        args.putString("FilmTitle", title);
+//        args.putString("FilmSynopsis", synopsis);
+//        args.putInt("FilmEpisode", episode);
+//        args.putBoolean("FilmStatus", status);
+//        args.putFloat("FilmRating", rating);
+//        args.putString("FilmReview", review);
+//        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
     }
 
     @Override
@@ -113,6 +116,11 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void resetForm() {
+
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
 
     }
 }

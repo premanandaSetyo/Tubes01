@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,10 +36,10 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.presenter = MainPresenter.getMainPresenter(this);
-//        this.presenter = new MainPresenter(this);
+//        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewFilDat", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
@@ -67,7 +68,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         if(view == this.binding.vfBtnReview){
-            this.presenter.getData(this.position);
+            this.presenter.getData(this.position,7);
             this.presenter.changePage(7);
         }
         else{
@@ -84,14 +85,17 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void changePage(int page) {
-
+        Log.d("VFF",String.valueOf(page));
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
+    public void sendData(Film currFilm, int position, int page) {
         Log.d("ViewFilm", "viewwwwwwww");
         String title = currFilm.getTitle();
-        ImageView image = currFilm.getPoster();
+        Bitmap image = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
         int episode = currFilm.getEpisode();
         boolean status = currFilm.isCompletedStatus();
@@ -115,6 +119,11 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void resetForm() {
+
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
 
     }
 }

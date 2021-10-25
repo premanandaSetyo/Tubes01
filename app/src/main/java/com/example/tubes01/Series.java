@@ -3,18 +3,28 @@ package com.example.tubes01;
 import android.widget.ImageView;
 
 public class Series {
+    private String judul;
     private String eps;
     private String sysnopsis;
     private Float rating;
     private String review;
     private boolean completedStatus;
 
-    public Series(String eps, String sysnopsis, Float rating, String review, boolean completedStatus){
+    public Series(String judul, String eps, String sysnopsis, Float rating, String review, boolean completedStatus){
+        this.judul = judul;
         this.eps = eps;
         this.sysnopsis = sysnopsis;
         this.rating = rating;
         this.review = review;
         this.completedStatus = completedStatus;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
+    }
+
+    public String getJudul() {
+        return judul;
     }
 
     public void setEps(String eps) {
@@ -56,5 +66,6 @@ public class Series {
     public boolean isCompletedStatus() {
         return completedStatus;
     }
+
 
 }

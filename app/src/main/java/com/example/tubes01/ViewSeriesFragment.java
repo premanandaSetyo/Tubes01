@@ -33,8 +33,8 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.presenter = MainPresenter.getMainPresenter(this);
-//        this.presenter = new MainPresenter(this);
+//        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
             @Override
@@ -82,11 +82,11 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
-
+        Log.d("VFSF",String.valueOf(page));
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
+    public void sendData(Film currFilm, int position, int page) {
 
     }
 
@@ -97,6 +97,11 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void resetForm() {
+
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
 
     }
 }

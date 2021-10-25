@@ -34,10 +34,10 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        this.presenter = MainPresenter.getMainPresenter(this);
-//        this.presenter = new MainPresenter(this);
+//        this.presenter = MainPresenter.getMainPresenter(this);
+        this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("vfrData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
@@ -95,11 +95,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void changePage(int page) {
-
+        Log.d("VFRF",String.valueOf(page));
     }
 
     @Override
-    public void sendData(Film currFilm, int position) {
+    public void sendData(Film currFilm, int position, int page) {
 
     }
 
@@ -110,6 +110,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void resetForm() {
+
+    }
+
+    @Override
+    public void makeToastMessage(String message) {
 
     }
 }

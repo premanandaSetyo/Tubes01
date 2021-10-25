@@ -1,19 +1,21 @@
 package com.example.tubes01;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 public class Film {
     private String title;
     private String synopsis;
-    private ImageView poster;
+    private Bitmap poster;
     private int episode;
     private float rating;
     private String review;
     private boolean completedStatus;
     private String category;
     private int index;
+    private boolean droppedStatus;
 
-    public Film(String title, String synopsis, ImageView poster, int episode, float rating, String review, boolean completedStatus, String category, int index){
+    public Film(String title, String synopsis, Bitmap poster, int episode, float rating, String review, boolean completedStatus, String category, int index, boolean droppedStatus){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
@@ -22,6 +24,7 @@ public class Film {
         this.review = review;
         this.completedStatus = completedStatus;
         this.category = category;
+        this.droppedStatus = droppedStatus;
     }
 
     public void setTitle(String title) {
@@ -40,11 +43,11 @@ public class Film {
         return synopsis;
     }
 
-    public void setPoster(ImageView poster) {
+    public void setPoster(Bitmap poster) {
         this.poster = poster;
     }
 
-    public ImageView getPoster() {
+    public Bitmap getPoster() {
         return this.poster;
     }
 
@@ -94,5 +97,13 @@ public class Film {
 
     public int getIndex() {
         return index;
+    }
+
+    public void setDroppedStatus(boolean droppedStatus) {
+        this.droppedStatus = droppedStatus;
+    }
+
+    public boolean isDroppedStatus() {
+        return droppedStatus;
     }
 }
