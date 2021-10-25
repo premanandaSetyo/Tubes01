@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -37,7 +38,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("vfrData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("reviewData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
@@ -47,11 +48,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
                 String review = result.getString("FilmReview");
                 int position = result.getInt("Position");
 
-                Log.d("vfr", title);
-                Log.d("vfr", synopsis);
-                Log.d("vfr", String.valueOf(status));
-                Log.d("vfr", String.valueOf(rating));
-                Log.d("vfr", review);
+//                Log.d("vfr", title);
+//                Log.d("vfr", synopsis);
+//                Log.d("vfr", String.valueOf(status));
+//                Log.d("vfr", String.valueOf(rating));
+//                Log.d("vfr", review);
 
                 print(title, synopsis, status, rating, review);
                 getPos(position);
@@ -99,7 +100,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     }
 
     @Override
-    public void sendData(Film currFilm, int position, int page) {
+    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
 
     }
 
@@ -115,6 +116,6 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void makeToastMessage(String message) {
-
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 }

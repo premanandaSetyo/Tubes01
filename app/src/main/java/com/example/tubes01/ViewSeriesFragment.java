@@ -86,7 +86,7 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void sendData(Film currFilm, int position, int page) {
+    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
 
     }
 

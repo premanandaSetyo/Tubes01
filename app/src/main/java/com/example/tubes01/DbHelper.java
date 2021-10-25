@@ -19,7 +19,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "MaMontre_db" ;
 
     private static final String TABLE_FILM = "table_film";
-    private static final String COL1_FILM = "judul";
+    private static final String COL1_FILM = "title";
     private static final String COL2_FILM = "synopsis";
     private static final String COL3_FILM = "poster";
     private static final String COL4_FILM = "rating";
@@ -32,7 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     private static final String TABLE_SERIES = "table_series";
-    private static final String COL1_SERIES = "judul";
+    private static final String COL1_SERIES = "title";
     private static final String COL2_SERIES = "synopsis";
     private static final String COL3_SERIES = "rating";
     private static final String COL4_SERIES = "review";
@@ -62,10 +62,10 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataFilm(String judul, String synopsis, byte[] poster, float rating, String review, int completedStatus, String category, int idx, int eps){
+    public boolean addDataFilm(String title, String synopsis, byte[] poster, float rating, String review, boolean completedStatus, String category, int idx, int eps){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL1_FILM, judul);
+        cv.put(COL1_FILM, title);
         cv.put(COL2_FILM, synopsis);
         cv.put(COL3_FILM, poster);
         cv.put(COL4_FILM, rating);
@@ -85,10 +85,10 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addDataSeries(String judul, String synopsis, float rating, String review, int eps, int completedStat) {
+    public boolean addDataSeries(String title, String synopsis, float rating, String review, int eps, boolean completedStat) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COL1_SERIES, judul);
+        cv.put(COL1_SERIES, title);
         cv.put(COL2_SERIES, synopsis);
         cv.put(COL3_SERIES, rating);
         cv.put(COL4_SERIES, review);
@@ -123,10 +123,10 @@ public class DbHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public boolean deleteFilm(String judul){
+    public boolean deleteFilm(String title){
         SQLiteDatabase db = this.getWritableDatabase();
-        long res = db.delete(TABLE_FILM, "judul=?",new String[]{ judul });
-//        String query = "DELETE FROM "+TABLE_FILM+" WHERE "+ COL1_FILM + " = " + judul;
+        long res = db.delete(TABLE_FILM, "title=?",new String[]{ title });
+//        String query = "DELETE FROM "+TABLE_FILM+" WHERE "+ COL1_FILM + " = " + title;
 //        db.rawQuery(query, null);
         if (res == -1) {
             return false;
@@ -135,22 +135,48 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateDataFilm(String review, int completedStatus, float rating, String judul) {
+    public boolean updateDataFilm(String review, int completedStatus, float rating, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL4_FILM, rating);
         cv.put(COL5_FILM, review);
         cv.put(COL6_FILM, completedStatus);
 
-
-        long res = db.update(TABLE_FILM, cv, "judul=?", new String[]{ judul });
+        long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
 
         if (res == -1) {
+            Log.d("return apa", "false");
             return false;
         } else {
+            Log.d("return apa", "true");
             return true;
         }
     }
+
+//    public Cursor updateDataFilm(String review, int completedStatus, float rating, String title) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+////        ContentValues cv = new ContentValues();
+////        cv.put(COL4_FILM, rating);
+////        cv.put(COL5_FILM, review);
+////        cv.put(COL6_FILM, completedStatus);
+////        long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
+//
+//        Cursor res =
+//
+//                UPDATE employees
+//        SET lastname = 'Smith'
+//        WHERE employeeid = 3;
+//        db.rawQuery("SELECT * FROM "+TABLE_SERIES+" WHERE  ID>='"+idx+"' AND ID<'"+(idx+eps)+"'",null);
+//
+//
+//        if (res == -1) {
+//            Log.d("return apa", "false");
+//            return false;
+//        } else {
+//            Log.d("return apa", "true");
+//            return true;
+//        }
+//    }
 
     public boolean drop(String position) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -184,7 +210,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public String checkTitle(String title){
+    public String checkTitle(String title){ //check if title exist in DB
         String temp = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT "+ COL1_FILM +" FROM "+TABLE_FILM+" WHERE " + COL1_FILM + "='"+title+"'",null);

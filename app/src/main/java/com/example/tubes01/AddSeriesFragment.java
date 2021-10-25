@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -36,6 +37,7 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
 
+        this.binding.asBtnUpload.setOnClickListener(this);
         this.binding.asBtnAdd.setOnClickListener(this);
         
         return view;
@@ -43,11 +45,24 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        String title = this.binding.asBtnAdd.getText().toString();
-        int episode = Integer.parseInt(this.binding.asEps.getText().toString());
-        String synopsis = this.binding.asSyn.getText().toString();
-        this.presenter.addSeries(title, synopsis, null, episode);
-        this.presenter.changePage(2);
+        if(view == this.binding.asBtnUpload){
+
+        }
+        else{
+            String title = this.binding.asBtnAdd.getText().toString();
+            int episode = Integer.parseInt(this.binding.asEps.getText().toString());
+            String synopsis = this.binding.asSyn.getText().toString();
+            if(title.length()!=0 && String.valueOf(episode).length()!=0 && synopsis.length()!=0){
+                this.presenter.addSeries(title, synopsis, null, episode);
+                this.presenter.changePage(2);
+            }
+            else if(title.length()==0){
+                Toast.makeText(this.getContext(),"Please input film title !",Toast.LENGTH_LONG).show();
+            }
+            else if(synopsis.length()==0){
+                Toast.makeText(this.getContext(),"Please input film synopsis !",Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -61,7 +76,7 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
     }
 
     @Override
-    public void sendData(Film currFilm, int position, int page) {
+    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
 
     }
 

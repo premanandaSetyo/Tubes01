@@ -39,11 +39,12 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("viewFilDat", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewFilmList", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
                 String synopsis = result.getString("FilmSynopsis");
+                int position = result.getInt("Position");
                 print(title, synopsis);
                 getPos(position);
             }
@@ -68,7 +69,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         if(view == this.binding.vfBtnReview){
-            this.presenter.getData(this.position,7);
+            this.presenter.getData(this.position);
             this.presenter.changePage(7);
         }
         else{
@@ -92,15 +93,15 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(Film currFilm, int position, int page) {
-        Log.d("ViewFilm", "viewwwwwwww");
-        String title = currFilm.getTitle();
-        Bitmap image = currFilm.getPoster();
-        String synopsis = currFilm.getSynopsis();
-        int episode = currFilm.getEpisode();
-        boolean status = currFilm.isCompletedStatus();
-        float rating = currFilm.getRating();
-        String review = currFilm.getReview();
+    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
+        Log.d("ViewFilm", "sendData");
+//        String title = currFilm.getTitle();
+//        Bitmap image = currFilm.getPoster();
+//        String synopsis = currFilm.getSynopsis();
+//        int episode = currFilm.getEpisode();
+//        boolean status = currFilm.isCompletedStatus();
+//        float rating = currFilm.getRating();
+//        String review = currFilm.getReview();
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);
@@ -109,7 +110,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
         args.putBoolean("FilmStatus", status);
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
-        this.getParentFragmentManager().setFragmentResult("data", args);
+        this.getParentFragmentManager().setFragmentResult("viewFilmData", args);
     }
 
     @Override

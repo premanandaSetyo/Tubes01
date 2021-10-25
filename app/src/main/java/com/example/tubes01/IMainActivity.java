@@ -5,7 +5,7 @@ import java.util.List;
 public interface IMainActivity {
     void updateList(List<Film> films);
     void changePage(int page);
-    void sendData(Film currFilm, int position, int page);
+    void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review);
     void updateSeries(List<Series> series);
     void resetForm();
     void makeToastMessage(String message);

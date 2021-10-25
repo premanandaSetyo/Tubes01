@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 public class MainPresenter {
     protected List<Film> listFilmP;
@@ -98,7 +99,7 @@ public class MainPresenter {
         String data = db.checkTitle(title);
         if(data==null){
 //            byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataStatus = db.addDataFilm(title, synopsis, null, 0, null, 0, "movies", 0, 1);
+            boolean insertDataStatus = db.addDataFilm(title, synopsis, null, 0, null, false, "movies", 0, 1);
             if(insertDataStatus==true){
                 this.ui.makeToastMessage("Movie successfully added. ");
             }else{
@@ -110,6 +111,7 @@ public class MainPresenter {
             Log.d("Debug add movie false", String.valueOf(listFilmP.size()));
         }
         this.loadFilmData();
+        this.ui.resetForm();
 
 //        this.db.addDataFilm(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
 //        currFilm = new Film(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
@@ -119,14 +121,14 @@ public class MainPresenter {
     }
 
     public void addSeries(String title, String synopsis, Bitmap poster, int eps){
-        String data = db.checkTitle(title);
+        String data = db.checkTitle(title.toLowerCase());
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, 0, "movies", 0, 1);
+            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", 0, 1);
 
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
-                    boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0,null,e,0);
+                    boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0,null, e,false);
                 }
                 this.ui.makeToastMessage("Movie successfully added. ");
             }else{
@@ -136,6 +138,7 @@ public class MainPresenter {
             this.ui.makeToastMessage("Movie title exists. ");
         }
         this.loadFilmData();
+        this.ui.resetForm();
 
 //        currFilm = new Film(title, synopsis, poster, eps, 0.0F, null, false, "series", this.index);
 //        this.listFilmP.add(currFilm);
@@ -149,14 +152,32 @@ public class MainPresenter {
 //        this.ui.resetForm();
     }
 
-    public void addReview(String review, float rating, String title){
-        boolean addRev = this.db.updateDataFilm(review,1,rating,title);
+    public void addReview(String review, float rating, int position){
+        this.loadFilmData();
+        currFilm = this.listFilmP.get(position);
+        String title = currFilm.getTitle();
+        Log.d("addReview Presenter", title);
+        boolean addRev = this.db.updateDataFilm(review,1, rating, title);
         if(addRev==true){
             this.ui.makeToastMessage("Review successfully added.");
         }else{
             this.ui.makeToastMessage("Can't add review.");
         }
+        currFilm.setReview(review);
+        currFilm.setRating(rating);
+        currFilm.setCompletedStatus(true);
+        this.listFilmP.set(position, currFilm);
+
+
+//        this.ui.sendData(currFilm, position);
         this.loadFilmData();
+        Log.d("debug size", String.valueOf(this.listFilmP.size()));
+
+
+
+//        Log.d("film rating", String.valueOf(currFilm.getRating()));
+//        Log.d("film review", currFilm.getReview());
+        this.ui.resetForm();
 //        currFilm = (Film) this.listFilmP.get(position);
 //        currFilm.setReview(review);
 //        currFilm.setRating(rating);
@@ -188,10 +209,19 @@ public class MainPresenter {
 //        this.ui.sendData(currFilm, position);
 //    }
 
-    public void getData(int position, int page){
+    public void getData(int position){
         this.loadFilmData();
+        Log.d("getData Presenter", String.valueOf(position));
         currFilm = this.listFilmP.get(position);
-        this.ui.sendData(currFilm, position, page);
+        String title = currFilm.getTitle();
+        Bitmap image = currFilm.getPoster();
+        String synopsis = currFilm.getSynopsis();
+        int episode = currFilm.getEpisode();
+        boolean status = currFilm.isCompletedStatus();
+        float rating = currFilm.getRating();
+        String review = currFilm.getReview();
+        Log.d("getData review", title);
+        this.ui.sendData(position, title, synopsis, episode, status, rating, review);
     }
 
     public void changePage(int page){
@@ -205,6 +235,17 @@ public class MainPresenter {
         i.setAction(Intent.ACTION_PICK);
         return i;
 
+    }
+
+    //search film list
+    public void filterView(String input){
+        ArrayList<Film> filteredFilm = new ArrayList<>();
+        for(Film film: listFilmP){
+            if(film.getTitle().toLowerCase().contains(input.toLowerCase())){
+                filteredFilm.add(film);
+            }
+        }
+        this.ui.updateList(filteredFilm);
     }
 
 //    loadData

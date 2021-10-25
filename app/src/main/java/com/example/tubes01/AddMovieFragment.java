@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -37,6 +38,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
+        this.binding.amBtnUpload.setOnClickListener(this);
         this.binding.amBtnAdd.setOnClickListener(this);
 
         return view;
@@ -44,11 +46,23 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        String title = this.binding.addMovieTitle.getText().toString();
-        String synopsis = this.binding.addMovieSynopsis.getText().toString();
-        startActivityForResult(Intent.createChooser(this.presenter.getImageFromGallery(),"Select Picture"),1);
-        this.presenter.addMovie(title, synopsis, null);
-        this.presenter.changePage(2);
+        if(view == this.binding.amBtnUpload){
+//            startActivityForResult(Intent.createChooser(this.presenter.getImageFromGallery(),"Select Picture"),1);
+        }
+        else{
+            String title = this.binding.addMovieTitle.getText().toString();
+            String synopsis = this.binding.addMovieSynopsis.getText().toString();
+            if(title.length()!=0 && synopsis.length()!=0){
+                this.presenter.addMovie(title, synopsis, null);
+                this.presenter.changePage(2);
+            }
+            else if(title.length()==0){
+                Toast.makeText(this.getContext(),"Please input film title !",Toast.LENGTH_LONG).show();
+            }
+            else if(synopsis.length()==0){
+                Toast.makeText(this.getContext(),"Please input film synopsis !",Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -65,7 +79,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(Film currFilm, int position, int page) {
+    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
 
     }
 

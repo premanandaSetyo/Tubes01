@@ -102,15 +102,15 @@ public class FilmListAdapter extends BaseAdapter {
                 if(this.currentFilm.getCategory().equals("movies") && this.currentFilm.isCompletedStatus()==false){
                     Log.d("vh","msk OC VH");
                     this.presenter.changePage(6);
-                    this.presenter.getData(this.i,6);
+                    this.presenter.getData(this.i);
                 }
                 else if(this.currentFilm.getCategory().equals("movies") && this.currentFilm.isCompletedStatus()==true){
                     this.presenter.changePage(8);
-                    this.presenter.getData(this.i,8);
+                    this.presenter.getData(this.i);
                 }
                 else if(this.currentFilm.getCategory().equals("series")){
                     this.presenter.changePage(9);
-                    this.presenter.getData(this.i,9);
+                    this.presenter.getData(this.i);
                 }
             }
         }
