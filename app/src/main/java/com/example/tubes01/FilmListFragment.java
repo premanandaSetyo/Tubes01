@@ -99,13 +99,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         Log.d("FilmListFragment","sendData");
 
 //        if(page==6){
-//            String title = currFilm.getTitle();
-//            Bitmap image = currFilm.getPoster();
-//            String synopsis = currFilm.getSynopsis();
-//            int episode = currFilm.getEpisode();
-//            boolean status = currFilm.isCompletedStatus();
-//            float rating = currFilm.getRating();
-//            String review = currFilm.getReview();
             Bundle args = new Bundle();
             args.putInt("Position", position);
             args.putString("FilmTitle", title);
@@ -116,13 +109,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
             args.putString("FilmReview", review);
             this.getParentFragmentManager().setFragmentResult("viewFilmList", args);
 //        }else if(page==8){
-//            String title = currFilm.getTitle();
-//            Bitmap image = currFilm.getPoster();
-//            String synopsis = currFilm.getSynopsis();
-//            int episode = currFilm.getEpisode();
-//            boolean status = currFilm.isCompletedStatus();
-//            float rating = currFilm.getRating();
-//            String review = currFilm.getReview();
 //            Bundle args = new Bundle();
 //            args.putInt("Position", position);
 //            args.putString("FilmTitle", title);
@@ -131,7 +117,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 //            args.putBoolean("FilmStatus", status);
 //            args.putFloat("FilmRating", rating);
 //            args.putString("FilmReview", review);
-//            this.getParentFragmentManager().setFragmentResult("vfrData", args);
+            this.getParentFragmentManager().setFragmentResult("viewFilmListReviewed", args);
 //        }
 
     }

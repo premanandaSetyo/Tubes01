@@ -38,7 +38,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("reviewData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewFilmListReviewed", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
