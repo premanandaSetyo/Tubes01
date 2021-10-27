@@ -90,6 +90,9 @@ public class FilmListAdapter extends BaseAdapter {
             this.currentFilm = film;
             this.binding.fiTitle.setText(film.getTitle());
             this.binding.fiCategory.setText(film.getCategory());
+            if(film.getPoster()!=null){
+                this.binding.fiPoster.setImageBitmap(this.presenter.decodeToBitmap(film.getPoster()));
+            }
 //            if(this.currentFilm.getRating()!=0.0F) {
                 this.binding.fiStarRate.setImageResource(R.drawable.star);
                 this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
