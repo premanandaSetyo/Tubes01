@@ -62,7 +62,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataFilm(String title, String synopsis, byte[] poster, float rating, String review, boolean completedStatus, String category, int idx, int eps){
+    public boolean addDataFilm(String title, String synopsis, byte[] poster, float rating, String review, boolean completedStatus, String category, int idx, int eps, int dropStatus){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL1_FILM, title);
@@ -74,7 +74,7 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(COL7_FILM, category);
         cv.put(COL8_FILM, idx);
         cv.put(COL9_FILM, eps);
-        cv.put(COL10_FILM, 0);
+        cv.put(COL10_FILM, dropStatus);
 
         long res = db.insert(TABLE_FILM, null, cv);
 

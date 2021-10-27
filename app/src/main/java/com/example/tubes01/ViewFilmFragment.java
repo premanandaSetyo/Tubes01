@@ -44,8 +44,9 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
                 String synopsis = result.getString("FilmSynopsis");
+                byte[] poster = result.getByteArray("FilmPoster");
                 int position = result.getInt("Position");
-                print(title, synopsis);
+                print(title, synopsis, poster);
                 getPos(position);
             }
         });
@@ -57,9 +58,10 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     }
 
 
-    public void print(String title, String synopsis){
+    public void print(String title, String synopsis, byte[] poster){
         this.binding.vfTitle.setText(title);
         this.binding.vfSynopsis.setText(synopsis);
+        this.binding.vfPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
     }
 
     public void getPos(int position){
@@ -93,7 +95,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
         Log.d("ViewFilm", "sendData");
 //        String title = currFilm.getTitle();
 //        Bitmap image = currFilm.getPoster();
@@ -106,6 +108,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
         args.putInt("Position", position);
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
+        args.putByteArray("FilmPoster", poster);
         args.putInt("FilmEpisode", episode);
         args.putBoolean("FilmStatus", status);
         args.putFloat("FilmRating", rating);

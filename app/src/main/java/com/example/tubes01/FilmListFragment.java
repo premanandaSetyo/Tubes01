@@ -96,7 +96,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
 
 //        Log.d("FilmList", String.valueOf(page));
 //        Log.d("revFilm", title);
@@ -107,6 +107,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
             args.putInt("Position", position);
             args.putString("FilmTitle", title);
             args.putString("FilmSynopsis", synopsis);
+            args.putByteArray("FilmPoster", poster);
             args.putInt("FilmEpisode", episode);
             args.putBoolean("FilmStatus", status);
             args.putFloat("FilmRating", rating);

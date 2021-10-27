@@ -58,11 +58,10 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 //            super.onActivityResult(1, 1, this.presenter.getImageFromGallery());
         }
         else{
-            Log.d("bitmap", String.valueOf(bitmap));
             String title = this.binding.addMovieTitle.getText().toString();
             String synopsis = this.binding.addMovieSynopsis.getText().toString();
             if(title.length()!=0 && synopsis.length()!=0){
-                this.presenter.addMovie(title, synopsis, null);
+                this.presenter.addMovie(title, synopsis, this.bitmap);
                 this.presenter.changePage(2);
             }
             else if(title.length()==0){
@@ -70,6 +69,9 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
             }
             else if(synopsis.length()==0){
                 Toast.makeText(this.getContext(),"Please input film synopsis !",Toast.LENGTH_LONG).show();
+            }
+            else if(this.bitmap==null){
+                Toast.makeText(this.getContext(),"Please input film poster !",Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -88,7 +90,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
 
     }
 

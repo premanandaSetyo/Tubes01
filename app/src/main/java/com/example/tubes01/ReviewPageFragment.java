@@ -47,8 +47,9 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
+                byte[] poster = result.getByteArray("FilmPoster");
                 int position = result.getInt("Position");
-                print(title, 0.0F, "");
+                print(title, poster,0.0F, "");
                 getPos(position);
             }
         });
@@ -57,10 +58,11 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
+                byte[] poster = result.getByteArray("FilmPoster");
                 Float rating = result.getFloat("FilmRating");
                 String review = result.getString("FilmReview");
                 int position = result.getInt("Position");
-                print(title, rating, review);
+                print(title, poster, rating, review);
                 getPos(position);
             }
         });
@@ -70,9 +72,10 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    public void print(String title, float rating, String review){
+    public void print(String title, byte[] poster,float rating, String review){
         Log.d("ReviewPage title", title);
         this.binding.rpTitle.setText(title);
+        this.binding.rpPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
         this.binding.rpRating.setRating(rating);
         this.binding.rpReview.setText(review);
     }
@@ -109,12 +112,13 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
         Log.d("ReviewPage", "sendData");
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
+        args.putByteArray("FilmPoster", poster);
         args.putInt("FilmEpisode", episode);
         args.putBoolean("FilmStatus", status);
         args.putFloat("FilmRating", rating);

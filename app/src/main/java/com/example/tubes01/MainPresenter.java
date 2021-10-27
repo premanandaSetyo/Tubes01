@@ -55,6 +55,7 @@ public class MainPresenter {
     }
 
     public Bitmap decodeToBitmap(byte[] byteArray){
+        Log.d("Bitmap decode", String.valueOf(byteArray[0]));
         Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         return bm;
     }
@@ -66,7 +67,7 @@ public class MainPresenter {
         while(data.moveToNext()){
             String judul = data.getString(1);
             String synopsis = data.getString(2);
-//            Bitmap poster = decodeToBitmap(data.getBlob(3));
+            byte[] poster = data.getBlob(3);
             Float rating = data.getFloat(4);
             String review = data.getString(5);
             boolean completedStatus = data.getInt(6)==1?true:false;
@@ -74,7 +75,7 @@ public class MainPresenter {
             int idx = data.getInt(8);
             int eps = data.getInt(9);
             boolean droppedStatus = data.getInt(10)==1?true:false;
-            currfilm = new Film(judul,synopsis, null, eps, rating, review,completedStatus,category, idx,droppedStatus);
+            currfilm = new Film(judul,synopsis, poster, eps, rating, review,completedStatus,category, idx,droppedStatus);
             this.listFilmP.add(currfilm);
         }
         this.ui.updateList(this.listFilmP);
@@ -99,8 +100,8 @@ public class MainPresenter {
     public void addMovie(String title, String synopsis, Bitmap poster){
         String data = db.checkTitle(title);
         if(data==null){
-//            byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataStatus = db.addDataFilm(title, synopsis, null, 0, null, false, "movies", 0, 1);
+            byte[] tempPoster = bitmapToBytes(poster);
+            boolean insertDataStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, false, "movies", 0, 1, 0);
             if(insertDataStatus==true){
                 this.ui.makeToastMessage("Movie successfully added. ");
             }else{
@@ -125,7 +126,7 @@ public class MainPresenter {
         String data = db.checkTitle(title.toLowerCase());
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", 0, 1);
+            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", 0, 1, 0);
 
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
@@ -209,14 +210,14 @@ public class MainPresenter {
         Log.d("getData Presenter", String.valueOf(position));
         currFilm = this.listFilmP.get(position);
         String title = currFilm.getTitle();
-        Bitmap image = currFilm.getPoster();
+        byte[] poster = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
         int episode = currFilm.getEpisode();
         boolean status = currFilm.isCompletedStatus();
         float rating = currFilm.getRating();
         String review = currFilm.getReview();
         Log.d("getData review", title);
-        this.ui.sendData(position, title, synopsis, episode, status, rating, review);
+        this.ui.sendData(position, title, synopsis, poster, episode, status, rating, review);
     }
 
     public void changePage(int page){

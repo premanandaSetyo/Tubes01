@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class Film {
     private String title;
     private String synopsis;
-    private Bitmap poster;
+    private byte[] poster;
     private int episode;
     private float rating;
     private String review;
@@ -17,7 +17,7 @@ public class Film {
     private int index;
     private boolean droppedStatus;
 
-    public Film(String title, String synopsis, Bitmap poster, int episode, float rating, String review, boolean completedStatus, String category, int index, boolean droppedStatus){
+    public Film(String title, String synopsis, byte[] poster, int episode, float rating, String review, boolean completedStatus, String category, int index, boolean droppedStatus){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
@@ -26,6 +26,7 @@ public class Film {
         this.review = review;
         this.completedStatus = completedStatus;
         this.category = category;
+        this.index = index;
         this.droppedStatus = droppedStatus;
     }
 
@@ -83,11 +84,11 @@ public class Film {
         return synopsis;
     }
 
-    public void setPoster(Bitmap poster) {
+    public void setPoster(byte[] poster) {
         this.poster = poster;
     }
 
-    public Bitmap getPoster() {
+    public byte[] getPoster() {
         return this.poster;
     }
 
