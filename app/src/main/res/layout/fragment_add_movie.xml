@@ -63,8 +63,10 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/label_20"/>
             <ImageView
+                android:id="@+id/am_poster"
                 android:layout_width="wrap_content"
-                android:layout_height="250dp"/>
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"/>
             <Button
                 android:id="@+id/am_btn_upload"
                 android:layout_width="wrap_content"

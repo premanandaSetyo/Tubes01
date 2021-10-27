@@ -1,18 +1,23 @@
 package com.example.tubes01;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tubes01.databinding.FragmentAddMovieBinding;
 import com.example.tubes01.databinding.FragmentHomeBinding;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AddMovieFragment extends Fragment implements View.OnClickListener, IMainActivity{
@@ -20,6 +25,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     private FilmListAdapter adapter;
     private FragmentAddMovieBinding binding;
     private MainPresenter presenter;
+    private Bitmap bitmap;
 
     public AddMovieFragment(MainActivity activity){
         this.activity = activity;
@@ -47,9 +53,12 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         if(view == this.binding.amBtnUpload){
-//            startActivityForResult(Intent.createChooser(this.presenter.getImageFromGallery(),"Select Picture"),1);
+            startActivityForResult(Intent.createChooser(this.presenter.getImageFromGallery(),"Select Picture"),1);
+//            startActivityForResult(this.presenter.getImageFromGallery(), 1);
+//            super.onActivityResult(1, 1, this.presenter.getImageFromGallery());
         }
         else{
+            Log.d("bitmap", String.valueOf(bitmap));
             String title = this.binding.addMovieTitle.getText().toString();
             String synopsis = this.binding.addMovieSynopsis.getText().toString();
             if(title.length()!=0 && synopsis.length()!=0){
@@ -97,5 +106,20 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void makeToastMessage(String message) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            Uri uri = data.getData();
+//            this.binding.amPoster.setImageURI(uri);
+            try {
+                this.bitmap = MediaStore.Images.Media.getBitmap(this.activity.getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.binding.amPoster.setImageBitmap(this.bitmap);
+        }
     }
 }

@@ -225,11 +225,11 @@ public class MainPresenter {
     }
 
     public Intent getImageFromGallery(){
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_PICK);
-        return i;
-
+        Intent intent = new Intent();
+        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_PICK);
+        return intent;
     }
 
     //search film list
