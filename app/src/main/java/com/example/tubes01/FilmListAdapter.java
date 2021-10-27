@@ -54,7 +54,7 @@ public class FilmListAdapter extends BaseAdapter {
         if(view == null) {
             FragmentFilmItemBinding binding = FragmentFilmItemBinding.inflate(this.activity.getLayoutInflater(), viewGroup, false);
             view = binding.getRoot();
-            viewHolder = new ViewHolder(binding, this.presenter, i, (Film)this.getItem(i));
+            viewHolder = new ViewHolder(binding, this.presenter, i, (Film)this.getItem(i), this.activity);
             view.setTag(viewHolder);
         }
         else{
@@ -70,16 +70,18 @@ public class FilmListAdapter extends BaseAdapter {
     }
 
     private class ViewHolder implements View.OnClickListener {
+        private MainActivity activity;
         private MainPresenter presenter;
         private FragmentFilmItemBinding binding;
         private Film currentFilm;
         private int i;
 
-        public ViewHolder(FragmentFilmItemBinding binding, MainPresenter presenter, int i, Film currentFilm){
+        public ViewHolder(FragmentFilmItemBinding binding, MainPresenter presenter, int i, Film currentFilm, MainActivity activity){
             this.binding = binding;
             this.presenter = presenter;
             this.i = i;
             this.currentFilm = currentFilm;
+            this.activity = activity;
         }
 
         public void updateView(Film film, int i){
@@ -93,6 +95,8 @@ public class FilmListAdapter extends BaseAdapter {
                 this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
 //            }
             this.binding.fiFilmItem.setOnClickListener(this);
+
+//            this.activity.startActivityForResult(intent, 1);
         }
 
         @Override

@@ -153,31 +153,6 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public Cursor updateDataFilm(String review, int completedStatus, float rating, String title) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-////        ContentValues cv = new ContentValues();
-////        cv.put(COL4_FILM, rating);
-////        cv.put(COL5_FILM, review);
-////        cv.put(COL6_FILM, completedStatus);
-////        long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
-//
-//        Cursor res =
-//
-//                UPDATE employees
-//        SET lastname = 'Smith'
-//        WHERE employeeid = 3;
-//        db.rawQuery("SELECT * FROM "+TABLE_SERIES+" WHERE  ID>='"+idx+"' AND ID<'"+(idx+eps)+"'",null);
-//
-//
-//        if (res == -1) {
-//            Log.d("return apa", "false");
-//            return false;
-//        } else {
-//            Log.d("return apa", "true");
-//            return true;
-//        }
-//    }
-
     public boolean drop(String position) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

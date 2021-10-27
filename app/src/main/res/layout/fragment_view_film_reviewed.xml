@@ -100,7 +100,7 @@
             android:orientation="horizontal"
             android:background="@color/theme">
             <Button
-                android:id="@+id/vfr_btn_editReview"
+                android:id="@+id/vfr_btn_edit_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

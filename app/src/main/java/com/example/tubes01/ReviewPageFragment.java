@@ -48,7 +48,19 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
                 int position = result.getInt("Position");
-                print(title);
+                print(title, 0.0F, "");
+                getPos(position);
+            }
+        });
+
+        this.getParentFragmentManager().setFragmentResultListener("editReviewData", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String title = result.getString("FilmTitle");
+                Float rating = result.getFloat("FilmRating");
+                String review = result.getString("FilmReview");
+                int position = result.getInt("Position");
+                print(title, rating, review);
                 getPos(position);
             }
         });
@@ -58,9 +70,11 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    public void print(String title){
+    public void print(String title, float rating, String review){
         Log.d("ReviewPage title", title);
         this.binding.rpTitle.setText(title);
+        this.binding.rpRating.setRating(rating);
+        this.binding.rpReview.setText(review);
     }
 
     public void getPos(int position){

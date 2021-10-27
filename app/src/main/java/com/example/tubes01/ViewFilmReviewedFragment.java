@@ -48,12 +48,6 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
                 String review = result.getString("FilmReview");
                 int position = result.getInt("Position");
 
-//                Log.d("vfr", title);
-//                Log.d("vfr", synopsis);
-//                Log.d("vfr", String.valueOf(status));
-//                Log.d("vfr", String.valueOf(rating));
-//                Log.d("vfr", review);
-
                 print(title, synopsis, status, rating, review);
                 getPos(position);
             }
@@ -80,6 +74,8 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if(view == this.binding.vfrBtnEditReview){
+            Log.d("Test", "btn review masuk");
+            this.presenter.getData(this.position);
             this.presenter.changePage(7);
         }
         else{
@@ -97,11 +93,22 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     @Override
     public void changePage(int page) {
         Log.d("VFRF",String.valueOf(page));
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
     public void sendData(int position, String title, String synopsis, int episode, Boolean status, Float rating, String review) {
-
+        Bundle args = new Bundle();
+        args.putInt("Position", position);
+        args.putString("FilmTitle", title);
+        args.putString("FilmSynopsis", synopsis);
+        args.putInt("FilmEpisode", episode);
+        args.putBoolean("FilmStatus", status);
+        args.putFloat("FilmRating", rating);
+        args.putString("FilmReview", review);
+        this.getParentFragmentManager().setFragmentResult("editReviewData", args);
     }
 
     @Override

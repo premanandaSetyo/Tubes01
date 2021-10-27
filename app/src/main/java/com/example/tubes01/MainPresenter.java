@@ -164,14 +164,8 @@ public class MainPresenter {
         }else{
             this.ui.makeToastMessage("Can't add review.");
         }
-        currFilm.setReview(review);
-        currFilm.setRating(rating);
-        currFilm.setCompletedStatus(true);
-        this.listFilmP.set(position, currFilm);
-
-
-//        this.ui.sendData(currFilm, position);
         this.loadFilmData();
+
         Log.d("debug size", String.valueOf(this.listFilmP.size()));
 
 

@@ -138,6 +138,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void makeToastMessage(String message) {
         Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
+//        this.activity.recreate();
     }
 
     //Search Film List

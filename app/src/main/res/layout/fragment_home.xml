@@ -25,9 +25,10 @@
             android:layout_marginTop="100dp">
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/logoborder"
                 android:layout_marginTop="70dp" />
         </LinearLayout>
 
