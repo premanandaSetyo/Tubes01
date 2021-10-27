@@ -126,7 +126,7 @@ public class MainPresenter {
         String data = db.checkTitle(title.toLowerCase());
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", 0, 1, 0);
+            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", this.index, eps, 0);
 
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
@@ -140,7 +140,9 @@ public class MainPresenter {
             this.ui.makeToastMessage("Movie title exists. ");
         }
         this.loadFilmData();
+        this.loadSeriesData();
         this.ui.resetForm();
+        this.index+=eps;
 
 //        currFilm = new Film(title, synopsis, poster, eps, 0.0F, null, false, "series", this.index);
 //        this.listFilmP.add(currFilm);

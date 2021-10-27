@@ -56,11 +56,16 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
             startActivityForResult(Intent.createChooser(this.presenter.getImageFromGallery(),"Select Picture"),1);
         }
         else{
-            String title = this.binding.asBtnAdd.getText().toString();
+            String title = this.binding.asTitle.getText().toString();
             int episode = Integer.parseInt(this.binding.asEps.getText().toString());
             String synopsis = this.binding.asSyn.getText().toString();
+
+            Log.d("title", title);
+            Log.d("eps", String.valueOf(episode));
+            Log.d("title", synopsis);
+
             if(title.length()!=0 && String.valueOf(episode).length()!=0 && synopsis.length()!=0){
-                this.presenter.addSeries(title, synopsis, null, episode);
+                this.presenter.addSeries(title, synopsis, this.bitmap, episode);
                 this.presenter.changePage(2);
             }
             else if(title.length()==0){
