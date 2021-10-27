@@ -3,6 +3,8 @@ package com.example.tubes01;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
+import java.util.Comparator;
+
 public class Film {
     private String title;
     private String synopsis;
@@ -26,6 +28,44 @@ public class Film {
         this.category = category;
         this.droppedStatus = droppedStatus;
     }
+
+    public static Comparator<Film> SortTitleAZ = new Comparator<Film>() {
+        @Override
+        public int compare(Film film1, Film film2) {
+            return film1.getTitle().compareTo(film2.getTitle());
+        }
+    };
+
+    public static Comparator<Film> SortTitleZA = new Comparator<Film>() {
+        @Override
+        public int compare(Film film1, Film film2) {
+            return film2.getTitle().compareTo(film1.getTitle());
+        }
+    };
+
+    public static Comparator<Film> SortRatingAsc = new Comparator<Film>() {
+        @Override
+        public int compare(Film film1, Film film2) {
+            int res = 0;
+//            if(film1.getRating()!=0.0F && film2.getRating()!=0.0F){
+//                res = film1.getRating().compareTo(film2.getRating());
+//            }
+            return res;
+//            return film1.getRating().compareTo(film2.getRating();
+        }
+    };
+
+    public static Comparator<Film> SortRatingDesc = new Comparator<Film>() {
+        @Override
+        public int compare(Film film1, Film film2) {
+            int res = 0;
+//            if(film1.getRating()!=null && film2.getRating()!=null){
+//                res = film2.getRating().compareTo(film1.getRating());
+//            }
+            return res;
+//            return film2.getRating().compareTo(film1.getRating());
+        }
+    };
 
     public void setTitle(String title) {
         this.title = title;

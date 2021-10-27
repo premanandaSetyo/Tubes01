@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/title_az"
+        android:title="Sort Title A-Z"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/title_za"
+        android:title="Sort Title Z-A"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/rating_asc"
+        android:title="Sort Rating Ascending"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/rating_desc"
+        android:title="Sort Rating Descending"
+        app:showAsAction="never"/>
+</menu>

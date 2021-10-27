@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -38,6 +41,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentFilmListBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
+        setHasOptionsMenu(true);
         this.binding.btnAddMovie.setOnClickListener(this);
         this.binding.btnAddSeries.setOnClickListener(this);
 
@@ -146,5 +150,29 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     public boolean onQueryTextChange(String s) {
         this.presenter.filterView(s);
         return false;
+    }
+
+    //Sort Film List
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.options_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.title_az){
+            this.presenter.sortView(1);
+        }
+        else if(item.getItemId()==R.id.title_za){
+            this.presenter.sortView(2);
+        }
+        else if(item.getItemId()==R.id.rating_asc){
+            this.presenter.sortView(3);
+        }
+        else if(item.getItemId()==R.id.rating_desc){
+            this.presenter.sortView(4);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

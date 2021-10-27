@@ -19,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -246,6 +247,23 @@ public class MainPresenter {
             }
         }
         this.ui.updateList(filteredFilm);
+    }
+
+    //sort film list
+    public void sortView(int type){
+        if(type==1){
+            Collections.sort(listFilmP, Film.SortTitleAZ);
+        }
+        else if(type==2){
+            Collections.sort(listFilmP, Film.SortTitleZA);
+        }
+        else if(type==3){
+            Collections.sort(listFilmP, Film.SortRatingAsc);
+        }
+        else if(type==4){
+            Collections.sort(listFilmP, Film.SortRatingDesc);
+        }
+        this.ui.updateList(listFilmP);
     }
 
 //    loadData
