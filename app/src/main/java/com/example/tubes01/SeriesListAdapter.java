@@ -64,6 +64,7 @@ public class SeriesListAdapter extends BaseAdapter {
     public void update(List<Series> getSeries){
         Log.d("Series Adapter", "update masuk");
         this.seriesList = getSeries;
+
         notifyDataSetChanged();
     }
 

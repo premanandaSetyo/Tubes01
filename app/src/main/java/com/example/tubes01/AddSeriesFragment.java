@@ -57,15 +57,16 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
         }
         else{
             String title = this.binding.asTitle.getText().toString();
-            int episode = Integer.parseInt(this.binding.asEps.getText().toString());
+            String episode = this.binding.asEps.getText().toString();
             String synopsis = this.binding.asSyn.getText().toString();
 
             Log.d("title", title);
             Log.d("eps", String.valueOf(episode));
             Log.d("title", synopsis);
 
-            if(title.length()!=0 && String.valueOf(episode).length()!=0 && synopsis.length()!=0){
-                this.presenter.addSeries(title, synopsis, this.bitmap, episode);
+            if(title.length()!=0 && episode.length()!=0 && synopsis.length()!=0 && this.bitmap!=null){
+                int eps = Integer.parseInt(episode);
+                this.presenter.addSeries(title, synopsis, this.bitmap, eps);
                 this.presenter.changePage(2);
             }
             else if(title.length()==0){
@@ -88,6 +89,9 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
     @Override
     public void changePage(int page) {
         Log.d("ASF",String.valueOf(page));
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
@@ -102,7 +106,7 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void resetForm() {
-        this.binding.asBtnAdd.setText("");
+        this.binding.asTitle.setText("");
         this.binding.asEps.setText("");
         this.binding.asSyn.setText("");
     }
@@ -114,8 +118,8 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+//        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==this.activity.RESULT_OK && requestCode == 1){
             Uri uri = data.getData();
             try {
                 this.bitmap = MediaStore.Images.Media.getBitmap(this.activity.getContentResolver(), uri);
@@ -123,6 +127,9 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
                 e.printStackTrace();
             }
             this.binding.asPoster.setImageBitmap(this.bitmap);
+        }
+        else{
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

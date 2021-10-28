@@ -94,7 +94,8 @@ public class MainPresenter {
             currseries = new Series(judul, String.valueOf(eps),synopsis, rating, review,completedStatus);
             listSeriesP.add(currseries);
         }
-
+        this.ui.updateSeries(this.listSeriesP);
+        Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
     }
 
     public void addMovie(String title, String synopsis, Bitmap poster){
@@ -127,7 +128,6 @@ public class MainPresenter {
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
             boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", this.index, eps, 0);
-
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
                     boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0,null, e,false);
@@ -170,12 +170,12 @@ public class MainPresenter {
         this.loadFilmData();
 
         Log.d("debug size", String.valueOf(this.listFilmP.size()));
-
+        this.ui.resetForm();
 
 
 //        Log.d("film rating", String.valueOf(currFilm.getRating()));
 //        Log.d("film review", currFilm.getReview());
-        this.ui.resetForm();
+
 //        currFilm = (Film) this.listFilmP.get(position);
 //        currFilm.setReview(review);
 //        currFilm.setRating(rating);
@@ -191,15 +191,15 @@ public class MainPresenter {
         this.listFilmP.remove(position);
     }
 
-    public void loadData(Film[] arrFilm){
-        if(listFilmP.isEmpty()){
-            List<Film> film = Arrays.asList(arrFilm);
-            for(Film f : film){
-                this.listFilmP.add(f);
-            }
-            this.ui.updateList(this.listFilmP);
-        }
-    }
+//    public void loadData(Film[] arrFilm){
+//        if(listFilmP.isEmpty()){
+//            List<Film> film = Arrays.asList(arrFilm);
+//            for(Film f : film){
+//                this.listFilmP.add(f);
+//            }
+//            this.ui.updateList(this.listFilmP);
+//        }
+//    }
 
 //    public void getData(int position){
 //        this.loadFilmData();

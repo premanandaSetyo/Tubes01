@@ -36,14 +36,15 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("viewFilmData", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewSeriesList", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
+                byte[] poster = result.getByteArray("FilmPoster");
                 int episode = result.getInt("FilmEpisode");
                 String synopsis = result.getString("FilmSynopsis");
                 int position = result.getInt("Position");
-                print(title, episode, synopsis);
+                print(title, poster, episode, synopsis);
                 getPos(position);
             }
         });
@@ -54,8 +55,9 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    public void print(String title, int episode, String synopsis){
+    public void print(String title, byte[] poster, int episode, String synopsis){
         this.binding.vsTitle.setText(title);
+        this.binding.vsPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
         this.binding.vsEpisode.setText(String.valueOf(episode));
         this.binding.vsSynopsis.setText(synopsis);
     }
@@ -67,6 +69,7 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         if(view == this.binding.vsBtnEps){
+            this.presenter.getData(this.position);
             this.presenter.changePage(5);
         }
         else{
@@ -83,6 +86,9 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     @Override
     public void changePage(int page) {
         Log.d("VFSF",String.valueOf(page));
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override

@@ -35,6 +35,7 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
         this.binding.listSeries.setAdapter(this.adapter);
+        this.presenter.loadSeriesData();
 
         return view;
     }
@@ -46,7 +47,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void updateList(List<Film> films) {
-
     }
 
     @Override

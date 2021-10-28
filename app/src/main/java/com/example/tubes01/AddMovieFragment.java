@@ -60,7 +60,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
         else{
             String title = this.binding.addMovieTitle.getText().toString();
             String synopsis = this.binding.addMovieSynopsis.getText().toString();
-            if(title.length()!=0 && synopsis.length()!=0){
+            if(title.length()!=0 && synopsis.length()!=0 && this.bitmap!=null){
                 this.presenter.addMovie(title, synopsis, this.bitmap);
                 this.presenter.changePage(2);
             }
@@ -112,16 +112,17 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+        if(resultCode==this.activity.RESULT_OK && requestCode == 1){
             Uri uri = data.getData();
-//            this.binding.amPoster.setImageURI(uri);
             try {
                 this.bitmap = MediaStore.Images.Media.getBitmap(this.activity.getContentResolver(), uri);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             this.binding.amPoster.setImageBitmap(this.bitmap);
+        }
+        else{
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
