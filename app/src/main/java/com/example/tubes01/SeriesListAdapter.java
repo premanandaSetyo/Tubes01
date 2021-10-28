@@ -90,17 +90,32 @@ public class SeriesListAdapter extends BaseAdapter {
         }
 
         public void updateView(Series series, int i){
-            this.binding.siTitle.setText(series.getEps());
+            this.binding.siTitle.setText("Episode " + series.getEps());
             this.i = i;
             this.currentSeries = series;
+            this.binding.siSeriesItem.setOnClickListener(this);
+
+//            if(this.currentSeries.getRating()!=0.0F) {
+            this.binding.siStarRate.setImageResource(R.drawable.star);
+            this.binding.siRating.setText(String.valueOf(this.currentSeries.getRating()));
+//            }
             this.binding.siSeriesItem.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-//            if(view == this.binding.siSeriesItem){
+            if(view == this.binding.siSeriesItem){
+                Log.d("onclick series", "masukk");
 //                this.presenter.getData(this.i);
-//            }
+                if(this.currentSeries.isCompletedStatus()==false){
+                    this.presenter.changePage(6);
+                    this.presenter.getData(this.i);
+                }
+                else if(this.currentSeries.isCompletedStatus()==true){
+                    this.presenter.changePage(8);
+                    this.presenter.getData(this.i);
+                }
+            }
         }
     }
 }

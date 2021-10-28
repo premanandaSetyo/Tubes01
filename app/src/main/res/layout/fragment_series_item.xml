@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
+        android:layout_margin="15dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="1">
         <TextView
@@ -24,13 +24,13 @@
             android:textColor="@color/white"
             android:textSize="@dimen/label_20">
         </TextView>
-        <TextView
-            android:id="@+id/si_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Episode"
-            android:textColor="@color/white">
-        </TextView>
+<!--        <TextView-->
+<!--            android:id="@+id/si_category"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Episode"-->
+<!--            android:textColor="@color/white">-->
+<!--        </TextView>-->
     </LinearLayout>
 
     <ImageView

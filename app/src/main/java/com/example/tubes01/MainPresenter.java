@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.LongDef;
 
-import com.example.tubes01.databinding.FragmentHomeBinding;
+//import com.example.tubes01.databinding.FragmentHomeBinding;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -82,8 +82,8 @@ public class MainPresenter {
     }
 
     public void loadSeriesData(String title){
-        Cursor data = db.getAllSeries();
-//        Cursor data = db.getSeries(title);
+//        Cursor data = db.getAllSeries();
+        Cursor data = db.getSeries(title);
         Series currseries;
         while(data.moveToNext()){
             String judul = data.getString(1);
@@ -96,24 +96,7 @@ public class MainPresenter {
             listSeriesP.add(currseries);
         }
         this.ui.updateSeries(this.listSeriesP);
-        getFilmSeries(title);
         Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
-    }
-
-    public void getFilmSeries(String title){
-        Cursor data = db.getSeries(title);
-        List<Series> filmSeries = new ArrayList<>();
-        while(data.moveToNext()){
-            String judul = data.getString(1);
-            String synopsis = data.getString(2);
-            Float rating = data.getFloat(3);
-            String review = data.getString(4);
-            int eps = data.getInt(5);
-            boolean completedStatus = data.getInt(6)==1?true:false;
-            Series s = new Series(judul, String.valueOf(eps), synopsis, rating, review, completedStatus);
-            filmSeries.add(s);
-        }
-        Log.d("arraysize ", String.valueOf(filmSeries.size()));
     }
 
     public void addMovie(String title, String synopsis, Bitmap poster){
@@ -145,10 +128,10 @@ public class MainPresenter {
         String data = db.checkTitle(title.toLowerCase());
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0, null, false, "series", this.index, eps, 0);
+            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, false, "series", this.index, eps, 0);
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
-                    boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0,null, e,false);
+                    boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0.0F,null, e,false);
                 }
                 this.ui.makeToastMessage("Movie successfully added. ");
             }else{

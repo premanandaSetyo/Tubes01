@@ -43,18 +43,19 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
-                getTitle(title);
+                load(title);
             }
         });
 
 //        this.presenter.getData(this.title);
-        this.presenter.loadSeriesData(this.title);
+
 
         return view;
     }
 
-    private void getTitle(String title){
+    private void load(String title){
         this.title = title;
+        this.presenter.loadSeriesData(this.title);
     }
 
     @Override
