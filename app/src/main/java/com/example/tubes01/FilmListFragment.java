@@ -64,7 +64,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 //        this.presenter.addMovie("Shrimp Game","Shrimp main game", null);
 //        this.presenter.addMovie("Crab Game","Crab main game", null);
         this.presenter.loadFilmData(); //load data dari DB
-        this.presenter.loadSeriesData();
+//        this.presenter.loadSeriesData();
 
         this.binding.filmListSearch.setOnQueryTextListener(this);
 
@@ -117,6 +117,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
             this.getParentFragmentManager().setFragmentResult("viewFilmList", args);
             this.getParentFragmentManager().setFragmentResult("viewFilmListReviewed", args);
             //Series
+            this.getParentFragmentManager().setFragmentResult("viewSeriesData", args);
         this.getParentFragmentManager().setFragmentResult("viewSeriesList", args);
 //        }
 

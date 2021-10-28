@@ -36,7 +36,7 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
-        this.getParentFragmentManager().setFragmentResultListener("viewSeriesList", this, new FragmentResultListener() {
+        this.getParentFragmentManager().setFragmentResultListener("viewSeriesData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");

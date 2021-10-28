@@ -81,8 +81,9 @@ public class MainPresenter {
         this.ui.updateList(this.listFilmP);
     }
 
-    public void loadSeriesData(){
+    public void loadSeriesData(String title){
         Cursor data = db.getAllSeries();
+//        Cursor data = db.getSeries(title);
         Series currseries;
         while(data.moveToNext()){
             String judul = data.getString(1);
@@ -91,11 +92,28 @@ public class MainPresenter {
             String review = data.getString(4);
             int eps = data.getInt(5);
             boolean completedStatus = data.getInt(6)==1?true:false;
-            currseries = new Series(judul, String.valueOf(eps),synopsis, rating, review,completedStatus);
+            currseries = new Series(judul, String.valueOf(eps), synopsis, rating, review, completedStatus);
             listSeriesP.add(currseries);
         }
         this.ui.updateSeries(this.listSeriesP);
+        getFilmSeries(title);
         Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
+    }
+
+    public void getFilmSeries(String title){
+        Cursor data = db.getSeries(title);
+        List<Series> filmSeries = new ArrayList<>();
+        while(data.moveToNext()){
+            String judul = data.getString(1);
+            String synopsis = data.getString(2);
+            Float rating = data.getFloat(3);
+            String review = data.getString(4);
+            int eps = data.getInt(5);
+            boolean completedStatus = data.getInt(6)==1?true:false;
+            Series s = new Series(judul, String.valueOf(eps), synopsis, rating, review, completedStatus);
+            filmSeries.add(s);
+        }
+        Log.d("arraysize ", String.valueOf(filmSeries.size()));
     }
 
     public void addMovie(String title, String synopsis, Bitmap poster){
@@ -140,7 +158,7 @@ public class MainPresenter {
             this.ui.makeToastMessage("Movie title exists. ");
         }
         this.loadFilmData();
-        this.loadSeriesData();
+//        this.loadSeriesData();
         this.ui.resetForm();
         this.index+=eps;
 

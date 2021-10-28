@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import com.example.tubes01.databinding.FragmentSeriesListBinding;
 
@@ -17,6 +19,7 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
     private FragmentSeriesListBinding binding;
     private MainPresenter presenter;
     private SeriesListAdapter adapter;
+    private String title;
 
     public SeriesListFragment(MainActivity activity){
         this.activity = activity;
@@ -35,9 +38,23 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
         this.binding.listSeries.setAdapter(this.adapter);
-        this.presenter.loadSeriesData();
+
+        this.getParentFragmentManager().setFragmentResultListener("viewSeriesList", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String title = result.getString("FilmTitle");
+                getTitle(title);
+            }
+        });
+
+//        this.presenter.getData(this.title);
+        this.presenter.loadSeriesData(this.title);
 
         return view;
+    }
+
+    private void getTitle(String title){
+        this.title = title;
     }
 
     @Override

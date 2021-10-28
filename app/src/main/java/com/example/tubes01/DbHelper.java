@@ -117,9 +117,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getSeries(int idx, int eps){
+    public Cursor getSeries(String title){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_SERIES+" WHERE  ID>='"+idx+"' AND ID<'"+(idx+eps)+"'",null);
+//        Cursor res = db.rawQuery("SELECT "+ COL1_FILM +" FROM "+TABLE_FILM+" WHERE " + COL1_FILM + "='"+title+"'",null);
+        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_SERIES+" WHERE "+ COL1_SERIES + "='"+title+"'",null);
+//        Log.d("db length", res.getString(1));
         return res;
     }
 

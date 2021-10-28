@@ -64,6 +64,14 @@ public class SeriesListAdapter extends BaseAdapter {
     public void update(List<Series> getSeries){
         Log.d("Series Adapter", "update masuk");
         this.seriesList = getSeries;
+//        if pos=1 i =1
+//        pos=3
+//        getseries[pos]=5
+//        index = getsereis[pos-1]= 7+1
+//
+//        for(int i=; i<=){
+//
+//        }
 
         notifyDataSetChanged();
     }
