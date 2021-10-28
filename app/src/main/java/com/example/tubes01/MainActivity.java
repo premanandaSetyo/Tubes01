@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(null);
         }
         else if(page==5){
-                ft.replace(R.id.fragment_container, this.seriesList)
+            ft.replace(R.id.fragment_container, this.seriesList)
                         .addToBackStack(null);
         }
         else if(page==6) {
