@@ -96,8 +96,15 @@ public class FilmListAdapter extends BaseAdapter {
             }
 //            if(this.currentFilm.getRating()!=0.0F) {
                 this.binding.fiStarRate.setImageResource(R.drawable.star);
-                this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
+
 //            }
+            if(film.getCategory()=="series"){
+                this.binding.fiRating.setText(String.valueOf(this.presenter.avgRating(film.getTitle())));
+            }
+            else{
+                this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
+            }
+
             this.binding.fiFilmItem.setOnClickListener(this);
 
 //            this.activity.startActivityForResult(intent, 1);

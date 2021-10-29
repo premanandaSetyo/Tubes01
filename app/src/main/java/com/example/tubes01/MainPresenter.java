@@ -273,9 +273,8 @@ public class MainPresenter {
     }
 
     //progress
-    public int completedEps(String title, int position){
+    public int completedEps(String title){
         loadSeriesData(title);
-        currFilm = this.listFilmP.get(position);
         int count = 0;
         for(Series s : this.listSeriesP){
             if(s.isCompletedStatus()==true){
@@ -285,6 +284,16 @@ public class MainPresenter {
         return count;
     }
 
+    public float avgRating(String title){
+        loadSeriesData(title);
+        float sum = 0;
+        for(Series s : this.listSeriesP){
+            if(completedEps(title)==s.getEps()){
+                sum+=s.getRating();
+            }
+        }
+        return sum/this.listSeriesP.size();
+    }
 
     //search film list
     public void filterView(String input){
