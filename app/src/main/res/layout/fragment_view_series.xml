@@ -90,6 +90,23 @@
                 android:text="@string/vs_btn_eps"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:background="@color/theme"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/vs_btn_drop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="@string/vs_btn_drop"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button"/>
             <Button
                 android:id="@+id/vs_btn_delete"
                 android:layout_width="match_parent"
@@ -99,6 +116,7 @@
                 android:text="@string/vs_btn_delete"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
+        </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

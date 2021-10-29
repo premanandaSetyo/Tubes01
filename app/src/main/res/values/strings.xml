@@ -41,15 +41,17 @@
     <string name="vf_title">Judul</string>
     <string name="vf_syno">Synopsis</string>
     <string name="vf_btn_review">Review</string>
+    <string name="vf_btn_drop">Drop</string>
     <string name="vf_btn_delete">Delete</string>
 
     <!--ViewFilm Review-->
     <string name="vfr_title">Judul</string>
     <string name="vfr_syno">Synopsis</string>
-    <string name="vfr_stat">Status : completed</string>
+    <string name="vfr_stat">Status : </string>
     <string name="vfr_rating">Ratings</string>
     <string name="vfr_review">Review</string>
     <string name="vfr_btn_editReview">Edit Review</string>
+    <string name="vfr_btn_drop">Drop</string>
     <string name="vfr_btn_delete">Delete</string>
 
     <!--View Series-->
@@ -57,5 +59,21 @@
     <string name="vs_eps">Number of Episodes : </string>
     <string name="vs_syno">Synopsis</string>
     <string name="vs_btn_eps">Episodes</string>
+    <string name="vs_btn_drop">Drop</string>
     <string name="vs_btn_delete">Delete</string>
+
+    <!--ViewSeries Review-->
+    <string name="vsr_title">Judul</string>
+    <string name="vsr_episode">Episode</string>
+    <string name="vsr_rating">Ratings</string>
+    <string name="vsr_review">Review</string>
+    <string name="vsr_btn_editReview">Edit Review</string>
+    <string name="vsr_btn_delete">Delete</string>
+
+    <!--Review Page-->
+    <string name="srp_title">Judul</string>
+    <string name="srp_episode">Episode</string>
+    <string name="srp_rating">Ratings</string>
+    <string name="srp_review">Review</string>
+    <string name="srp_btn_saveReview">Save</string>
 </resources>

@@ -29,9 +29,12 @@ public class MainPresenter {
     protected IMainActivity ui;
     protected int index = 1;
     private Film currFilm;
+    private Series currSeries;
     private DbHelper db;
 //    protected static MainPresenter singleton;
     private Context context;
+    private String title;
+    private int position; ////////////
 
     public MainPresenter(IMainActivity view, MainActivity activity){
         this.ui = view;
@@ -81,8 +84,18 @@ public class MainPresenter {
         this.ui.updateList(this.listFilmP);
     }
 
+//    public void sendTitle(String title){
+//        this.title = title;
+//    }
+
+
     public void loadSeriesData(String title){
+//    public void loadSeriesData(int position){
+//        Log.d("presenterLoadSeriesData", String.valueOf(position));
 //        Cursor data = db.getAllSeries();
+//        currFilm = this.listFilmP.get(position);
+//        String title = currFilm.getTitle();
+        this.listSeriesP = new ArrayList<>();
         Cursor data = db.getSeries(title);
         Series currseries;
         while(data.moveToNext()){
@@ -92,7 +105,7 @@ public class MainPresenter {
             String review = data.getString(4);
             int eps = data.getInt(5);
             boolean completedStatus = data.getInt(6)==1?true:false;
-            currseries = new Series(judul, String.valueOf(eps), synopsis, rating, review, completedStatus);
+            currseries = new Series(judul, eps, synopsis, rating, review, completedStatus);
             listSeriesP.add(currseries);
         }
         this.ui.updateSeries(this.listSeriesP);
@@ -188,9 +201,46 @@ public class MainPresenter {
 //        this.ui.resetForm();
     }
 
+    public void addSeriesReview(String review, float rating, int position, String title) {
+        this.loadSeriesData(title);
+//        Log.d("sebelum", String.valueOf(this.listSeriesP.size()));
+//        currSeries = this.listSeriesP.get(position);
+//        String title = currSeries.getTitle();
+//        Log.d("addReview Presenter", title);
+        boolean addRev = this.db.updateDataSeries(review, 1, rating, title);
+        if (addRev == true) {
+            this.ui.makeToastMessage("Review successfully added.");
+        } else {
+            this.ui.makeToastMessage("Can't add review.");
+        }
+//        if(this.listSeriesP.size()<){
+            this.loadSeriesData(title);
+//        }
+
+        Log.d("setelah", String.valueOf(this.listSeriesP.size()));
+//        this.loadSeriesData(position);
+
+        Log.d("debug size", String.valueOf(this.listSeriesP.size()));
+        this.ui.resetForm();
+    }
+
     public void delete(int position){
         this.listFilmP.remove(position);
     }
+
+    public void dropFilm(int position){
+        loadFilmData();
+        currFilm = this.listFilmP.get(position);
+        String title = currFilm.getTitle();
+        boolean addRev = this.db.dropF(title);
+        if(addRev==true){
+            this.ui.makeToastMessage("Film successfully dropped.");
+        }else{
+            this.ui.makeToastMessage("Failed to drop film.");
+        }
+        this.loadFilmData();
+    }
+
 
 //    public void loadData(Film[] arrFilm){
 //        if(listFilmP.isEmpty()){
@@ -223,6 +273,23 @@ public class MainPresenter {
         this.ui.sendData(position, title, synopsis, poster, episode, status, rating, review);
     }
 
+    public void getSeriesData(int position, String title){
+        this.loadSeriesData(title);
+        Log.d("getData Presenter", String.valueOf(position));
+        currSeries = this.listSeriesP.get(position);
+        title = currSeries.getTitle();
+        byte[] poster = null;
+        String synopsis = currSeries.getSynopsis();
+        int episode = currSeries.getEps();
+        boolean status = currSeries.isCompletedStatus();
+        float rating = currSeries.getRating();
+        String review = currSeries.getReview();
+        Log.d("getSeriesData Presenter", title);
+        Log.d("getSeriesData eps", String.valueOf(episode));
+        Log.d("getSeriesData pos", String.valueOf(position));
+        this.ui.sendData(position, title, synopsis, poster, episode, status, rating, review);
+    }
+
     public void changePage(int page){
 //        Log.d("cpPresenter",String.valueOf(page));
         this.ui.changePage(page);
@@ -235,6 +302,10 @@ public class MainPresenter {
         intent.setAction(Intent.ACTION_PICK);
         return intent;
     }
+
+
+
+
 
     //search film list
     public void filterView(String input){

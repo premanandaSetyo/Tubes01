@@ -20,6 +20,7 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
     private MainPresenter presenter;
     private SeriesListAdapter adapter;
     private String title;
+    private int position;
 
     public SeriesListFragment(MainActivity activity){
         this.activity = activity;
@@ -44,18 +45,27 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
                 load(title);
+//                int position = result.getInt("Position");
+//                load(position);
+//                Log.d("SeriesListFragment",String.valueOf(position));
             }
         });
 
-//        this.presenter.getData(this.title);
+//        this.presenter.loadSeriesData();
 
+//        this.presenter.getData(this.title);
 
         return view;
     }
 
+//    private void load(int position){
+//        this.position = position;
+//        this.presenter.loadSeriesData(this.position);
+//    }
     private void load(String title){
-        this.title = title;
-        this.presenter.loadSeriesData(this.title);
+//        this.title = title;
+//        this.presenter.sendTitle(title);
+        this.presenter.loadSeriesData(title);
     }
 
     @Override
@@ -70,11 +80,26 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
     @Override
     public void changePage(int page) {
         Log.d("SLF",String.valueOf(page));
+        Bundle args = new Bundle();
+        args.putInt("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", args);
     }
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
-
+        Log.d("coba debug bundle", title);
+        Log.d("coba debug bundle", String.valueOf(episode));
+        Bundle args = new Bundle();
+        args.putInt("Position", position);
+        args.putString("SeriesTitle", title);
+        args.putString("SeriesSynopsis", synopsis);
+        args.putByteArray("SeriesPoster", poster);
+        args.putInt("SeriesEpisode", episode);
+        args.putBoolean("SeriesStatus", status);
+        args.putFloat("SeriesRating", rating);
+        args.putString("SeriesReview", review);
+        this.getParentFragmentManager().setFragmentResult("seriesReviewData", args);
+        this.getParentFragmentManager().setFragmentResult("viewSeriesReviewedData", args);
     }
 
     @Override

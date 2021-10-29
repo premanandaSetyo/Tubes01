@@ -3,44 +3,44 @@ package com.example.tubes01;
 import android.widget.ImageView;
 
 public class Series {
-    private String judul;
-    private String eps;
-    private String sysnopsis;
+    private String title;
+    private int eps;
+    private String synopsis;
     private Float rating;
     private String review;
     private boolean completedStatus;
 
-    public Series(String judul, String eps, String sysnopsis, Float rating, String review, boolean completedStatus){
-        this.judul = judul;
+    public Series(String title, int eps, String synopsis, Float rating, String review, boolean completedStatus){
+        this.title = title;
         this.eps = eps;
-        this.sysnopsis = sysnopsis;
+        this.synopsis = synopsis;
         this.rating = rating;
         this.review = review;
         this.completedStatus = completedStatus;
     }
 
-    public void setJudul(String judul) {
-        this.judul = judul;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getJudul() {
-        return judul;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEps(String eps) {
+    public void setEps(int eps) {
         this.eps = eps;
     }
 
-    public String getEps() {
+    public int getEps() {
         return eps;
     }
 
-    public void setSysnopsis(String sysnopsis) {
-        this.sysnopsis = sysnopsis;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
-    public String getSysnopsis() {
-        return sysnopsis;
+    public String getSynopsis() {
+        return synopsis;
     }
 
     public void setRating(Float rating) {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ReviewPageFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/theme">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:orientation="vertical">
+
+                <!--Title-->
+                <TextView
+                    android:id="@+id/srp_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/srp_title"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/title_40"
+                    android:textColor="@color/white"/>
+
+                <!--Episode-->
+                <TextView
+                    android:id="@+id/srp_episode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/subtitle_30"
+                    android:text="@string/srp_episode"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <!--Rating-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/srp_rating"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
+
+                <RatingBar
+                    android:id="@+id/srp_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:stepSize=".5"
+                    android:theme="@style/RatingBar"/>
+
+                <!--Review-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/srp_review"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
+
+                <EditText
+                    android:id="@+id/srp_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/white"
+                    app:backgroundTint = "@color/white"
+                    android:layout_marginBottom="50dp"/>
+                <Button
+                    android:id="@+id/srp_btn_saveReview"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/srp_btn_saveReview"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_button"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -64,15 +64,6 @@ public class SeriesListAdapter extends BaseAdapter {
     public void update(List<Series> getSeries){
         Log.d("Series Adapter", "update masuk");
         this.seriesList = getSeries;
-//        if pos=1 i =1
-//        pos=3
-//        getseries[pos]=5
-//        index = getsereis[pos-1]= 7+1
-//
-//        for(int i=; i<=){
-//
-//        }
-
         notifyDataSetChanged();
     }
 
@@ -108,12 +99,12 @@ public class SeriesListAdapter extends BaseAdapter {
                 Log.d("onclick series", "masukk");
 //                this.presenter.getData(this.i);
                 if(this.currentSeries.isCompletedStatus()==false){
-                    this.presenter.changePage(6);
-                    this.presenter.getData(this.i);
+                    this.presenter.changePage(11);
+                    this.presenter.getSeriesData(this.i, this.currentSeries.getTitle());
                 }
                 else if(this.currentSeries.isCompletedStatus()==true){
-                    this.presenter.changePage(8);
-                    this.presenter.getData(this.i);
+                    this.presenter.changePage(10);
+                    this.presenter.getSeriesData(this.i, this.currentSeries.getTitle());
                 }
             }
         }

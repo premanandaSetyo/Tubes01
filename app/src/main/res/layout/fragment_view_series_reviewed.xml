@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewFilmFragment">
+    tools:context=".ViewFilmReviewedFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,30 +23,49 @@
 
                 <!--Title-->
                 <TextView
-                    android:id="@+id/vf_title"
+                    android:id="@+id/vsr_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/vf_title"
-                    android:textAlignment="center"
+                    android:textSize="@dimen/title_40"
+                    android:text="@string/vsr_title"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/title_40"/>
+                    android:textAlignment="center"/>
 
-                <!--Poster-->
-                <ImageView
-                    android:id="@+id/vf_poster"
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp"/>
-
-                <!--Synopsis-->
+                <!--Episode-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/vsr_episode"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/vf_syno"
+                    android:textSize="@dimen/subtitle_30"
+                    android:text="@string/vsr_episode"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
+
+                <!--Rating-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vsr_rating"
                     android:textColor="@color/white"
                     android:textSize="@dimen/label_20"/>
+                <RatingBar
+                    android:id="@+id/vsr_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:stepSize=".5"
+                    android:isIndicator="true"
+                    android:theme="@style/RatingBar"/>
 
+                <!--Review-->
                 <TextView
-                    android:id="@+id/vf_synopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vsr_review"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/label_20"/>
+                <TextView
+                    android:id="@+id/vsr_review"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"/>
@@ -63,40 +82,23 @@
             android:orientation="horizontal"
             android:background="@color/theme">
             <Button
-                android:id="@+id/vf_btn_review"
+                android:id="@+id/vsr_btn_edit_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:text="@string/vf_btn_review"
+                android:text="@string/vsr_btn_editReview"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_button"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_alignParentBottom="true"
-                android:background="@color/theme"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/vf_btn_drop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:text="@string/vf_btn_drop"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_button"/>
-                <Button
-                    android:id="@+id/vf_btn_delete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:text="@string/vf_btn_delete"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_button"/>
-            </LinearLayout>
+<!--            <Button-->
+<!--                android:id="@+id/vsr_btn_delete"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:text="@string/vsr_btn_delete"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:background="@drawable/rounded_button"/>-->
         </LinearLayout>
 
     </RelativeLayout>

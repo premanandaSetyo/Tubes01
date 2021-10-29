@@ -55,6 +55,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
         });
 
         this.binding.vfrBtnEditReview.setOnClickListener(this);
+        this.binding.vfrBtnDrop.setOnClickListener(this);
         this.binding.vfrBtnDelete.setOnClickListener(this);
 
         return view;
@@ -79,6 +80,10 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
             Log.d("Test", "btn review masuk");
             this.presenter.getData(this.position);
             this.presenter.changePage(7);
+        }
+        else if(view == this.binding.vfrBtnDrop){
+            this.presenter.dropFilm(this.position);
+            this.binding.vfrStat.setText("dropped");
         }
         else{
             this.presenter.delete(this.position);

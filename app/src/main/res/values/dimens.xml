@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="apps_name_50">50sp</dimen>
-    <dimen name="label_20">20sp</dimen>
     <dimen name="title_40">40sp</dimen>
+    <dimen name="subtitle_30">30sp</dimen>
+    <dimen name="label_20">20sp</dimen>
 </resources>

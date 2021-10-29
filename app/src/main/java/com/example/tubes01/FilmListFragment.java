@@ -118,7 +118,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
             this.getParentFragmentManager().setFragmentResult("viewFilmListReviewed", args);
             //Series
             this.getParentFragmentManager().setFragmentResult("viewSeriesData", args);
-        this.getParentFragmentManager().setFragmentResult("viewSeriesList", args);
+//            this.getParentFragmentManager().setFragmentResult("viewSeriesList", args);
 //        }
 
     }

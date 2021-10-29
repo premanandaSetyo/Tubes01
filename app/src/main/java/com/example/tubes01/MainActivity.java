@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ReviewPageFragment reviewPage; //page 7
     private ViewFilmReviewedFragment viewFilmReviewed; //page 8
     private ViewSeriesFragment viewSeries; //page 9
+    private ViewSeriesReviewedFragment viewSeriesReviewed; //page 10
+    private SeriesReviewPageFragment seriesReviewPage; //page 11
     private NavigationView navView;
     private DrawerLayout drawer;
 
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.reviewPage = ReviewPageFragment.newInstance(this);
         this.viewFilmReviewed = ViewFilmReviewedFragment.newInstance(this);
         this.viewSeries = ViewSeriesFragment.newInstance(this);
+        this.viewSeriesReviewed = ViewSeriesReviewedFragment.newInstance(this);
+        this.seriesReviewPage = SeriesReviewPageFragment.newInstance(this);
 
         this.fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -165,6 +169,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(page==9) {
             ft.replace(R.id.fragment_container, this.viewSeries)
+                    .addToBackStack(null);
+        }
+        else if(page==10) {
+            ft.replace(R.id.fragment_container, this.viewSeriesReviewed)
+                    .addToBackStack(null);
+        }
+        else if(page==11) {
+            ft.replace(R.id.fragment_container, this.seriesReviewPage)
                     .addToBackStack(null);
         }
         ft.commit();

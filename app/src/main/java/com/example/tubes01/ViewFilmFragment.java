@@ -52,6 +52,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
         });
 
         this.binding.vfBtnReview.setOnClickListener(this);
+        this.binding.vfBtnDrop.setOnClickListener(this);
         this.binding.vfBtnDelete.setOnClickListener(this);
 
         return view;
@@ -73,6 +74,9 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
         if(view == this.binding.vfBtnReview){
             this.presenter.getData(this.position);
             this.presenter.changePage(7);
+        }
+        else if(view == this.binding.vfBtnDrop){
+            this.presenter.dropFilm(this.position);
         }
         else{
             this.presenter.delete(this.position);

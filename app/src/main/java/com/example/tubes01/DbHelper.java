@@ -155,12 +155,30 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean drop(String position) {
+    public boolean updateDataSeries(String review, int completedStatus, float rating, String title) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL3_SERIES, rating);
+        cv.put(COL4_SERIES, review);
+        cv.put(COL6_FILM, completedStatus);
+
+        long res = db.update(TABLE_SERIES, cv, "title=?", new String[]{ title });
+
+        if (res == -1) {
+            Log.d("return apa", "false");
+            return false;
+        } else {
+            Log.d("return apa", "true");
+            return true;
+        }
+    }
+
+    public boolean dropF(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL10_FILM, 1);
 
-        long res = db.update(TABLE_FILM, cv, "ID=?", new String[]{ position });
+        long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
 
         if (res == -1) {
             return false;
