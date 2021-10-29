@@ -272,6 +272,19 @@ public class MainPresenter {
         }
     }
 
+    //progress
+    public int completedEps(String title, int position){
+        loadSeriesData(title);
+        currFilm = this.listFilmP.get(position);
+        int count = 0;
+        for(Series s : this.listSeriesP){
+            if(s.isCompletedStatus()==true){
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     //search film list
     public void filterView(String input){

@@ -64,6 +64,8 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
         this.binding.vsEpisode.setText(String.valueOf(" " + episode));
         this.binding.vsStat.setText(" " + this.presenter.printStatus(position));
         this.binding.vsSynopsis.setText(synopsis);
+        this.binding.progressBar.setMax(episode);
+        this.binding.progressBar.setProgress(this.presenter.completedEps(title,position));
     }
 
     public void getPos(int position){
