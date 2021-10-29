@@ -1,11 +1,14 @@
 package com.example.tubes01;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -53,10 +56,18 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
             }
         });
 
+        this.binding.vfBtnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         this.binding.vfBtnReview.setOnClickListener(this);
         this.binding.vfBtnDrop.setOnClickListener(this);
         this.binding.vfBtnDelete.setOnClickListener(this);
+
+//        this.binding.vfBtnDelete.setOnClickListener(new);
 
         return view;
     }
@@ -83,10 +94,27 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
             this.presenter.dropFilm(this.position);
         }
         else{
-            this.presenter.delete(this.position);
-            this.presenter.changePage(2);
+            openDialog();
         }
 
+    }
+
+    public void openDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle("Are you sure want to delete this film ?")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deleteFilm();
+                    }
+                });
+        dialog.show();
+    }
+
+    public void deleteFilm(){
+        this.presenter.delete(this.position);
+        this.presenter.changePage(2);
     }
 
     @Override
@@ -136,4 +164,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     public void makeToastMessage(String message) {
         Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
+
+
 }

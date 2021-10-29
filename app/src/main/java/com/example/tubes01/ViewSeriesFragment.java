@@ -1,5 +1,7 @@
 package com.example.tubes01;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,9 +80,26 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
             this.presenter.dropFilm(this.position);
         }
         else{
-            this.presenter.delete(this.position);
-            this.presenter.changePage(2);
+            openDialog();
         }
+    }
+
+    public void openDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle("Are you sure want to delete this film ?")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deleteFilm();
+                    }
+                });
+        dialog.show();
+    }
+
+    public void deleteFilm(){
+        this.presenter.delete(this.position);
+        this.presenter.changePage(2);
     }
 
     @Override

@@ -70,7 +70,7 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
 
     public void print(String title, int episode, float rating, String review){
         this.binding.vsrTitle.setText(title);
-        this.binding.vsrEpisode.setText("Episode" + String.valueOf(episode));
+        this.binding.vsrEpisode.setText("Episode " + String.valueOf(episode));
         this.binding.vsrRating.setRating(rating);
         this.binding.vsrReview.setText(review);
 

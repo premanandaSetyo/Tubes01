@@ -40,18 +40,6 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
 
-
-        this.getParentFragmentManager().setFragmentResultListener("seriesReviewData", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                String title = result.getString("SeriesTitle");
-                int episode = result.getInt("SeriesEpisode");
-                int position = result.getInt("Position");
-                print(title, episode,0.0F, "");
-                getPos(position, title, episode);
-            }
-        });
-
         this.getParentFragmentManager().setFragmentResultListener("editSeriesReviewData", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -61,6 +49,17 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
                 String review = result.getString("SeriesReview");
                 int position = result.getInt("Position");
                 print(title, episode, rating, review);
+                getPos(position, title, episode);
+            }
+        });
+
+        this.getParentFragmentManager().setFragmentResultListener("seriesReviewData", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String title = result.getString("SeriesTitle");
+                int episode = result.getInt("SeriesEpisode");
+                int position = result.getInt("Position");
+                print(title, episode,0.0F, "");
                 getPos(position, title, episode);
             }
         });
@@ -88,8 +87,8 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
         float rating = this.binding.srpRating.getRating();
         String review = this.binding.srpReview.getText().toString();
         if(rating!=0.0F && review.length()!=0){
-            this.presenter.getSeriesData(this.position, this.title);
             this.presenter.addSeriesReview(review, rating, this.position, this.title, this.episode);
+            this.presenter.getSeriesData(this.position, this.title);
             this.presenter.changePage(10);
         }
         else{
