@@ -63,7 +63,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
         this.binding.vfrTitle.setText(title);
         this.binding.vfrPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
         this.binding.vfrSynopsis.setText(synopsis);
-        this.binding.vfrStat.setText(this.presenter.printStatus(position));
+        this.binding.vfrStat.setText(" " + this.presenter.printStatus(position));
         this.binding.vfrRating.setRating(rating);
         this.binding.vfrReview.setText(review);
 
@@ -81,7 +81,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
         }
         else if(view == this.binding.vfrBtnDrop){
             this.presenter.dropFilm(this.position);
-            this.binding.vfrStat.setText("dropped");
+//            this.binding.vfrStat.setText("dropped");
         }
         else{
             this.presenter.delete(this.position);

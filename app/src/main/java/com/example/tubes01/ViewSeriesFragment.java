@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -58,8 +59,8 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     public void print(String title, byte[] poster, int episode, String synopsis, int position){
         this.binding.vsTitle.setText(title);
         this.binding.vsPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
-        this.binding.vsEpisode.setText(String.valueOf(episode));
-        this.binding.vsStat.setText(this.presenter.printStatus(position));
+        this.binding.vsEpisode.setText(String.valueOf(" " + episode));
+        this.binding.vsStat.setText(" " + this.presenter.printStatus(position));
         this.binding.vsSynopsis.setText(synopsis);
     }
 
@@ -119,6 +120,6 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void makeToastMessage(String message) {
-
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 }

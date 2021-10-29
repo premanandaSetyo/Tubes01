@@ -63,7 +63,6 @@ public class MainPresenter {
         return bm;
     }
 
-
     public void loadFilmData(){
         Cursor data = db.getAllFilm();
         Film currfilm;
@@ -83,11 +82,6 @@ public class MainPresenter {
         }
         this.ui.updateList(this.listFilmP);
     }
-
-//    public void sendTitle(String title){
-//        this.title = title;
-//    }
-
 
     public void loadSeriesData(String title){
         int countReview = 0;
@@ -135,12 +129,6 @@ public class MainPresenter {
         }
         this.loadFilmData();
         this.ui.resetForm();
-
-//        this.db.addDataFilm(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
-//        currFilm = new Film(title, synopsis, poster, 1, 0.0F, null, false, "movie", 0);
-//        this.listFilmP.add(currFilm);
-//        this.ui.updateList(this.listFilmP);
-//        this.ui.resetForm();
     }
 
     public void addSeries(String title, String synopsis, Bitmap poster, int eps){
@@ -160,20 +148,8 @@ public class MainPresenter {
             this.ui.makeToastMessage("Movie title exists. ");
         }
         this.loadFilmData();
-//        this.loadSeriesData();
         this.ui.resetForm();
         this.index+=eps;
-
-//        currFilm = new Film(title, synopsis, poster, eps, 0.0F, null, false, "series", this.index);
-//        this.listFilmP.add(currFilm);
-//        for(int e=1; e<=eps; e++){
-//            Series currSeries = new Series(("Episode " + e), synopsis,0.0F,null,false);
-//            this.listSeriesP.add(currSeries);
-//        }
-//        Log.d("addSeries", "UDAH MASUK WOI");
-//        this.ui.updateList(this.listFilmP);
-//        this.ui.updateSeries(this.listSeriesP);
-//        this.ui.resetForm();
     }
 
     public void addReview(String review, float rating, int position){
@@ -188,50 +164,33 @@ public class MainPresenter {
             this.ui.makeToastMessage("Can't add review.");
         }
         this.loadFilmData();
-
-        Log.d("debug size", String.valueOf(this.listFilmP.size()));
         this.ui.resetForm();
-
-
-//        Log.d("film rating", String.valueOf(currFilm.getRating()));
-//        Log.d("film review", currFilm.getReview());
-
-//        currFilm = (Film) this.listFilmP.get(position);
-//        currFilm.setReview(review);
-//        currFilm.setRating(rating);
-//        currFilm.setCompletedStatus(true);
-//        this.listFilmP.set(position, currFilm);
-//        Log.d("review", currFilm.getReview());
-//        Log.d("rating", String.valueOf(currFilm.getRating()));
-//        this.ui.sendData(currFilm, position);
-//        this.ui.resetForm();
     }
 
     public void addSeriesReview(String review, float rating, int position, String title, int eps) {
         this.loadSeriesData(title);
-//        Log.d("sebelum", String.valueOf(this.listSeriesP.size()));
-//        currSeries = this.listSeriesP.get(position);
-//        String title = currSeries.getTitle();
-//        Log.d("addReview Presenter", title);
         boolean addRev = this.db.updateDataSeries(review, 1, rating, title, eps);
         if (addRev == true) {
             this.ui.makeToastMessage("Review successfully added.");
         } else {
             this.ui.makeToastMessage("Can't add review.");
         }
-//        if(this.listSeriesP.size()<){
-            this.loadSeriesData(title);
-//        }
-
-        Log.d("setelah", String.valueOf(this.listSeriesP.size()));
-//        this.loadSeriesData(position);
-
-        Log.d("debug size", String.valueOf(this.listSeriesP.size()));
+        this.loadSeriesData(title);
         this.ui.resetForm();
     }
 
     public void delete(int position){
-        this.listFilmP.remove(position);
+//        this.listFilmP.remove(position);
+        this.loadFilmData();
+        currFilm = this.listFilmP.get(position);
+        String title = currFilm.getTitle();
+        boolean delFilm = this.db.deleteFilm(title);
+        if(delFilm==true){
+            this.ui.makeToastMessage("Film successfully deleted.");
+        }else{
+            this.ui.makeToastMessage("Can't delete film.");
+        }
+        this.loadFilmData();
     }
 
     public void dropFilm(int position){
@@ -246,23 +205,6 @@ public class MainPresenter {
         }
         this.loadFilmData();
     }
-
-
-//    public void loadData(Film[] arrFilm){
-//        if(listFilmP.isEmpty()){
-//            List<Film> film = Arrays.asList(arrFilm);
-//            for(Film f : film){
-//                this.listFilmP.add(f);
-//            }
-//            this.ui.updateList(this.listFilmP);
-//        }
-//    }
-
-//    public void getData(int position){
-//        this.loadFilmData();
-//        currFilm = this.listFilmP.get(position);
-//        this.ui.sendData(currFilm, position);
-//    }
 
     public void getData(int position){
         this.loadFilmData();
@@ -297,14 +239,12 @@ public class MainPresenter {
     }
 
     public void changePage(int page){
-//        Log.d("cpPresenter",String.valueOf(page));
         this.ui.changePage(page);
     }
 
     public Intent getImageFromGallery(){
         Intent intent = new Intent();
         intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setAction(Intent.ACTION_PICK);
         return intent;
     }
@@ -330,7 +270,6 @@ public class MainPresenter {
             }
         }
     }
-
 
 
     //search film list
@@ -361,13 +300,5 @@ public class MainPresenter {
         this.ui.updateList(listFilmP);
     }
 
-//    loadData
-//    saveData
-//    reviewUlang
-
-//    METHOD BUAT UPLOAD IMAGE
-//    - encode
-//    - decode --> view
-//    - save
 
 }

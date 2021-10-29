@@ -72,7 +72,7 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
 
     public void print(String title, int episode,float rating, String review){
         this.binding.srpTitle.setText(title);
-        this.binding.srpEpisode.setText("Episode" + String.valueOf(episode));
+        this.binding.srpEpisode.setText("Episode " + String.valueOf(episode));
         this.binding.srpRating.setRating(rating);
         this.binding.srpReview.setText(review);
     }

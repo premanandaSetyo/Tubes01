@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -66,7 +67,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     public void print(String title, String synopsis, byte[] poster, int position){
         this.binding.vfTitle.setText(title);
-        this.binding.vfStat.setText(this.presenter.printStatus(position));
+        this.binding.vfStat.setText(" " + this.presenter.printStatus(position));
         this.binding.vfSynopsis.setText(synopsis);
         this.binding.vfPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
     }
@@ -132,6 +133,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void makeToastMessage(String message) {
-
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 }
