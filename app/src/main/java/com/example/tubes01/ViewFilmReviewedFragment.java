@@ -1,7 +1,6 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +76,6 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if(view == this.binding.vfrBtnEditReview){
-            Log.d("Test", "btn review masuk");
             this.presenter.getData(this.position);
             this.presenter.changePage(7);
         }
@@ -99,7 +97,6 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void changePage(int page) {
-        Log.d("VFRF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);

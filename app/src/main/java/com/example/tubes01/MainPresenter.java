@@ -201,13 +201,13 @@ public class MainPresenter {
 //        this.ui.resetForm();
     }
 
-    public void addSeriesReview(String review, float rating, int position, String title) {
+    public void addSeriesReview(String review, float rating, int position, String title, int eps) {
         this.loadSeriesData(title);
 //        Log.d("sebelum", String.valueOf(this.listSeriesP.size()));
 //        currSeries = this.listSeriesP.get(position);
 //        String title = currSeries.getTitle();
 //        Log.d("addReview Presenter", title);
-        boolean addRev = this.db.updateDataSeries(review, 1, rating, title);
+        boolean addRev = this.db.updateDataSeries(review, 1, rating, title, eps);
         if (addRev == true) {
             this.ui.makeToastMessage("Review successfully added.");
         } else {

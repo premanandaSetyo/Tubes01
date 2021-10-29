@@ -1,7 +1,6 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +46,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
                 load(title);
 //                int position = result.getInt("Position");
 //                load(position);
-//                Log.d("SeriesListFragment",String.valueOf(position));
             }
         });
 
@@ -79,7 +77,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
-        Log.d("SLF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -87,8 +84,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
-        Log.d("coba debug bundle", title);
-        Log.d("coba debug bundle", String.valueOf(episode));
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("SeriesTitle", title);
@@ -104,7 +99,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void updateSeries(List<Series> series) {
-        Log.d("Punyanya SeriesList", "BENER YEYY");
         this.adapter.update(series);
     }
 

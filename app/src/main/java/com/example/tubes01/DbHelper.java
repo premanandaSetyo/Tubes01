@@ -155,14 +155,15 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateDataSeries(String review, int completedStatus, float rating, String title) {
+    public boolean updateDataSeries(String review, int completedStatus, float rating, String title, int eps) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL3_SERIES, rating);
         cv.put(COL4_SERIES, review);
         cv.put(COL6_FILM, completedStatus);
 
-        long res = db.update(TABLE_SERIES, cv, "title=?", new String[]{ title });
+        long res = db.update(TABLE_SERIES, cv, COL1_SERIES + " = ? AND " + COL5_SERIES + " = ?", new String[]{ title, String.valueOf(eps)});
+
 
         if (res == -1) {
             Log.d("return apa", "false");

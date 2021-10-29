@@ -2,7 +2,6 @@ package com.example.tubes01;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +91,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void changePage(int page) {
-        Log.d("VFF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -100,7 +98,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
-        Log.d("ViewFilm", "sendData");
 //        String title = currFilm.getTitle();
 //        Bitmap image = currFilm.getPoster();
 //        String synopsis = currFilm.getSynopsis();

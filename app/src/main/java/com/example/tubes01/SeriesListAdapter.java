@@ -1,6 +1,5 @@
 package com.example.tubes01;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -62,7 +61,6 @@ public class SeriesListAdapter extends BaseAdapter {
     }
 
     public void update(List<Series> getSeries){
-        Log.d("Series Adapter", "update masuk");
         this.seriesList = getSeries;
         notifyDataSetChanged();
     }
@@ -96,7 +94,6 @@ public class SeriesListAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             if(view == this.binding.siSeriesItem){
-                Log.d("onclick series", "masukk");
 //                this.presenter.getData(this.i);
                 if(this.currentSeries.isCompletedStatus()==false){
                     this.presenter.changePage(11);

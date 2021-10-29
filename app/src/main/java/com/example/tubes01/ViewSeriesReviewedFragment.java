@@ -1,7 +1,6 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +47,6 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
                 int position = result.getInt("Position");
                 print(title, episode, rating, review);
                 getPos(position, title);
-                Log.d("ViewSeriesReview", String.valueOf(position));
             }
         });
         this.getParentFragmentManager().setFragmentResultListener("viewSeriesReviewedData", this, new FragmentResultListener() {
@@ -85,9 +83,7 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        Log.d("VSRF OnClick", String.valueOf(this.position));
 //        if(view == this.binding.vfrBtnEditReview){
-//            Log.d("Test", "btn review masuk");
             this.presenter.getSeriesData(this.position, this.title);
             this.presenter.changePage(11);
 //        }
@@ -105,7 +101,6 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
 
     @Override
     public void changePage(int page) {
-        Log.d("VFRF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);

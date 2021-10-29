@@ -1,7 +1,6 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,7 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
     private SeriesListAdapter adapter;
     private int position;
     private String title;
+    private int episode;
 
     public SeriesReviewPageFragment(MainActivity activity){
         this.activity = activity;
@@ -48,10 +48,7 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
                 int episode = result.getInt("SeriesEpisode");
                 int position = result.getInt("Position");
                 print(title, episode,0.0F, "");
-                getPos(position, title);
-                Log.d("SeriesReviewPage", String.valueOf(position));
-                Log.d("SeriesReviewPage", title);
-                Log.d("SeriesReviewPage", String.valueOf(episode));
+                getPos(position, title, episode);
             }
         });
 
@@ -64,7 +61,7 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
                 String review = result.getString("SeriesReview");
                 int position = result.getInt("Position");
                 print(title, episode, rating, review);
-                getPos(position, title);
+                getPos(position, title, episode);
             }
         });
 
@@ -74,27 +71,25 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
     }
 
     public void print(String title, int episode,float rating, String review){
-        Log.d("ReviewPage title", title);
         this.binding.srpTitle.setText(title);
         this.binding.srpEpisode.setText("Episode" + String.valueOf(episode));
         this.binding.srpRating.setRating(rating);
         this.binding.srpReview.setText(review);
     }
 
-    public void getPos(int position, String title){
+    public void getPos(int position, String title, int eps){
         this.position = position;
         this.title = title;
+        this.episode = eps;
     }
 
     @Override
     public void onClick(View view) {
-        Log.d("SRPF OnClick pos", String.valueOf(this.position));
-        Log.d("SRPF OnClick title", this.title);
         float rating = this.binding.srpRating.getRating();
         String review = this.binding.srpReview.getText().toString();
         if(rating!=0.0F && review.length()!=0){
             this.presenter.getSeriesData(this.position, this.title);
-            this.presenter.addSeriesReview(review, rating, this.position, this.title);
+            this.presenter.addSeriesReview(review, rating, this.position, this.title, this.episode);
             this.presenter.changePage(10);
         }
         else{
@@ -109,7 +104,6 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void changePage(int page) {
-        Log.d("SRPF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -117,7 +111,6 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
-        Log.d("ReviewPage", "sendData");
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("SeriesTitle", title);

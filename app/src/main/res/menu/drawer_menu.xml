@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_list"
             android:icon="@drawable/ic_baseline_movie_24"
-            android:title="Movies List"/>
+            android:title="Film List"/>
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_baseline_history_24"

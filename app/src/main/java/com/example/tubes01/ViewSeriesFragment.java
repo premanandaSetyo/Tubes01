@@ -1,7 +1,6 @@
 package com.example.tubes01;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,6 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
                 int position = result.getInt("Position");
                 print(title, poster, episode, synopsis);
                 getPos(position);
-                Log.d("ViewSeriesFragment", String.valueOf(position));
             }
         });
 
@@ -70,7 +68,6 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        Log.d("VSF OnClick", String.valueOf(this.position));
         if(view == this.binding.vsBtnEps){
             this.presenter.getData(this.position);
             this.presenter.changePage(5);
@@ -91,7 +88,6 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
-        Log.d("VFSF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
