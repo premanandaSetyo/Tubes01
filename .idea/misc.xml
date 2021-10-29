@@ -15,6 +15,8 @@
         <entry key="..\:/P3B/Tubes01/app/src/main/res/layout/fragment_series_item.xml" value="0.20520833333333333" />
         <entry key="..\:/P3B/Tubes01/app/src/main/res/layout/fragment_view_film.xml" value="0.36666666666666664" />
         <entry key="..\:/P3B/Tubes01/app/src/main/res/layout/fragment_view_film_reviewed.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/drawable/custom_progress_bar.xml" value="0.2553846153846154" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.2553846153846154" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_add_movie.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_add_series.xml" value="0.20909090909090908" />

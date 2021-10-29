@@ -98,8 +98,8 @@ public class FilmListAdapter extends BaseAdapter {
                 this.binding.fiStarRate.setImageResource(R.drawable.star);
 
 //            }
-            if(film.getCategory()=="series"){
-                this.binding.fiRating.setText(String.valueOf(this.presenter.avgRating(film.getTitle())));
+            if(film.getCategory().equals("series")){
+                this.binding.fiRating.setText(String.format("%.2f", this.presenter.avgRating(film.getTitle())));
             }
             else{
                 this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));

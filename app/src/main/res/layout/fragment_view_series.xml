@@ -75,12 +75,13 @@
                         android:textSize="@dimen/label_20"/>
                 </LinearLayout>
 
-                <!--Status-->
+                <!--ProgressBar-->
                 <ProgressBar
                     android:id="@+id/progress_bar"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:progressDrawable="@drawable/custom_progress_bar"/>/>
 
                 <!--Synopsis-->
                 <TextView

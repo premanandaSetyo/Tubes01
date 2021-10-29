@@ -288,10 +288,11 @@ public class MainPresenter {
         loadSeriesData(title);
         float sum = 0;
         for(Series s : this.listSeriesP){
-            if(completedEps(title)==s.getEps()){
+            if(completedEps(title)==this.listSeriesP.size()){
                 sum+=s.getRating();
             }
         }
+        Log.d("sum", String.valueOf(sum));
         return sum/this.listSeriesP.size();
     }
 
