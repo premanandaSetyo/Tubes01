@@ -12,19 +12,19 @@ public class Film {
     private int episode;
     private float rating;
     private String review;
-    private boolean completedStatus;
+    private int status;
     private String category;
     private int index;
     private boolean droppedStatus;
 
-    public Film(String title, String synopsis, byte[] poster, int episode, float rating, String review, boolean completedStatus, String category, int index, boolean droppedStatus){
+    public Film(String title, String synopsis, byte[] poster, int episode, float rating, String review, int status, String category, int index, boolean droppedStatus){
         this.title = title;
         this.synopsis = synopsis;
         this.poster = poster;
         this.episode = episode;
         this.rating = rating;
         this.review = review;
-        this.completedStatus = completedStatus;
+        this.status = status;
         this.category = category;
         this.index = index;
         this.droppedStatus = droppedStatus;
@@ -116,12 +116,15 @@ public class Film {
         return this.review;
     }
 
-    public void setCompletedStatus(boolean completedStatus) {
-        this.completedStatus = completedStatus;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public boolean isCompletedStatus() {
-        return this.completedStatus;
+    public int getStatus() {
+        // 0 : waiting list
+        // 1 : completed
+        // 2 : in progress
+        return this.status;
     }
 
     public void setCategory(String category){
@@ -145,6 +148,7 @@ public class Film {
     }
 
     public boolean isDroppedStatus() {
+        // true : dropped
         return droppedStatus;
     }
 }

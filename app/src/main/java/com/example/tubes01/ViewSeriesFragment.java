@@ -43,7 +43,7 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
                 int episode = result.getInt("FilmEpisode");
                 String synopsis = result.getString("FilmSynopsis");
                 int position = result.getInt("Position");
-                print(title, poster, episode, synopsis);
+                print(title, poster, episode, synopsis, position);
                 getPos(position);
             }
         });
@@ -55,10 +55,11 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    public void print(String title, byte[] poster, int episode, String synopsis){
+    public void print(String title, byte[] poster, int episode, String synopsis, int position){
         this.binding.vsTitle.setText(title);
         this.binding.vsPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
         this.binding.vsEpisode.setText(String.valueOf(episode));
+        this.binding.vsStat.setText(this.presenter.printStatus(position));
         this.binding.vsSynopsis.setText(synopsis);
     }
 
@@ -94,14 +95,14 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
         args.putByteArray("FilmPoster", poster);
         args.putInt("FilmEpisode", episode);
-        args.putBoolean("FilmStatus", status);
+        args.putInt("FilmStatus", status);
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
         this.getParentFragmentManager().setFragmentResult("viewSeriesList", args);

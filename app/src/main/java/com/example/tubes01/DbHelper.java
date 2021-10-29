@@ -62,7 +62,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataFilm(String title, String synopsis, byte[] poster, float rating, String review, boolean completedStatus, String category, int idx, int eps, int dropStatus){
+    public boolean addDataFilm(String title, String synopsis, byte[] poster, float rating, String review, int completedStatus, String category, int idx, int eps, int dropStatus){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COL1_FILM, title);
@@ -164,6 +164,22 @@ public class DbHelper extends SQLiteOpenHelper {
 
         long res = db.update(TABLE_SERIES, cv, COL1_SERIES + " = ? AND " + COL5_SERIES + " = ?", new String[]{ title, String.valueOf(eps)});
 
+
+        if (res == -1) {
+            Log.d("return apa", "false");
+            return false;
+        } else {
+            Log.d("return apa", "true");
+            return true;
+        }
+    }
+
+    public boolean updateFilmStatus(int completedStatus, String title) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COL6_FILM, completedStatus);
+
+        long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
 
         if (res == -1) {
             Log.d("return apa", "false");

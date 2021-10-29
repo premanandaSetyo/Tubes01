@@ -90,7 +90,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
 
     }
 

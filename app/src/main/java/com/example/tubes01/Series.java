@@ -64,6 +64,8 @@ public class Series {
     }
 
     public boolean isCompletedStatus() {
+        // false 0: blm di review
+        // true 1 : udah di review
         return completedStatus;
     }
 

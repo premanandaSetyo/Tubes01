@@ -43,12 +43,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
                 String title = result.getString("FilmTitle");
                 String synopsis = result.getString("FilmSynopsis");
                 byte[] poster = result.getByteArray("FilmPoster");
-                boolean status = result.getBoolean("FilmStatus");
                 float rating = result.getFloat("FilmRating");
                 String review = result.getString("FilmReview");
                 int position = result.getInt("Position");
 
-                print(title, synopsis, poster, status, rating, review);
+                print(title, synopsis, poster, rating, review, position);
                 getPos(position);
             }
         });
@@ -60,10 +59,11 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
         return view;
     }
 
-    public void print(String title, String synopsis, byte[] poster,boolean status, float rating, String review){
+    public void print(String title, String synopsis, byte[] poster,float rating, String review, int position){
         this.binding.vfrTitle.setText(title);
-        this.binding.vfrSynopsis.setText(synopsis);
         this.binding.vfrPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
+        this.binding.vfrSynopsis.setText(synopsis);
+        this.binding.vfrStat.setText(this.presenter.printStatus(position));
         this.binding.vfrRating.setRating(rating);
         this.binding.vfrReview.setText(review);
 
@@ -103,14 +103,14 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);
         args.putString("FilmSynopsis", synopsis);
         args.putByteArray("FilmPoster", poster);
         args.putInt("FilmEpisode", episode);
-        args.putBoolean("FilmStatus", status);
+        args.putInt("FilmStatus", status);
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
         this.getParentFragmentManager().setFragmentResult("editReviewData", args);

@@ -112,7 +112,7 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
         Log.d("ReviewPage", "sendData");
         Bundle args = new Bundle();
         args.putInt("Position", position);
@@ -120,7 +120,7 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
         args.putString("FilmSynopsis", synopsis);
         args.putByteArray("FilmPoster", poster);
         args.putInt("FilmEpisode", episode);
-        args.putBoolean("FilmStatus", status);
+        args.putInt("FilmStatus", status);
         args.putFloat("FilmRating", rating);
         args.putString("FilmReview", review);
         this.getParentFragmentManager().setFragmentResult("reviewData", args);

@@ -110,14 +110,14 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
     }
 
     @Override
-    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, Boolean status, Float rating, String review) {
+    public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("SeriesTitle", title);
         args.putString("SeriesSynopsis", synopsis);
         args.putByteArray("SeriesPoster", poster);
         args.putInt("SeriesEpisode", episode);
-        args.putBoolean("SeriesStatus", status);
+        args.putInt("SeriesStatus", status);
         args.putFloat("SeriesRating", rating);
         args.putString("SeriesReview", review);
         this.getParentFragmentManager().setFragmentResult("reviewSeriesData", args);

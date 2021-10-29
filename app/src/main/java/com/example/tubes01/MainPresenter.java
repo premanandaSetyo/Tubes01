@@ -33,8 +33,8 @@ public class MainPresenter {
     private DbHelper db;
 //    protected static MainPresenter singleton;
     private Context context;
-    private String title;
-    private int position; ////////////
+//    private String title;
+//    private int position; ////////////
 
     public MainPresenter(IMainActivity view, MainActivity activity){
         this.ui = view;
@@ -73,12 +73,12 @@ public class MainPresenter {
             byte[] poster = data.getBlob(3);
             Float rating = data.getFloat(4);
             String review = data.getString(5);
-            boolean completedStatus = data.getInt(6)==1?true:false;
+            int status = data.getInt(6);
             String category = data.getString(7);
             int idx = data.getInt(8);
             int eps = data.getInt(9);
             boolean droppedStatus = data.getInt(10)==1?true:false;
-            currfilm = new Film(judul,synopsis, poster, eps, rating, review,completedStatus,category, idx,droppedStatus);
+            currfilm = new Film(judul,synopsis, poster, eps, rating, review, status, category, idx, droppedStatus);
             this.listFilmP.add(currfilm);
         }
         this.ui.updateList(this.listFilmP);
@@ -90,11 +90,7 @@ public class MainPresenter {
 
 
     public void loadSeriesData(String title){
-//    public void loadSeriesData(int position){
-//        Log.d("presenterLoadSeriesData", String.valueOf(position));
-//        Cursor data = db.getAllSeries();
-//        currFilm = this.listFilmP.get(position);
-//        String title = currFilm.getTitle();
+        int countReview = 0;
         this.listSeriesP = new ArrayList<>();
         Cursor data = db.getSeries(title);
         Series currseries;
@@ -107,16 +103,31 @@ public class MainPresenter {
             boolean completedStatus = data.getInt(6)==1?true:false;
             currseries = new Series(judul, eps, synopsis, rating, review, completedStatus);
             listSeriesP.add(currseries);
+            if(completedStatus==true){
+                countReview++;
+            }
         }
         this.ui.updateSeries(this.listSeriesP);
+
+
         Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
+//        this.currFilm = this.listFilmP.get(position);
+        if(countReview==listSeriesP.size()){ //completed
+            boolean updateStat = this.db.updateFilmStatus(1, title);
+//            this.currFilm.setStatus(1);
+        }
+        else{ //inprogrss
+            boolean updateStat = this.db.updateFilmStatus(2, title);
+//            this.currFilm.setStatus(2);
+        }
+        loadFilmData();
     }
 
     public void addMovie(String title, String synopsis, Bitmap poster){
         String data = db.checkTitle(title);
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, false, "movies", 0, 1, 0);
+            boolean insertDataStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, 0, "movies", 0, 1, 0);
             if(insertDataStatus==true){
                 this.ui.makeToastMessage("Movie successfully added. ");
             }else{
@@ -141,7 +152,7 @@ public class MainPresenter {
         String data = db.checkTitle(title.toLowerCase());
         if(data==null){
             byte[] tempPoster = bitmapToBytes(poster);
-            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, false, "series", this.index, eps, 0);
+            boolean insertDataFilmStatus = db.addDataFilm(title, synopsis, tempPoster, 0.0F, null, 0, "series", this.index, eps, 0);
             if(insertDataFilmStatus==true){
                 for(int e=1; e<=eps; e++){
                     boolean insertDataSeriesStatus = db.addDataSeries(title,synopsis,0.0F,null, e,false);
@@ -266,7 +277,7 @@ public class MainPresenter {
         byte[] poster = currFilm.getPoster();
         String synopsis = currFilm.getSynopsis();
         int episode = currFilm.getEpisode();
-        boolean status = currFilm.isCompletedStatus();
+        int status = currFilm.getStatus();
         float rating = currFilm.getRating();
         String review = currFilm.getReview();
         Log.d("getData review", title);
@@ -281,7 +292,7 @@ public class MainPresenter {
         byte[] poster = null;
         String synopsis = currSeries.getSynopsis();
         int episode = currSeries.getEps();
-        boolean status = currSeries.isCompletedStatus();
+        int status = currSeries.isCompletedStatus()==true?1:0;
         float rating = currSeries.getRating();
         String review = currSeries.getReview();
         Log.d("getSeriesData Presenter", title);
@@ -304,6 +315,26 @@ public class MainPresenter {
     }
 
 
+    //status
+    public String printStatus(int position){
+        loadFilmData();
+        currFilm = this.listFilmP.get(position);
+        if(currFilm.isDroppedStatus()){
+            return "Dropped";
+        }
+        else{
+            int code = currFilm.getStatus();
+            if(code == 0){
+                return "Waiting List";
+            }
+            else if(code == 1){
+                return "Completed";
+            }
+            else{
+                return "In Progress";
+            }
+        }
+    }
 
 
 

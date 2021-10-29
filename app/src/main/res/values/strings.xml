@@ -39,6 +39,7 @@
 
     <!--View Film-->
     <string name="vf_title">Judul</string>
+    <string name="vf_stat">Status : </string>
     <string name="vf_syno">Synopsis</string>
     <string name="vf_btn_review">Review</string>
     <string name="vf_btn_drop">Drop</string>
@@ -57,6 +58,7 @@
     <!--View Series-->
     <string name="vs_title">Judul</string>
     <string name="vs_eps">Number of Episodes : </string>
+    <string name="vs_stat">Status : </string>
     <string name="vs_syno">Synopsis</string>
     <string name="vs_btn_eps">Episodes</string>
     <string name="vs_btn_drop">Drop</string>
