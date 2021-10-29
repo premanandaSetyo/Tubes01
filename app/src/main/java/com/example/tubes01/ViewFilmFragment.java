@@ -53,6 +53,7 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
             }
         });
 
+
         this.binding.vfBtnReview.setOnClickListener(this);
         this.binding.vfBtnDrop.setOnClickListener(this);
         this.binding.vfBtnDelete.setOnClickListener(this);

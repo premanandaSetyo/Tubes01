@@ -107,7 +107,7 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void makeToastMessage(String message) {
-
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 
     @Override

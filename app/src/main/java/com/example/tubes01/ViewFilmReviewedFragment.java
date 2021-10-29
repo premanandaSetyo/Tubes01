@@ -37,6 +37,8 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
 //        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
+//        this.presenter.loadFilmData();
+
         this.getParentFragmentManager().setFragmentResultListener("viewFilmListReviewed", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -51,6 +53,21 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
                 getPos(position);
             }
         });
+        this.getParentFragmentManager().setFragmentResultListener("reviewData", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String title = result.getString("FilmTitle");
+                String synopsis = result.getString("FilmSynopsis");
+                byte[] poster = result.getByteArray("FilmPoster");
+                float rating = result.getFloat("FilmRating");
+                String review = result.getString("FilmReview");
+                int position = result.getInt("Position");
+
+                print(title, synopsis, poster, rating, review, position);
+                getPos(position);
+            }
+        });
+
 
         this.binding.vfrBtnEditReview.setOnClickListener(this);
         this.binding.vfrBtnDrop.setOnClickListener(this);

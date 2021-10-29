@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.commit();
     }
 
+
     public void closeApplication(){
         this.moveTaskToBack(true);
         this.finish();

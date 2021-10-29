@@ -64,6 +64,7 @@ public class MainPresenter {
     }
 
     public void loadFilmData(){
+        this.listFilmP = new ArrayList<>();
         Cursor data = db.getAllFilm();
         Film currfilm;
         while(data.moveToNext()){
