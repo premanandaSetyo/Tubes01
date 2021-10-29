@@ -115,7 +115,7 @@
                 android:id="@+id/vfr_btn_edit_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight=".6"
                 android:layout_margin="5dp"
                 android:text="@string/vfr_btn_editReview"
                 android:textColor="@color/white"
@@ -127,7 +127,7 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal"
                 android:background="@color/theme"
-                android:layout_weight="1">
+                android:layout_weight=".4">
                 <Button
                     android:id="@+id/vfr_btn_drop"
                     android:layout_width="match_parent"

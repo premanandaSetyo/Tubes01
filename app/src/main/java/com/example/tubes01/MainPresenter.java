@@ -108,17 +108,12 @@ public class MainPresenter {
             }
         }
         this.ui.updateSeries(this.listSeriesP);
-
-
         Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
-//        this.currFilm = this.listFilmP.get(position);
         if(countReview==listSeriesP.size()){ //completed
             boolean updateStat = this.db.updateFilmStatus(1, title);
-//            this.currFilm.setStatus(1);
         }
         else{ //inprogrss
             boolean updateStat = this.db.updateFilmStatus(2, title);
-//            this.currFilm.setStatus(2);
         }
         loadFilmData();
     }
