@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 
 import com.example.tubes01.databinding.FragmentViewFilmBinding;
@@ -70,6 +72,8 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
             }
         });
 
+
+//        getActivity().onBackPressed();
 
         this.binding.vfrBtnEditReview.setOnClickListener(this);
         this.binding.vfrBtnDrop.setOnClickListener(this);
@@ -165,4 +169,8 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     public void makeToastMessage(String message) {
         Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
+
+
+
+
 }

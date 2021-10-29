@@ -1,9 +1,11 @@
 package com.example.tubes01;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -131,6 +133,8 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
     public void resetForm() {
         this.binding.srpRating.setRating(0.0F);
         this.binding.srpReview.setText("");
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.binding.getRoot().getWindowToken(), 0);
     }
 
     @Override

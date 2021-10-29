@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
@@ -83,42 +84,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.changePage(1);
         }
 
-        //page 1
-//        this.home = HomeFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.home)
-//                .addToBackStack(null)
-//                .commit();
-
-        //page 2
-//        this.filmList = FilmListFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.filmList)
-//                .commit();
-
-        //page 3
-//        this.addMovie = AddMovieFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.addMovie)
-//                .commit();
-
-        //page 4
-//        this.addSeries = AddSeriesFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.addSeries)
-//                .commit();
-
-        //page 6
-//        this.viewFilm = ViewFilmFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.viewFilm)
-//                .commit();
-
-        //page 7
-//        this.reviewPage = ReviewPageFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.reviewPage)
-//                .commit();
-
-        //page 8
-//        this.viewFilmReviewed = ViewFilmReviewedFragment.newInstance();
-//        ft.add(R.id.fragment_container, this.viewFilmReviewed)
-//                .commit();
-
         //Change page
         this.getSupportFragmentManager().setFragmentResultListener("changePage", this, new FragmentResultListener() {
             @Override
@@ -128,56 +93,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
-
     }
 
 
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
+//        FragmentManager manager = getFragmentManager();
         if(page==1){
             ft.replace(R.id.fragment_container, this.home)
                     .addToBackStack(null);
         }
         else if(page==2){
             ft.replace(R.id.fragment_container, this.filmList)
-                    .addToBackStack(null);
+                    .addToBackStack("fl");
         }
         else if(page==3){
             ft.replace(R.id.fragment_container, this.addMovie)
-                    .addToBackStack(null);
+                    .addToBackStack("am");
         }
         else if(page==4){
             ft.replace(R.id.fragment_container, this.addSeries)
-                    .addToBackStack(null);
+                    .addToBackStack("as");
         }
         else if(page==5){
             ft.replace(R.id.fragment_container, this.seriesList)
-                        .addToBackStack(null);
+                        .addToBackStack("sl");
         }
         else if(page==6) {
             ft.replace(R.id.fragment_container, this.viewFilm)
-                    .addToBackStack(null);
+                    .addToBackStack("vf");
         }
         else if(page==7) {
             ft.replace(R.id.fragment_container, this.reviewPage)
-                    .addToBackStack(null);
+                    .addToBackStack("rp");
         }
         else if(page==8) {
             ft.replace(R.id.fragment_container, this.viewFilmReviewed)
-                    .addToBackStack(null);
+                    .addToBackStack("vfr");
+            this.fragmentManager.popBackStack("vf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
         }
         else if(page==9) {
             ft.replace(R.id.fragment_container, this.viewSeries)
-                    .addToBackStack(null);
+                    .addToBackStack("vs");
         }
         else if(page==10) {
             ft.replace(R.id.fragment_container, this.viewSeriesReviewed)
-                    .addToBackStack(null);
+                    .addToBackStack("vsr");
+            this.fragmentManager.popBackStack("srp", FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
         else if(page==11) {
             ft.replace(R.id.fragment_container, this.seriesReviewPage)
-                    .addToBackStack(null);
+                    .addToBackStack("srp");
         }
         ft.commit();
     }
@@ -212,5 +179,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
 }

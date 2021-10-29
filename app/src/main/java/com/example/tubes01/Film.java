@@ -47,24 +47,14 @@ public class Film {
     public static Comparator<Film> SortRatingAsc = new Comparator<Film>() {
         @Override
         public int compare(Film film1, Film film2) {
-            int res = 0;
-//            if(film1.getRating()!=0.0F && film2.getRating()!=0.0F){
-//                res = film1.getRating().compareTo(film2.getRating());
-//            }
-            return res;
-//            return film1.getRating().compareTo(film2.getRating();
+            return ((Float)film1.getRating()).compareTo((Float)film2.getRating());
         }
     };
 
     public static Comparator<Film> SortRatingDesc = new Comparator<Film>() {
         @Override
         public int compare(Film film1, Film film2) {
-            int res = 0;
-//            if(film1.getRating()!=null && film2.getRating()!=null){
-//                res = film2.getRating().compareTo(film1.getRating());
-//            }
-            return res;
-//            return film2.getRating().compareTo(film1.getRating());
+            return ((Float)film2.getRating()).compareTo((Float)film1.getRating());
         }
     };
 

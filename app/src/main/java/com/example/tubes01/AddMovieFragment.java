@@ -1,5 +1,6 @@
 package com.example.tubes01;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -103,6 +105,8 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     public void resetForm() {
         this.binding.addMovieTitle.setText("");
         this.binding.addMovieSynopsis.setText("");
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.binding.getRoot().getWindowToken(), 0);
     }
 
     @Override
