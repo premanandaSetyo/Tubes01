@@ -47,7 +47,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         this.db = sqLiteDatabase;
         String createTableFilm = "CREATE TABLE " + TABLE_FILM + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "+ COL1_FILM + " TEXT, "+ COL2_FILM + " TEXT, "+ COL3_FILM +" BLOB, "+ COL4_FILM + " REAL, "+ COL5_FILM + " TEXT, "+ COL6_FILM + " INTEGER, "+ COL7_FILM + " TEXT, "+ COL8_FILM + " INTEGER, "+ COL9_FILM + " INTEGER, "+ COL10_FILM + " INTEGER) ";
-        String createTableSeries = "CREATE TABLE " + TABLE_SERIES + "(ID INTEGER, "+ COL1_SERIES + " TEXT PRIMARY KEY, "+ COL2_SERIES + " TEXT, "+ COL3_SERIES +" REAL, "+ COL4_SERIES + " TEXT, " + COL5_SERIES + " INTEGER, "+ COL6_SERIES + " INTEGER)";
+        String createTableSeries = "CREATE TABLE " + TABLE_SERIES + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "+ COL1_SERIES + " TEXT, "+ COL2_SERIES + " TEXT, "+ COL3_SERIES +" REAL, "+ COL4_SERIES + " TEXT, " + COL5_SERIES + " INTEGER, "+ COL6_SERIES + " INTEGER)";
         db.execSQL(createTableFilm);
         db.execSQL(createTableSeries);
     }
