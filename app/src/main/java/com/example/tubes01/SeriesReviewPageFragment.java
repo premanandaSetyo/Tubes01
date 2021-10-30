@@ -38,7 +38,6 @@ public class SeriesReviewPageFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentSeriesReviewPageBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
 

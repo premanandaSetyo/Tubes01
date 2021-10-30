@@ -31,10 +31,7 @@ public class MainPresenter {
     private Film currFilm;
     private Series currSeries;
     private DbHelper db;
-//    protected static MainPresenter singleton;
     private Context context;
-//    private String title;
-//    private int position; ////////////
 
     public MainPresenter(IMainActivity view, MainActivity activity){
         this.ui = view;
@@ -44,13 +41,6 @@ public class MainPresenter {
         this.db = new DbHelper(this.context);
     }
 
-//    public static MainPresenter getMainPresenter(IMainActivity view){
-//        if(MainPresenter.singleton == null){
-//            MainPresenter.singleton = new MainPresenter(view);
-//        }
-//        return MainPresenter.singleton;
-//    }
-
     public byte[] bitmapToBytes(Bitmap bitmap){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -58,7 +48,6 @@ public class MainPresenter {
     }
 
     public Bitmap decodeToBitmap(byte[] byteArray){
-        Log.d("Bitmap decode", String.valueOf(byteArray[0]));
         Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         return bm;
     }
@@ -103,7 +92,6 @@ public class MainPresenter {
             }
         }
         this.ui.updateSeries(this.listSeriesP);
-        Log.d("ArrSeriesLength", String.valueOf(listSeriesP.size()));
         if(countReview==listSeriesP.size()){ //completed
             boolean updateStat = this.db.updateFilmStatus(1, title);
         }
@@ -123,10 +111,8 @@ public class MainPresenter {
             }else{
                 this.ui.makeToastMessage("Failed to add movie. ");
             }
-            Log.d("Debug add movie true", String.valueOf(listFilmP.size()));
         }else{
             this.ui.makeToastMessage("Movie title exists. ");
-            Log.d("Debug add movie false", String.valueOf(listFilmP.size()));
         }
         this.loadFilmData();
         this.ui.resetForm();
@@ -157,7 +143,6 @@ public class MainPresenter {
         this.loadFilmData();
         currFilm = this.listFilmP.get(position);
         String title = currFilm.getTitle();
-        Log.d("addReview Presenter", title);
         boolean addRev = this.db.updateDataFilm(review,1, rating, title);
         if(addRev==true){
             this.ui.makeToastMessage("Review successfully added.");
@@ -181,7 +166,6 @@ public class MainPresenter {
     }
 
     public void delete(int position){
-//        this.listFilmP.remove(position);
         this.loadFilmData();
         currFilm = this.listFilmP.get(position);
         String title = currFilm.getTitle();
@@ -209,7 +193,6 @@ public class MainPresenter {
 
     public void getData(int position){
         this.loadFilmData();
-        Log.d("getData Presenter", String.valueOf(position));
         currFilm = this.listFilmP.get(position);
         String title = currFilm.getTitle();
         byte[] poster = currFilm.getPoster();
@@ -218,13 +201,11 @@ public class MainPresenter {
         int status = currFilm.getStatus();
         float rating = currFilm.getRating();
         String review = currFilm.getReview();
-        Log.d("getData review", title);
         this.ui.sendData(position, title, synopsis, poster, episode, status, rating, review);
     }
 
     public void getSeriesData(int position, String title){
         this.loadSeriesData(title);
-        Log.d("getData Presenter", String.valueOf(position));
         currSeries = this.listSeriesP.get(position);
         title = currSeries.getTitle();
         byte[] poster = null;
@@ -233,9 +214,6 @@ public class MainPresenter {
         int status = currSeries.isCompletedStatus()==true?1:0;
         float rating = currSeries.getRating();
         String review = currSeries.getReview();
-        Log.d("getSeriesData Presenter", title);
-        Log.d("getSeriesData eps", String.valueOf(episode));
-        Log.d("getSeriesData pos", String.valueOf(position));
         this.ui.sendData(position, title, synopsis, poster, episode, status, rating, review);
     }
 
@@ -292,7 +270,6 @@ public class MainPresenter {
                 sum+=s.getRating();
             }
         }
-        Log.d("sum", String.valueOf(sum));
         return sum/this.listSeriesP.size();
     }
 

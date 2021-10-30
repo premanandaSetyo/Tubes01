@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import java.sql.Blob;
 
 public class DbHelper extends SQLiteOpenHelper {
@@ -119,17 +117,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor getSeries(String title){
         SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor res = db.rawQuery("SELECT "+ COL1_FILM +" FROM "+TABLE_FILM+" WHERE " + COL1_FILM + "='"+title+"'",null);
         Cursor res = db.rawQuery("SELECT * FROM "+TABLE_SERIES+" WHERE "+ COL1_SERIES + "='"+title+"'",null);
-//        Log.d("db length", res.getString(1));
         return res;
     }
 
     public boolean deleteFilm(String title){
         SQLiteDatabase db = this.getWritableDatabase();
         long res = db.delete(TABLE_FILM, "title=?",new String[]{ title });
-//        String query = "DELETE FROM "+TABLE_FILM+" WHERE "+ COL1_FILM + " = " + title;
-//        db.rawQuery(query, null);
         if (res == -1) {
             return false;
         } else {
@@ -163,7 +157,6 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(COL6_FILM, completedStatus);
 
         long res = db.update(TABLE_SERIES, cv, COL1_SERIES + " = ? AND " + COL5_SERIES + " = ?", new String[]{ title, String.valueOf(eps)});
-
 
         if (res == -1) {
             Log.d("return apa", "false");
@@ -202,24 +195,6 @@ public class DbHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
-    }
-
-    public Cursor filterByRating(float rating){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_FILM+" WHERE  " + COL4_FILM + " = '"+rating+"'",null);
-        return res;
-    }
-
-    public Cursor filterByCompletedStatus(int completedStatus){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_FILM+" WHERE  " + COL6_FILM + " = '"+completedStatus+"'",null);
-        return res;
-    }
-
-    public Cursor filterByDropStatus(int dropStatus){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_FILM+" WHERE  " + COL10_FILM + " = '"+dropStatus+"'",null);
-        return res;
     }
 
     public String checkTitle(String title){ //check if title exist in DB

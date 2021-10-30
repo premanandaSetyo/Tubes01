@@ -38,10 +38,7 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
-
-//        this.presenter.loadFilmData();
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmListReviewed", this, new FragmentResultListener() {
             @Override
@@ -71,9 +68,6 @@ public class ViewFilmReviewedFragment extends Fragment implements View.OnClickLi
                 getPos(position);
             }
         });
-
-
-//        getActivity().onBackPressed();
 
         this.binding.vfrBtnEditReview.setOnClickListener(this);
         this.binding.vfrBtnDrop.setOnClickListener(this);

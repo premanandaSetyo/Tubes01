@@ -42,7 +42,6 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentAddMovieBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
 
@@ -85,7 +84,6 @@ public class AddMovieFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void changePage(int page) {
-        Log.d("AMF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);

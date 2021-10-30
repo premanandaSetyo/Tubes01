@@ -26,7 +26,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     private FilmListAdapter adapter;
     private MainPresenter presenter;
     private MainActivity activity;
-//    private int page;
 
     public FilmListFragment(MainActivity activity){
         this.activity = activity;
@@ -46,7 +45,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.binding.btnAddSeries.setOnClickListener(this);
 
         this.presenter = new MainPresenter(this, this.activity);
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
 
@@ -63,9 +61,8 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 //        this.presenter.addMovie("Fish Game","Fish main game", null);
 //        this.presenter.addMovie("Shrimp Game","Shrimp main game", null);
 //        this.presenter.addMovie("Crab Game","Crab main game", null);
-        this.presenter.loadFilmData(); //load data dari DB
-//        this.presenter.loadSeriesData();
 
+        this.presenter.loadFilmData(); //load data dari DB
         this.binding.filmListSearch.setOnQueryTextListener(this);
 
         return view;
@@ -88,9 +85,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void changePage(int page) {
-//        this.page=page;
-        Log.d("FlfChangePage", String.valueOf(page));
-
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -99,11 +93,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
 
-//        Log.d("FilmList", String.valueOf(page));
-//        Log.d("revFilm", title);
-        Log.d("FilmListFragment","sendData");
-
-//        if(page==6){
             Bundle args = new Bundle();
             args.putInt("Position", position);
             args.putString("FilmTitle", title);
@@ -118,14 +107,11 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
             this.getParentFragmentManager().setFragmentResult("viewFilmListReviewed", args);
             //Series
             this.getParentFragmentManager().setFragmentResult("viewSeriesData", args);
-//            this.getParentFragmentManager().setFragmentResult("viewSeriesList", args);
-//        }
-
     }
 
     @Override
     public void updateSeries(List<Series> series) {
-        Log.d("Punyanya FilmList", "GA BENER");
+
     }
 
     @Override
@@ -135,7 +121,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void makeToastMessage(String message) {
         Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
-//        this.activity.recreate();
     }
 
     //Search Film List

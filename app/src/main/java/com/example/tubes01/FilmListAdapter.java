@@ -50,7 +50,6 @@ public class FilmListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Log.d("size",String.valueOf(filmList.size()));
         FilmListAdapter.ViewHolder viewHolder;
         if(view == null) {
             FragmentFilmItemBinding binding = FragmentFilmItemBinding.inflate(this.activity.getLayoutInflater(), viewGroup, false);
@@ -86,7 +85,6 @@ public class FilmListAdapter extends BaseAdapter {
         }
 
         public void updateView(Film film, int i){
-//            Log.d("vh","msk OC VH");
             this.i = i;
             this.currentFilm = film;
             this.binding.fiTitle.setText(film.getTitle());
@@ -94,28 +92,21 @@ public class FilmListAdapter extends BaseAdapter {
             if(film.getPoster()!=null){
                 this.binding.fiPoster.setImageBitmap(this.presenter.decodeToBitmap(film.getPoster()));
             }
-//            if(this.currentFilm.getRating()!=0.0F) {
-                this.binding.fiStarRate.setImageResource(R.drawable.star);
 
-//            }
+            this.binding.fiStarRate.setImageResource(R.drawable.star);
             if(film.getCategory().equals("series")){
                 this.binding.fiRating.setText(String.format("%.2f", this.presenter.avgRating(film.getTitle())));
             }
             else{
                 this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
             }
-
             this.binding.fiFilmItem.setOnClickListener(this);
-
-//            this.activity.startActivityForResult(intent, 1);
         }
 
         @Override
         public void onClick(View view) {
             if(view == this.binding.fiFilmItem){
-//                this.presenter.getData(this.i);
                 if(this.currentFilm.getCategory().equals("movies") && this.currentFilm.getStatus()==0){
-                    Log.d("vh","msk OC VH");
                     this.presenter.changePage(6);
                     this.presenter.getData(this.i);
                 }

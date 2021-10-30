@@ -75,7 +75,6 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
     }
 
     public void print(String title, byte[] poster,float rating, String review){
-        Log.d("ReviewPage title", title);
         this.binding.rpTitle.setText(title);
         this.binding.rpPoster.setImageBitmap(this.presenter.decodeToBitmap(poster));
         this.binding.rpRating.setRating(rating);
@@ -107,7 +106,6 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void changePage(int page) {
-        Log.d("RPF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -115,7 +113,6 @@ public class ReviewPageFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
-        Log.d("ReviewPage", "sendData");
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);

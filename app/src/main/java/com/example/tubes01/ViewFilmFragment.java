@@ -40,7 +40,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewFilmBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
         this.getParentFragmentManager().setFragmentResultListener("viewFilmList", this, new FragmentResultListener() {
@@ -50,24 +49,14 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
                 String synopsis = result.getString("FilmSynopsis");
                 byte[] poster = result.getByteArray("FilmPoster");
                 int position = result.getInt("Position");
-                Log.d("ViewFilm pos", String.valueOf(position));
                 getPos(position);
                 print(title, synopsis, poster, position);
-            }
-        });
-
-        this.binding.vfBtnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
             }
         });
 
         this.binding.vfBtnReview.setOnClickListener(this);
         this.binding.vfBtnDrop.setOnClickListener(this);
         this.binding.vfBtnDelete.setOnClickListener(this);
-
-//        this.binding.vfBtnDelete.setOnClickListener(new);
 
         return view;
     }
@@ -131,13 +120,6 @@ public class ViewFilmFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void sendData(int position, String title, String synopsis, byte[] poster, int episode, int status, Float rating, String review) {
-//        String title = currFilm.getTitle();
-//        Bitmap image = currFilm.getPoster();
-//        String synopsis = currFilm.getSynopsis();
-//        int episode = currFilm.getEpisode();
-//        boolean status = currFilm.isCompletedStatus();
-//        float rating = currFilm.getRating();
-//        String review = currFilm.getReview();
         Bundle args = new Bundle();
         args.putInt("Position", position);
         args.putString("FilmTitle", title);

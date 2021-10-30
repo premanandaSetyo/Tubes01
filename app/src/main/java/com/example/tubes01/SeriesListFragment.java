@@ -18,8 +18,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
     private FragmentSeriesListBinding binding;
     private MainPresenter presenter;
     private SeriesListAdapter adapter;
-    private String title;
-    private int position;
 
     public SeriesListFragment(MainActivity activity){
         this.activity = activity;
@@ -35,7 +33,6 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
         this.binding = FragmentSeriesListBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         this.presenter = new MainPresenter(this, this.activity);
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
         this.binding.listSeries.setAdapter(this.adapter);
 
@@ -44,25 +41,13 @@ public class SeriesListFragment extends Fragment implements View.OnClickListener
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String title = result.getString("FilmTitle");
                 load(title);
-//                int position = result.getInt("Position");
-//                load(position);
             }
         });
-
-//        this.presenter.loadSeriesData();
-
-//        this.presenter.getData(this.title);
 
         return view;
     }
 
-//    private void load(int position){
-//        this.position = position;
-//        this.presenter.loadSeriesData(this.position);
-//    }
     private void load(String title){
-//        this.title = title;
-//        this.presenter.sendTitle(title);
         this.presenter.loadSeriesData(title);
     }
 

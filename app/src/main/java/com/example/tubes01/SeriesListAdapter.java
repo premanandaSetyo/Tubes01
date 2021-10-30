@@ -84,17 +84,15 @@ public class SeriesListAdapter extends BaseAdapter {
             this.currentSeries = series;
             this.binding.siSeriesItem.setOnClickListener(this);
 
-//            if(this.currentSeries.getRating()!=0.0F) {
             this.binding.siStarRate.setImageResource(R.drawable.star);
             this.binding.siRating.setText(String.valueOf(this.currentSeries.getRating()));
-//            }
+
             this.binding.siSeriesItem.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             if(view == this.binding.siSeriesItem){
-//                this.presenter.getData(this.i);
                 if(this.currentSeries.isCompletedStatus()==false){
                     this.presenter.changePage(11);
                     this.presenter.getSeriesData(this.i, this.currentSeries.getTitle());

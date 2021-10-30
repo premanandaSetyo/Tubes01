@@ -35,7 +35,6 @@ public class ViewSeriesFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
         this.getParentFragmentManager().setFragmentResultListener("viewSeriesData", this, new FragmentResultListener() {

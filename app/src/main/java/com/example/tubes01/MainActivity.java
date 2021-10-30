@@ -61,10 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navView = binding.navView;
         this.navView.setNavigationItemSelectedListener(this);
 
-
-//        this.reviewPage = new ReviewPageFragment(this);
-
-
         this.home = HomeFragment.newInstance(this);
         this.filmList = FilmListFragment.newInstance(this);
         this.addMovie = AddMovieFragment.newInstance(this);
@@ -98,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
-//        FragmentManager manager = getFragmentManager();
         if(page==1){
             ft.replace(R.id.fragment_container, this.home)
                     .addToBackStack(null);
@@ -130,8 +125,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(page==8) {
             ft.replace(R.id.fragment_container, this.viewFilmReviewed)
                     .addToBackStack("vfr");
-            this.fragmentManager.popBackStack("vf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
+            if(this.viewFilm!=null){
+                this.fragmentManager.popBackStack("vf", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+            else if(this.reviewPage!=null){
+                this.fragmentManager.popBackStack("rp", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
         }
         else if(page==9) {
             ft.replace(R.id.fragment_container, this.viewSeries)

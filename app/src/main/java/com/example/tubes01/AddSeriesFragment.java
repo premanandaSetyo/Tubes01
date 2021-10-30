@@ -42,7 +42,6 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentAddSeriesBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
         this.adapter = SeriesListAdapter.getSeriesListAdapter(this.activity, this.presenter);
 
@@ -61,11 +60,6 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
             String title = this.binding.asTitle.getText().toString();
             String episode = this.binding.asEps.getText().toString();
             String synopsis = this.binding.asSyn.getText().toString();
-
-            Log.d("title", title);
-            Log.d("eps", String.valueOf(episode));
-            Log.d("title", synopsis);
-
             if(title.length()!=0 && episode.length()!=0 && synopsis.length()!=0 && this.bitmap!=null){
                 int eps = Integer.parseInt(episode);
                 this.presenter.addSeries(title, synopsis, this.bitmap, eps);
@@ -90,7 +84,6 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void changePage(int page) {
-        Log.d("ASF",String.valueOf(page));
         Bundle args = new Bundle();
         args.putInt("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", args);
@@ -122,7 +115,6 @@ public class AddSeriesFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==this.activity.RESULT_OK && requestCode == 1){
             Uri uri = data.getData();
             try {

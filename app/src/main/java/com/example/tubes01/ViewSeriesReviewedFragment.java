@@ -34,7 +34,6 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentViewSeriesReviewedBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-//        this.presenter = MainPresenter.getMainPresenter(this);
         this.presenter = new MainPresenter(this, this.activity);
 
         this.getParentFragmentManager().setFragmentResultListener("reviewSeriesData", this, new FragmentResultListener() {
@@ -83,14 +82,8 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View view) {
-//        if(view == this.binding.vfrBtnEditReview){
-            this.presenter.getSeriesData(this.position, this.title);
-            this.presenter.changePage(11);
-//        }
-//        else{
-//            this.presenter.delete(this.position);
-//            this.presenter.changePage(2);
-//        }
+        this.presenter.getSeriesData(this.position, this.title);
+        this.presenter.changePage(11);
     }
 
 
@@ -132,6 +125,6 @@ public class ViewSeriesReviewedFragment extends Fragment implements View.OnClick
 
     @Override
     public void makeToastMessage(String message) {
-//        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_LONG).show();
     }
 }
