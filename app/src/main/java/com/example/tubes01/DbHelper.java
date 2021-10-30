@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
 
 import java.sql.Blob;
 
@@ -47,7 +47,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         this.db = sqLiteDatabase;
         String createTableFilm = "CREATE TABLE " + TABLE_FILM + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "+ COL1_FILM + " TEXT, "+ COL2_FILM + " TEXT, "+ COL3_FILM +" BLOB, "+ COL4_FILM + " REAL, "+ COL5_FILM + " TEXT, "+ COL6_FILM + " INTEGER, "+ COL7_FILM + " TEXT, "+ COL8_FILM + " INTEGER, "+ COL9_FILM + " INTEGER, "+ COL10_FILM + " INTEGER) ";
-        String createTableSeries = "CREATE TABLE " + TABLE_SERIES + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "+ COL1_SERIES + " TEXT, "+ COL2_SERIES + " TEXT, "+ COL3_SERIES +" REAL, "+ COL4_SERIES + " TEXT, " + COL5_SERIES + " INTEGER, "+ COL6_SERIES + " INTEGER)";
+        String createTableSeries = "CREATE TABLE " + TABLE_SERIES + "(ID INTEGER, "+ COL1_SERIES + " TEXT PRIMARY KEY, "+ COL2_SERIES + " TEXT, "+ COL3_SERIES +" REAL, "+ COL4_SERIES + " TEXT, " + COL5_SERIES + " INTEGER, "+ COL6_SERIES + " INTEGER)";
         db.execSQL(createTableFilm);
         db.execSQL(createTableSeries);
     }
@@ -141,10 +141,8 @@ public class DbHelper extends SQLiteOpenHelper {
         long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
 
         if (res == -1) {
-            Log.d("return apa", "false");
             return false;
         } else {
-            Log.d("return apa", "true");
             return true;
         }
     }
@@ -159,10 +157,8 @@ public class DbHelper extends SQLiteOpenHelper {
         long res = db.update(TABLE_SERIES, cv, COL1_SERIES + " = ? AND " + COL5_SERIES + " = ?", new String[]{ title, String.valueOf(eps)});
 
         if (res == -1) {
-            Log.d("return apa", "false");
             return false;
         } else {
-            Log.d("return apa", "true");
             return true;
         }
     }
@@ -175,10 +171,8 @@ public class DbHelper extends SQLiteOpenHelper {
         long res = db.update(TABLE_FILM, cv, "title=?", new String[]{ title });
 
         if (res == -1) {
-            Log.d("return apa", "false");
             return false;
         } else {
-            Log.d("return apa", "true");
             return true;
         }
     }
