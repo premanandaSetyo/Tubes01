@@ -48,20 +48,6 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
         this.adapter = FilmListAdapter.getFilmListAdapter(this.activity, this.presenter);
         this.binding.listFilm.setAdapter(this.adapter);
 
-//        Film[] dummyData = {
-//                new Film("Squid Game", "Squid main game", null, 1,0.0F, null, false, "movie", 0),
-//                new Film("Octopus game", "Octopus main game", null, 1, 5.0F, "bagusss", true, "movie", 0),
-//                new Film("Vincenzo", "Vincenzo shooting film", null, 10, 4.5F, "keren!", false, "series", 1)
-//        };
-//        this.presenter.loadData(dummyData);
-
-//        this.presenter.addMovie("Squid Game","Squid main game", null);
-//        this.presenter.addMovie("Octopus Game","Octopus main game", null);
-//        this.presenter.addMovie("Prawn Game","Prawn main game", null);
-//        this.presenter.addMovie("Fish Game","Fish main game", null);
-//        this.presenter.addMovie("Shrimp Game","Shrimp main game", null);
-//        this.presenter.addMovie("Crab Game","Crab main game", null);
-
         this.presenter.loadFilmData(); //load data dari DB
         this.binding.filmListSearch.setOnQueryTextListener(this);
 
@@ -80,6 +66,7 @@ public class FilmListFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void updateList(List<Film> films) {
+
         this.adapter.update(films);
     }
 

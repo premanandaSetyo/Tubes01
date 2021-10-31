@@ -263,7 +263,7 @@ public class MainPresenter {
     }
 
     public float avgRating(String title){
-        loadSeriesData(title);
+//        loadSeriesData(title);
         float sum = 0;
         for(Series s : this.listSeriesP){
             if(completedEps(title)==this.listSeriesP.size()){

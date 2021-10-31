@@ -93,9 +93,14 @@ public class FilmListAdapter extends BaseAdapter {
                 this.binding.fiPoster.setImageBitmap(this.presenter.decodeToBitmap(film.getPoster()));
             }
 
+
+//            if(!film.getCategory().equals("series")){
+//                this.binding.fiStarRate.setImageResource(R.drawable.star);
+//                this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
+//            }
             this.binding.fiStarRate.setImageResource(R.drawable.star);
             if(film.getCategory().equals("series")){
-                this.binding.fiRating.setText(String.format("%.2f", this.presenter.avgRating(film.getTitle())));
+                this.binding.fiRating.setText(String.format("%.1f", this.presenter.avgRating(film.getTitle())));
             }
             else{
                 this.binding.fiRating.setText(String.valueOf(this.currentFilm.getRating()));
